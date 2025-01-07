@@ -55,7 +55,7 @@ const ContributionPeriod: React.FC<Props> = ({
         </h4>
         <button
           onClick={onRemove}
-          aria-label={t('pension.contributionPeriods.removePeriod')}
+          aria-label="Remove period"
           className="text-red-600 hover:text-red-800"
         >
           <X className="h-4 w-4" />
