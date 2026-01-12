@@ -19,7 +19,7 @@ export const usePensionCalculator = () => {
   
   const [inputs, setInputs] = useState<PensionInputs>({
     birthDate: '1996-08-26',
-    retirementYear: currentYear + 35,
+    retirementYear: 65,
     contributionPeriods: [
       {
         fromDate: '2015-09-01' ,
@@ -29,15 +29,15 @@ export const usePensionCalculator = () => {
       {
         fromDate: '2018-01-01' ,
         toDate: '2020-12-31',
-        company: 'Company A',
-        monthlyGrossSalary: 4050,
+        company: 'ISoftbet',
+        monthlyGrossSalary: 6000,
         workingCondition: 'normal'
       },
       {
         fromDate: '2021-01-01' ,
         toDate: '2060-12-31',
-        company: 'Company B',
-        monthlyGrossSalary: 5050,
+        company: 'Elektrobit',
+        monthlyGrossSalary: 10000,
         workingCondition: 'normal'
       }
     ]

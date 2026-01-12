@@ -4,6 +4,7 @@ import { PensionInputs, ContributionPeriod as ContributionPeriodType } from '../
 import ContributionPeriod from './ContributionPeriod';
 import Tooltip from './Tooltip';
 import { RETIREMENT_AGE } from '../utils/pensionCalculations';
+import { t } from 'i18next';
 
 interface InputFormProps {
   inputs: PensionInputs;
@@ -53,7 +54,7 @@ const InputForm: React.FC<InputFormProps> = ({
         <div className="p-4 border-b border-gray-200 bg-gray-50">
           <div className="flex items-center gap-2">
             <CalendarDays className="w-4 h-4 text-gray-500" />
-            <h2 className="font-medium text-gray-900">Personal Information</h2>
+            <h2 className="font-medium text-gray-900">{t('pension.personalInfo.title')}</h2>
           </div>
         </div>
         
