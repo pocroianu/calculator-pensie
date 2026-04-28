@@ -11,7 +11,7 @@
  * The Romanian Leu was redenominated on July 1, 2005 (1 RON = 10,000 ROL)
  */
 
-import { simpleMemoize, pensionCache } from '../utils/memoization';
+import { pensionCache } from '../utils/memoization';
 
 export interface HistoricalSalaryData {
   [year: number]: number;

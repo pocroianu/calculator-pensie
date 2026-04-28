@@ -14,7 +14,7 @@
 
 import { useMemo, useCallback } from 'react';
 import { useDebounce } from './useDebounce';
-import { searchEmployers, EmployerEntry } from '../data/romanianEmployers';
+import { searchEmployers } from '../data/romanianEmployers';
 import { ContributionPeriod } from '../types/pensionTypes';
 import { getPensionStorageItem } from './useLocalStorage';
 

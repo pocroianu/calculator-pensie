@@ -12,11 +12,9 @@ import {
   ContributionGap,
   GapFillStrategy,
   GapAnalysisResult,
-  GapFillStrategyType,
 } from '../types/pensionTypes';
-import { REFERENCE_VALUE_2024, CURRENT_AVERAGE_SALARY } from './pensionCalculations';
-import { getAverageSalaryForYear } from '../data/historicalSalaries';
-import { memoize, hashContributionPeriods } from './memoization';
+import { REFERENCE_VALUE_2024 } from './pensionCalculations';
+import { hashContributionPeriods } from './memoization';
 
 // Cache for gap analysis results
 const gapAnalysisCache = new Map<string, GapAnalysisResult>();

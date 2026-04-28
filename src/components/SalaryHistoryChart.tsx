@@ -154,6 +154,11 @@ const SalaryHistoryChart: React.FC<Props> = ({ contributionPeriods }) => {
     };
   }, [chartData]);
 
+  // Generate accessible summary of chart data
+  const chartAccessibleSummary = statistics
+    ? `Salary progression chart showing ${statistics.totalYears} years of data. Average salary was ${(statistics.avgRatio * 100).toFixed(0)}% of national average. ${statistics.aboveAverageYears} years above average, ${statistics.belowAverageYears} years below average.`
+    : '';
+
   // If no data, show placeholder
   if (!chartData || chartData.length === 0) {
     return (
@@ -290,13 +295,6 @@ const SalaryHistoryChart: React.FC<Props> = ({ contributionPeriods }) => {
       },
     },
   };
-
-  // Generate accessible summary of chart data
-  const chartAccessibleSummary = React.useMemo(() => {
-    if (!statistics) return '';
-    const avgPercentage = (statistics.avgRatio * 100).toFixed(0);
-    return `Salary progression chart showing ${statistics.totalYears} years of data. Average salary was ${avgPercentage}% of national average. ${statistics.aboveAverageYears} years above average, ${statistics.belowAverageYears} years below average.`;
-  }, [statistics]);
 
   return (
     <section
