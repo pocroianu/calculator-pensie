@@ -1,13 +1,461 @@
 {
+  "keyboard": {
+    "title": "Comenzi Rapide de Tastatură",
+    "hint": "Apăsați Esc pentru a închide acest dialog. Comenzile rapide sunt dezactivate când scrieți în câmpuri.",
+    "categories": {
+      "actions": "Acțiuni",
+      "navigation": "Navigare",
+      "general": "General"
+    },
+    "shortcuts": {
+      "addPeriod": "Adaugă perioadă de contribuție",
+      "save": "Salvează/Exportă date",
+      "toggleLanguage": "Schimbă limba",
+      "exportData": "Exportă date în fișier",
+      "focusBirthDate": "Focus pe data nașterii",
+      "focusRetirementYear": "Focus pe anul pensionării",
+      "focusContributionPeriods": "Focus pe perioade de contribuție",
+      "collapseAll": "Restrânge toate perioadele",
+      "expandAll": "Extinde toate perioadele",
+      "showHelp": "Deschide panoul de ajutor",
+      "showShortcuts": "Afișează comenzile rapide",
+      "closeModal": "Închide dialogul/modalul"
+    }
+  },
+  "help": {
+    "title": "Centru de Ajutor",
+    "close": "Inchide",
+    "startTour": "Incepe Turul",
+    "openHelp": "Ajutor",
+    "skipTour": "Sari",
+    "nextStep": "Urmator",
+    "prevStep": "Anterior",
+    "finishTour": "Termina",
+    "stepOf": "Pasul {{current}} din {{total}}",
+    "tour": {
+      "welcome": {
+        "title": "Bine ati venit la Calculatorul de Pensie!",
+        "description": "Acest tur ghidat va va ajuta sa intelegeti cum sa folositi calculatorul pentru a estima pensia romaneasca. Sa incepem!"
+      },
+      "birthDate": {
+        "title": "Data Nasterii",
+        "description": "Introduceti data nasterii aici. Aceasta este folosita pentru a calcula varsta curenta si pentru a determina cand veti fi eligibil pentru pensionare (varsta standard de pensionare este de 65 de ani)."
+      },
+      "retirementYear": {
+        "title": "Anul Planificat pentru Pensionare",
+        "description": "Introduceti anul in care planificati sa va pensionati. Calculatorul va sugera un an bazat pe varsta standard de pensionare de 65 de ani, dar puteti ajusta acest lucru."
+      },
+      "contributionPeriods": {
+        "title": "Perioade de Contributie",
+        "description": "Adaugati perioadele de angajare aici. Fiecare perioada contribuie la punctele de pensie bazat pe salariu si durata. Puteti adauga si perioade necontributive precum stagiul militar sau universitatea."
+      },
+      "workingConditions": {
+        "title": "Conditii de Munca",
+        "description": "Daca ati lucrat in conditii dificile sau speciale, puteti avea dreptul la puncte bonus: Grupa II (Dificile) ofera bonus de 25%, Grupa I (Foarte Dificile) si Conditii Speciale ofera bonus de 50%."
+      },
+      "pensionEstimate": {
+        "title": "Estimarea Pensiei",
+        "description": "Aceasta arata pensia lunara si anuala estimata bazata pe punctele totale. Calculul foloseste valoarea de referinta din 2024 de 81.03 RON pe punct."
+      },
+      "complete": {
+        "title": "Tur Complet!",
+        "description": "Acum cunoasteti bazele! Nu ezitati sa explorati sectiunea FAQ pentru informatii mai detaliate despre cum functioneaza calculele de pensie."
+      }
+    },
+    "faq": {
+      "title": "Intrebari Frecvente",
+      "questions": {
+        "howCalculated": {
+          "question": "Cum se calculeaza pensia?",
+          "answer": "Pensia se calculeaza folosind formula: Pensie Lunara = Total Puncte x Valoare de Referinta (81.03 RON). Total Puncte include puncte de contributie (bazate pe raportul salariului la salariul mediu), puncte de stabilitate (bazate pe anii lucrati) si puncte necontributive."
+        },
+        "contributionPoints": {
+          "question": "Ce sunt punctele de contributie?",
+          "answer": "Punctele de contributie sunt calculate bazat pe raportul salariului brut la salariul mediu national pentru fiecare an lucrat. Daca salariul egal cu media, castigi 1 punct pe an. Salariile mai mari castiga proportional mai multe puncte."
+        },
+        "stabilityPoints": {
+          "question": "Ce sunt punctele de stabilitate?",
+          "answer": "Punctele de stabilitate recompenseaza angajarea pe termen lung. Castigi 0.5 puncte pentru fiecare an lucrat peste perioada minima de contributie de 15 ani, pana la perioada completa de contributie de 35 ani."
+        },
+        "nonContributive": {
+          "question": "Ce sunt perioadele necontributive?",
+          "answer": "Perioadele necontributive sunt perioade de timp care se iau in calcul pentru pensie chiar si fara contributii salariale. Acestea includ: Stagiul Militar (0.25 puncte/an), Studii Universitare (0.25 puncte/an), Ingrijire Copil (0.25 puncte/an) si Concediu Medical (0.20 puncte/an)."
+        },
+        "workingConditions": {
+          "question": "Cum afecteaza conditiile de munca pensia mea?",
+          "answer": "Daca ati lucrat in conditii speciale, primiti puncte bonus: Conditii Normale - fara bonus, Grupa II (Conditii dificile) - bonus 25% la punctele de contributie, Grupa I (Conditii foarte dificile) - bonus 50%, Conditii Speciale - bonus 50%."
+        },
+        "minimumContribution": {
+          "question": "Care este perioada minima de contributie?",
+          "answer": "Perioada minima de contributie in Romania este de 15 ani. Aveti nevoie de cel putin atatia ani de contributii pentru a fi eligibil pentru pensie. Perioada completa de contributie este de 35 ani."
+        },
+        "retirementAge": {
+          "question": "Care este varsta standard de pensionare?",
+          "answer": "Varsta standard de pensionare in Romania este de 65 de ani. Aceasta este varsta la care deveniti eligibil sa primiti beneficiile complete de pensie, presupunand ca ati indeplinit cerintele minime de contributie."
+        },
+        "referenceValue": {
+          "question": "Ce este valoarea punctului de pensie?",
+          "answer": "Valoarea de referinta (valoarea punctului de pensie) este suma in RON pe care o valoreaza fiecare punct de pensie. Incepand cu 2024, aceasta valoare este de 81.03 RON. Aceasta valoare este ajustata periodic de guvern."
+        }
+      }
+    },
+    "tooltips": {
+      "birthDate": "Data nasterii este folosita pentru a calcula varsta curenta si pentru a determina eligibilitatea pentru pensionare. Varsta standard de pensionare este de 65 de ani.",
+      "retirementYear": "Anul in care planificati sa va pensionati. Va puteti pensiona dupa implinirea varstei de 65 de ani, presupunand ca sunt indeplinite cerintele minime de contributie.",
+      "monthlyGrossSalary": "Salariul brut lunar inainte de taxe. Acesta este comparat cu media nationala pentru a calcula punctele de contributie.",
+      "startDate": "Data de inceput a acestei perioade de angajare sau necontributive.",
+      "endDate": "Data de sfarsit a acestei perioade de angajare sau necontributive.",
+      "company": "Optional: Numele companiei sau organizatiei unde ati lucrat.",
+      "workingCondition": "Selectati conditiile de munca pentru aceasta perioada. Conditiile speciale acorda puncte bonus: Grupa II +25%, Grupa I +50%, Speciale +50%.",
+      "nonContributiveType": "Tipul perioadei necontributive. Diferite tipuri castiga rate diferite de puncte pe an.",
+      "contributionPoints": "Puncte castigate bazat pe salariul comparat cu media nationala. Salariu mai mare = mai multe puncte.",
+      "stabilityPoints": "Puncte bonus pentru angajare pe termen lung. Castigate pentru anii peste minimul de 15 ani, pana la 35 ani.",
+      "totalPoints": "Suma tuturor punctelor: contributie + stabilitate + necontributive. Inmultita cu 81.03 RON pentru a obtine pensia."
+    }
+  },
+  "legal": {
+    "title": "Disclaimer Legal și Politica de Confidențialitate",
+    "footerLink": "Legal & Confidențialitate",
+    "copyright": "Calculator Pensie România",
+    "acceptButton": "Înțeleg și Accept",
+    "closeButton": "Închide",
+    "version": "Versiunea {{version}}",
+    "limitations": {
+      "title": "Limitările Calculatorului",
+      "estimateOnly": "Acest calculator oferă doar estimări și nu trebuie considerat ca un calcul oficial al pensiei.",
+      "notOfficial": "Rezultatele nu sunt oficiale și nu înlocuiesc consultările cu Casa Națională de Pensii Publice (CNPP).",
+      "lawChanges": "Legile și formulele de pensie se pot modifica. Calculatorul se bazează pe legislația română din 2024.",
+      "noGuarantee": "Nu garantăm acuratețea, completitudinea sau actualitatea calculelor.",
+      "consultProfessional": "Pentru informații oficiale despre pensie, consultați CNPP sau un consilier de pensii autorizat."
+    },
+    "privacy": {
+      "title": "Politica de Confidențialitate a Datelor",
+      "localStorage": "Toate datele sunt stocate local doar în browserul dumneavoastră. Nicio informație nu este trimisă la vreun server.",
+      "noServer": "Această aplicație rulează în întregime în browserul dumneavoastră. Nu colectăm, stocăm sau procesăm informațiile personale.",
+      "noThirdParty": "Nu sunt utilizate servicii terțe de urmărire, analiză sau publicitate.",
+      "gdprCompliant": "Conform cu GDPR și Legea nr. 190/2018 privind protecția datelor cu caracter personal.",
+      "deleteAnytime": "Puteți șterge toate datele stocate oricând, ștergând stocarea locală sau datele site-ului din browser."
+    },
+    "terms": {
+      "title": "Termeni de Utilizare",
+      "freeUse": "Acest calculator este oferit gratuit doar în scop informativ.",
+      "informationalOnly": "Informațiile furnizate trebuie folosite doar pentru planificare personală și scopuri educaționale.",
+      "noLiability": "Dezvoltatorii și operatorii nu sunt răspunzători pentru deciziile luate pe baza rezultatelor calculatorului.",
+      "userResponsibility": "Utilizatorii sunt responsabili pentru verificarea tuturor informațiilor cu sursele oficiale înainte de a lua decizii financiare."
+    },
+    "compliance": {
+      "title": "Conformitate cu Legislația Română",
+      "description": "Această aplicație este concepută pentru a respecta reglementările române privind protecția datelor. Datele dumneavoastră personale rămân pe dispozitivul dumneavoastră și sub controlul dumneavoastră în permanență.",
+      "laws": "Legislație aplicabilă: GDPR (UE 2016/679), Legea nr. 190/2018, Legea nr. 263/2010 (Legea sistemului de pensii)"
+    }
+  },
+  "periodTemplates": {
+    "title": "Șabloane de Perioade",
+    "available": "disponibile",
+    "saveCustomTemplate": "Creează Șablon Personalizat",
+    "categories": {
+      "all": "Toate",
+      "employment": "Angajare",
+      "nonContributive": "Necontributive",
+      "custom": "Personalizate"
+    },
+    "templates": {
+      "standardEmployment": {
+        "name": "Angajare Standard",
+        "description": "Condiții normale de muncă cu salariu regulat"
+      },
+      "difficultConditions": {
+        "name": "Condiții Dificile (Grupa II)",
+        "description": "Bonus de 25% la punctele de contribuție"
+      },
+      "veryDifficultConditions": {
+        "name": "Foarte Dificile (Grupa I)",
+        "description": "Bonus de 50% la punctele de contribuție"
+      },
+      "specialConditions": {
+        "name": "Condiții Speciale",
+        "description": "Bonus de 50% la punctele de contribuție pentru muncă periculoasă"
+      },
+      "university": {
+        "name": "Studii Universitare",
+        "description": "0.25 puncte pe an pentru studii superioare"
+      },
+      "military": {
+        "name": "Stagiu Militar",
+        "description": "0.25 puncte pe an pentru serviciul militar"
+      },
+      "childCare": {
+        "name": "Concediu de Îngrijire Copil",
+        "description": "0.25 puncte pe an pentru îngrijirea copilului"
+      },
+      "medicalLeave": {
+        "name": "Concediu Medical",
+        "description": "0.20 puncte pe an pentru concediu medical"
+      }
+    },
+    "form": {
+      "name": "Nume Șablon",
+      "namePlaceholder": "ex: Șablonul Meu pentru Job IT",
+      "description": "Descriere",
+      "descriptionPlaceholder": "Descriere opțională pentru acest șablon",
+      "type": "Tip Șablon"
+    },
+    "validation": {
+      "nameRequired": "Numele șablonului este obligatoriu",
+      "nameTooShort": "Numele șablonului trebuie să aibă cel puțin 2 caractere",
+      "nameTooLong": "Numele șablonului trebuie să aibă cel mult 50 de caractere"
+    },
+    "toast": {
+      "templateApplied": "Șablon aplicat - completați datele",
+      "templateSaved": "Șablon personalizat salvat cu succes",
+      "templateDeleted": "Șablon șters"
+    }
+  },
+  "autocomplete": {
+    "suggestions": "Sugestii pentru numele companiei",
+    "source": {
+      "history": "Recent",
+      "popular": "Popular"
+    },
+    "noResults": "Nu s-au găsit companii potrivite",
+    "duration": {
+      "oneYear": "1 an",
+      "twoYears": "2 ani",
+      "threeYears": "3 ani",
+      "fiveYears": "5 ani",
+      "tenYears": "10 ani",
+      "fifteenYears": "15 ani",
+      "twentyYears": "20 ani",
+      "twentyFiveYears": "25 ani",
+      "thirtyYears": "30 ani",
+      "thirtyFiveYears": "35 ani"
+    }
+  },
   "common": {
     "add": "Adaugă",
     "remove": "Șterge",
     "save": "Salvează",
     "cancel": "Anulează",
+    "delete": "Șterge",
+    "close": "Închide",
     "years": "ani",
     "remaining": "rămași",
     "points": "puncte",
-    "none": "Niciunul"
+    "none": "Niciunul",
+    "optional": "opțional",
+    "selectDate": "Selectează data",
+    "today": "Astăzi",
+    "clear": "Șterge",
+    "previousMonth": "Luna precedentă",
+    "nextMonth": "Luna următoare",
+    "swipeToNavigate": "Glisați stânga/dreapta pentru a schimba luna",
+    "swipeToDelete": "Glisați spre stânga pentru a șterge o perioadă",
+    "loading": "Se încarcă..."
+  },
+  "nav": {
+    "quickActions": "Acțiuni rapide"
+  },
+  "accessibility": {
+    "skipToMain": "Salt la conținutul principal",
+    "liveRegionUpdate": "Conținut actualizat",
+    "formSection": "Secțiunea formular",
+    "resultsSection": "Secțiunea rezultate",
+    "chartDescription": "Grafic care arată {{type}}: {{description}}",
+    "progressBar": "Progres: {{value}}% complet",
+    "expandSection": "Extinde {{section}}",
+    "collapseSection": "Restrânge {{section}}",
+    "requiredField": "Câmp obligatoriu",
+    "errorCount": "{{count}} erori găsite",
+    "validationError": "Eroare de validare: {{message}}",
+    "calculationResult": "Rezultatul calculului: {{value}}",
+    "dateFormat": "Format dată: YYYY-MM-DD",
+    "currencyFormat": "Sumă în Lei românești (RON)",
+    "percentageFormat": "Valoare în procente",
+    "periodStatus": "Perioada {{index}}: {{status}}",
+    "pensionEstimateUpdate": "Estimare pensie actualizată: {{monthly}} pe lună",
+    "contributionPointsUpdate": "Total puncte de contribuție: {{points}}"
+  },
+  "error": {
+    "title": "Ceva nu a funcționat",
+    "description": "A apărut o eroare neașteptată. Vă rugăm să încercați din nou sau să reîncărcați pagina.",
+    "tryAgain": "Încearcă din nou",
+    "reloadPage": "Reîncarcă pagina",
+    "details": "Detalii eroare",
+    "chartError": "Nu se poate afișa graficul",
+    "chartErrorDescription": "A apărut o problemă la afișarea graficului. Vă rugăm să încercați din nou.",
+    "calculationError": "Eroare de calcul",
+    "calculationErrorDescription": "A apărut o problemă la calcularea pensiei. Verificați datele introduse și încercați din nou."
+  },
+  "validation": {
+    "birthDateRequired": "Data nașterii este obligatorie",
+    "birthDateInFuture": "Data nașterii nu poate fi în viitor",
+    "birthDateTooOld": "Data nașterii nu poate fi mai veche de 120 de ani",
+    "retirementYearRequired": "Anul pensionării este obligatoriu",
+    "retirementYearInPast": "Anul pensionării nu poate fi în trecut",
+    "retirementYearTooFar": "Anul pensionării este prea îndepărtat în viitor",
+    "retirementAgeTooYoung": "Vârsta de pensionare nu poate fi mai mică de 50 de ani",
+    "retirementAgeTooOld": "Vârsta de pensionare nu poate fi mai mare de 90 de ani"
+  },
+  "importExport": {
+    "title": "Gestionare Date",
+    "export": {
+      "button": "Exportă Date",
+      "title": "Exportă Datele Tale",
+      "description": "Descarcă datele de calcul ca fișier JSON pentru backup sau transfer.",
+      "success": "Datele au fost exportate cu succes",
+      "filename": "date-pensie"
+    },
+    "pdf": {
+      "button": "Descarcă Raport PDF",
+      "title": "Raport PDF",
+      "description": "Generează un raport PDF profesional cu rezumatul calculului pensiei, detalierea punctelor și lista perioadelor de contribuție.",
+      "success": "Raportul PDF a fost generat cu succes",
+      "filename": "raport-pensie"
+    },
+    "import": {
+      "button": "Importă Date",
+      "title": "Importă Date",
+      "description": "Încarcă date exportate anterior dintr-un fișier JSON.",
+      "selectFile": "Selectează Fișier",
+      "dragDrop": "sau trage și plasează un fișier JSON aici",
+      "success": "Datele au fost importate cu succes",
+      "confirm": "Importă",
+      "cancel": "Anulează"
+    },
+    "error": {
+      "invalidFormat": "Format de fișier invalid. Vă rugăm să folosiți un fișier de export valid.",
+      "newerVersion": "Acest fișier a fost creat cu o versiune mai nouă a aplicației.",
+      "parseError": "Nu s-a putut procesa fișierul. Verificați dacă este un fișier JSON valid.",
+      "invalidFileType": "Vă rugăm să selectați un fișier JSON.",
+      "fileTooLarge": "Fișierul este prea mare. Dimensiunea maximă este de 1MB.",
+      "readError": "Nu s-a putut citi fișierul. Vă rugăm să încercați din nou."
+    },
+    "warning": {
+      "title": "Înlocuiți Datele Curente?",
+      "message": "Importarea va înlocui toate datele de calcul curente. Această acțiune nu poate fi anulată."
+    }
+  },
+  "csvImport": {
+    "title": "Import din CSV",
+    "button": "Importă Perioade din CSV",
+    "description": "Importați perioade de contribuție dintr-un fișier CSV exportat din sistemele de salarizare sau documente cu istoricul muncii.",
+    "success": "Perioadele de contribuție au fost importate cu succes",
+    "selectFile": "Selectează Fișier CSV",
+    "dragDrop": "sau trage și plasează un fișier CSV aici",
+    "back": "Înapoi",
+    "next": "Continuă",
+    "import": "Importă {{count}} Perioade",
+    "steps": {
+      "upload": "Selectați un fișier CSV pentru import",
+      "mapping": "Asociați coloanele CSV cu câmpurile perioadei",
+      "preview": "Revizuiți și confirmați importul",
+      "result": "Import finalizat"
+    },
+    "info": {
+      "description": "Încărcați un fișier CSV cu istoricul muncii. Fișierul trebuie să conțină coloane pentru date, salariu și opțional numele companiei și condițiile de muncă."
+    },
+    "format": {
+      "title": "Format CSV Acceptat",
+      "headers": "Prima linie trebuie să conțină antetele coloanelor",
+      "dates": "Datele pot fi în format YYYY-MM-DD, DD/MM/YYYY sau DD-MM-YYYY",
+      "salary": "Salariul trebuie să fie un număr (simbolurile valutare vor fi eliminate)"
+    },
+    "mapping": {
+      "instructions": "Asociați coloanele CSV cu câmpurile corespunzătoare. Câmpurile obligatorii sunt marcate cu *.",
+      "selectColumn": "-- Selectați coloana --",
+      "mapped": "Asociat",
+      "sampleData": "Date exemplu ({{count}} rânduri în total)"
+    },
+    "fields": {
+      "fromDate": "Data Început",
+      "toDate": "Data Sfârșit",
+      "company": "Companie",
+      "salary": "Salariu Brut Lunar",
+      "workingCondition": "Condiții de Muncă",
+      "nonContributiveType": "Tip Perioadă Necontributivă"
+    },
+    "preview": {
+      "allValid": "Toate rândurile sunt valide și gata de import",
+      "hasErrors": "Unele rânduri au erori de validare",
+      "totalRows": "Total rânduri",
+      "validRows": "Rânduri valide",
+      "errors": "{{count}} erori de validare",
+      "errorRow": "Rândul {{row}}",
+      "moreErrors": "...și încă {{count}} erori",
+      "periodsToImport": "{{count}} perioade de importat",
+      "noCompany": "Perioadă fără nume",
+      "morePeriods": "...și încă {{count}} perioade"
+    },
+    "error": {
+      "emptyFile": "Fișierul CSV este gol.",
+      "noHeaders": "Nu s-au găsit antetele coloanelor în fișierul CSV.",
+      "noDataRows": "Fișierul CSV nu conține rânduri de date.",
+      "parseError": "Nu s-a putut procesa fișierul CSV. Verificați formatul fișierului.",
+      "invalidFileType": "Vă rugăm să selectați un fișier CSV.",
+      "fileTooLarge": "Fișierul este prea mare. Dimensiunea maximă este de 5MB.",
+      "readError": "Nu s-a putut citi fișierul. Vă rugăm să încercați din nou.",
+      "missingRequiredFields": "Vă rugăm să asociați toate câmpurile obligatorii: {{fields}}",
+      "requiredFieldsNotMapped": "Vă rugăm să asociați câmpurile obligatorii (Data Început și Data Sfârșit).",
+      "invalidDate": "Rândul {{row}}: Dată invalidă în {{field}} (\"{{value}}\")",
+      "endDateBeforeStartDate": "Rândul {{row}}: Data de sfârșit trebuie să fie după data de început",
+      "salaryRequired": "Rândul {{row}}: Salariul este obligatoriu pentru perioadele de angajare"
+    }
+  },
+  "vprAdmin": {
+    "title": "Configurare VPR",
+    "currentValue": "Valoarea VPR Curentă",
+    "edit": "Editare",
+    "year": "An",
+    "value": "Valoare",
+    "effectiveDate": "Data Efectivă",
+    "description": "Descriere",
+    "optional": "opțional",
+    "descriptionPlaceholder": "ex: Actualizare anuală guvernamentală",
+    "saving": "Se salvează...",
+    "historicalValues": "Valori Istorice",
+    "addHistorical": "Adaugă Valoare Istorică",
+    "current": "Curent",
+    "actions": "Acțiuni",
+    "export": "Exportă Config",
+    "import": "Importă Config",
+    "reset": "Resetare la Valori Implicite",
+    "confirmReset": "Click din nou pentru confirmare",
+    "lastUpdated": "Ultima actualizare",
+    "info": "VPR (Valoarea Punctului de Referință) este actualizată anual de către guvernul României. Modificările de aici vor afecta imediat toate calculele de pensie.",
+    "updateSuccess": "Valoarea VPR a fost actualizată cu succes",
+    "addSuccess": "Valoarea istorică a fost adăugată cu succes",
+    "removeSuccess": "Valoarea istorică a fost eliminată cu succes",
+    "exportSuccess": "Configurația a fost exportată cu succes",
+    "importSuccess": "Configurația a fost importată cu succes",
+    "resetSuccess": "Configurația a fost resetată la valorile implicite",
+    "importError": "Nu s-a putut importa configurația",
+    "readError": "Nu s-a putut citi fișierul",
+    "openAdmin": "Setări VPR"
+  },
+  "toast": {
+    "actions": {
+      "dataSaved": "Datele tale au fost salvate automat",
+      "periodAdded": "Perioadă de contribuție nouă adăugată",
+      "periodRemoved": "Perioadă de contribuție eliminată",
+      "formReset": "Formularul a fost resetat la valorile implicite",
+      "languageChanged": "Limba a fost schimbată în Română"
+    },
+    "validation": {
+      "hasErrors": "Vă rugăm să corectați erorile de validare",
+      "periodsOverlap": "Unele perioade de contribuție se suprapun",
+      "invalidDates": "Vă rugăm să verificați câmpurile de dată",
+      "invalidSalary": "Vă rugăm să introduceți o sumă de salariu validă"
+    },
+    "calculation": {
+      "complete": "Calculul pensiei a fost actualizat",
+      "eligibilityMet": "Felicitări! Îndepliniți toate cerințele de eligibilitate pentru pensie",
+      "minimumReached": "Ați atins perioada minimă de contribuție"
+    }
+  },
+  "tabs": {
+    "overview": "Prezentare generală",
+    "progress": "Progres și analiză",
+    "planning": "Planificare și scenarii"
   },
   "pension": {
     "title": "Calculator Pensie România",
@@ -22,19 +470,60 @@
       "title": "Perioade de Contribuție",
       "addPeriod": "Adaugă Perioadă",
       "removePeriod": "Șterge Perioadă",
+      "expand": "Extinde perioada",
+      "collapse": "Restrânge perioada",
+      "expandAll": "Extinde toate perioadele",
+      "collapseAll": "Restrânge toate perioadele",
       "monthlyGrossSalary": "Salariu Brut Lunar",
       "startDate": "Data Început",
       "endDate": "Data Sfârșit",
       "company": "Companie",
       "employmentPeriod": "Perioadă de Angajare",
+      "dateSection": "Când",
+      "periodType": "Tip Perioadă",
+      "typeEmployment": "Angajare",
+      "employmentDetails": "Detalii",
+      "durationYear": "an",
+      "durationYears": "ani",
+      "durationMonth": "lună",
+      "durationMonths": "luni",
+      "lessThanMonth": "Mai puțin de o lună",
+      "progressLabel": "Progres Contribuție",
+      "minimumLabel": "minimum",
+      "emptyTitle": "Nu aveți perioade de contribuție",
+      "emptyDescription": "Adăugați istoricul de angajare și perioadele necontributive pentru a calcula pensia.",
+      "addEmployment": "Adaugă Perioadă de Angajare",
+      "addNonContributive": "Adaugă Perioadă Necontributivă",
+      "quickFill": "Completare rapidă",
+      "vsNationalAvg": "vs media națională",
+      "completionLabel": "{{percent}}% completat",
       "validation": {
-        "monthlyGrossSalaryRequired": "Salariul brut lunar este obligatoriu"
+        "monthlyGrossSalaryRequired": "Salariul brut lunar este obligatoriu",
+        "startDateRequired": "Data de început este obligatorie",
+        "endDateRequired": "Data de sfârșit este obligatorie",
+        "invalidDate": "Vă rugăm introduceți o dată validă",
+        "startDateInFuture": "Data de început nu poate fi în viitor",
+        "endDateInFuture": "Data de sfârșit nu poate fi în viitor",
+        "endDateBeforeStartDate": "Data de sfârșit trebuie să fie după data de început",
+        "dateTooOld": "Data nu poate fi mai veche de 100 de ani",
+        "salaryOutOfRange": "Salariul trebuie să fie între {{min}} și {{max}} RON",
+        "periodsOverlap": "Această perioadă se suprapune cu Perioada {{period1}} și {{period2}}",
+        "overlapWarningTitle": "Perioade Suprapuse Detectate",
+        "overlapWarningDescription": "Unele perioade de contribuție se suprapun. Vă rugăm să corectați datele pentru a permite calculul pensiei.",
+        "overlapSummary": "Perioada {{period1}} și Perioada {{period2}} au date suprapuse",
+        "calculationBlockedByOverlap": "Calculul pensiei este dezactivat până la rezolvarea perioadelor suprapuse"
       },
       "workingCondition": {
         "label": "Condiții de Muncă",
-        "normal": "Normale",
-        "hard": "Grele",
-        "veryHard": "Foarte Grele"
+        "normal": "Condiții Normale",
+        "groupII": "Grupa II - Dificile (bonus 25%)",
+        "groupI": "Grupa I - Foarte Dificile (bonus 50%)",
+        "specialConditions": "Condiții Speciale (bonus 50%)",
+        "bonusApplied": "Bonus de {{bonus}} va fi aplicat la punctele de contributivitate",
+        "normalShort": "Normale",
+        "groupIIShort": "Grupa II",
+        "groupIShort": "Grupa I",
+        "specialConditionsShort": "Speciale"
       },
       "nonContributivePeriod": {
         "label": "Perioadă Necontributivă",
@@ -101,6 +590,600 @@
         "formula": "Conform formulei de calcul a pensiei din 2024",
         "completeMinimum": "Completează perioada minimă de contribuție pentru a vedea pensia estimată"
       }
+    },
+    "gapAnalysis": {
+      "title": "Analiza Lacunelor de Contribuție",
+      "noGapsFound": "Nu s-au detectat lacune semnificative în cronologia contribuțiilor tale. Felicitări pentru menținerea unei angajări continue!",
+      "gap": "lacună",
+      "gaps": "lacune",
+      "months": "luni",
+      "totalDuration": "Durata Totală a Lacunelor",
+      "pointsLost": "Puncte Pierdute Estimate",
+      "pensionImpact": "Impact asupra Pensiei",
+      "identifiedGaps": "Lacune Identificate",
+      "gapLabel": "Lacuna",
+      "viewStrategies": "Vezi Strategii pentru Acoperirea Lacunelor",
+      "suggestedStrategies": "Strategii Sugerate",
+      "estimatedGain": "Câștig Est. Puncte",
+      "pensionIncrease": "Creștere Pensie",
+      "feasibility": {
+        "high": "Ridicată",
+        "medium": "Medie",
+        "low": "Scăzută"
+      },
+      "strategies": {
+        "voluntaryContributions": {
+          "title": "Contribuții Voluntare",
+          "description": "Efectuați contribuții voluntare retroactive la pensie pentru a acoperi perioadele de lacună. Contactați CNPP pentru eligibilitate."
+        },
+        "extendPreviousEmployment": {
+          "title": "Extindere Angajare Anterioară",
+          "description": "Dacă este posibil, negociați extinderea sau corectarea perioadelor de angajare anterioare în evidențe."
+        },
+        "partTimeWork": {
+          "title": "Muncă Part-Time",
+          "description": "Luați în considerare angajarea part-time pentru a începe acumularea de puncte de contribuție pentru lacunele actuale/recente."
+        },
+        "childCareCredit": {
+          "title": "Credit pentru Îngrijire Copil",
+          "description": "Dacă aveți copii, este posibil să fiți eligibil pentru credite de îngrijire a copilului pentru a acoperi unele perioade de lacună."
+        },
+        "universityCredit": {
+          "title": "Credit pentru Universitate/Educație",
+          "description": "Perioadele de studii universitare pot fi calificate ca perioade necontributive în valoare de 0.25 puncte pe an."
+        }
+      }
+    },
+    "pdfExport": {
+      "generatedOn": "Generat la",
+      "yearsUntilRetirement": "Ani până la pensionare",
+      "calculationBasis": "Baza de calcul",
+      "period": "Perioadă",
+      "dates": "Date",
+      "condition": "Condiție",
+      "salaryOrType": "Salariu/Tip",
+      "years": "Ani",
+      "nonContributive": "Necontrib.",
+      "disclaimer": "Aceasta este doar o estimare. Pentru informații oficiale, consultați CNPP.",
+      "charts": {
+        "sectionTitle": "Grafice si Vizualizari",
+        "sectionDescription": "Reprezentarea vizuala a datelor de calcul al pensiei",
+        "normalEmployment": "Angajare Normala",
+        "specialConditions": "Conditii Speciale",
+        "nonContributive": "Necontributiv",
+        "contributionTypeTitle": "Distributia Tipurilor de Contributie",
+        "periodTypeTitle": "Distributia Tipurilor de Perioade"
+      }
+    },
+    "earlyRetirement": {
+      "title": "Scenarii de Pensionare Anticipată",
+      "scenariosAvailable": "{{count}} scenarii disponibile",
+      "notEligible": "Nu este eligibil",
+      "infoTitle": "Penalizări pentru Pensionare Anticipată",
+      "infoDescription": "Pensionarea înainte de 65 de ani implică o reducere de {{penalty}}% din pensie pe an. Vârsta minimă de pensionare anticipată este {{minAge}}.",
+      "eligibilityRequired": "Cerințe de Eligibilitate",
+      "completeContributionRequired": "Pensionarea anticipată necesită {{required}} ani de contribuții. În prezent aveți {{current}} ani.",
+      "standardRetirement": "Pensionare Standard (Pensie Completă)",
+      "atAge": "La vârsta de {{age}}",
+      "perMonth": "pe lună",
+      "retireAt": "Pensionare la",
+      "yearsEarly": "Ani Devreme",
+      "penalty": "Penalizare",
+      "monthlyPension": "Lunar",
+      "monthlyLoss": "Pierdere",
+      "earliestOption": "Cea mai timpurie opțiune",
+      "earliestOptionDetails": "Pensionare la {{age}} ani cu {{pension}}/lună (penalizare {{penalty}}%)",
+      "disclaimer": "Aceste calcule sunt estimări bazate pe legislația actuală. Condițiile reale de pensionare anticipată pot varia. Consultați CNPP pentru informații oficiale.",
+      "reasons": {
+        "needsCompleteContribution": "Necesită 35 ani",
+        "alreadyPastAge": "Vârsta trecută",
+        "belowMinimumAge": "Sub minim"
+      }
+    },
+    "periodSummary": {
+      "title": "Cronologia Carierei",
+      "noPeriods": "Adaugă perioade de contribuție pentru a vedea cronologia carierei tale",
+      "period": "perioadă",
+      "periods": "perioade",
+      "employment": "Angajare",
+      "nonContributive": "Necontributiv",
+      "totalYears": "Total Ani",
+      "legend": "Legendă",
+      "legendGroupII": "Grupa II",
+      "legendGroupI": "Grupa I",
+      "legendSpecial": "Speciale"
+    },
+    "countdown": {
+      "title": "Numărătoare Inversă până la Pensionare",
+      "years": "Ani",
+      "months": "Luni",
+      "days": "Zile",
+      "totalDays": "{{days}} zile totale rămase",
+      "progressToRetirement": "Progres spre Pensionare",
+      "careerStart": "Început Carieră",
+      "retirement": "Pensionare",
+      "alreadyEligible": "Ai atins vârsta de pensionare!",
+      "congratulations": "Felicitări pentru atingerea acestei etape. Acum ești eligibil pentru beneficii de pensie.",
+      "milestonesTitle": "Etape importante",
+      "milestones": {
+        "twentyYears": "20 ani rămași",
+        "tenYears": "10 ani rămași",
+        "fiveYears": "5 ani rămași",
+        "oneYear": "Ultimul an"
+      },
+      "messages": {
+        "longWay": "Ai timp suficient să îți construiești pensia. Continuă să contribui!",
+        "goodProgress": "Progres excelent! Pensionarea ta începe să se vadă la orizont.",
+        "halfwayThere": "Ești în linie dreaptă! Continuă să muncești bine.",
+        "almostThere": "Atât de aproape! Pensionarea ta este chiar după colț.",
+        "finalStretch": "Numărătoarea finală! Pensionarea este aproape aici."
+      }
+    },
+    "salaryHistory": {
+      "title": "Evoluția Salariului în Timp",
+      "description": "Compară istoricul salariului tău cu media națională",
+      "noData": "Adaugă perioade de angajare cu date salariale pentru a vedea graficul evoluției salariului",
+      "yourSalary": "Salariul Tău",
+      "nationalAverage": "Media Națională",
+      "year": "An",
+      "salaryRON": "Salariu (RON)",
+      "vsAverage": "vs medie",
+      "avgRatio": "Medie vs Național",
+      "yearsAbove": "Ani Peste Medie",
+      "yearsBelow": "Ani Sub Medie",
+      "aboveAverage": "Peste medie",
+      "belowAverage": "Sub medie",
+      "nationalAverageLine": "Media națională"
+    },
+    "pointsAccumulation": {
+      "title": "Acumularea Punctelor de Pensie",
+      "description": "Urmărește cum cresc punctele tale de pensie de-a lungul carierei",
+      "noData": "Adaugă perioade de contribuție pentru a vedea graficul acumulării punctelor",
+      "year": "An",
+      "points": "Puncte",
+      "totalPoints": "Total Puncte",
+      "contributionPoints": "Puncte de Contribuție",
+      "stabilityPoints": "Puncte de Stabilitate",
+      "nonContributivePoints": "Puncte Necontributive",
+      "totalPointsLabel": "Total Puncte",
+      "contributionLabel": "Contribuție",
+      "stabilityLabel": "Stabilitate",
+      "nonContributiveLabel": "Necontrib.",
+      "legendTotal": "Total puncte cumulative",
+      "legendContribution": "Puncte din contribuții salariale",
+      "legendStability": "Puncte bonus pentru stabilitate la angajare",
+      "legendNonContributive": "Puncte din perioade fără muncă"
+    },
+    "specialRetirement": {
+      "title": "Pensionare pentru Condiții Speciale de Muncă",
+      "earliestAge": "Cea mai devreme: {{age}} ani",
+      "standardAge": "Standard: 65 ani",
+      "infoTitle": "Vârstă de Pensionare Redusă pentru Condiții Speciale",
+      "infoDescription": "Lucrătorii care au activat în Grupa I (foarte dificile), Grupa II (dificile) sau condiții speciale de muncă pot fi eligibili pentru pensionare anticipată față de vârsta standard de 65 de ani.",
+      "standardRetirement": "Vârsta Standard de Pensionare",
+      "withoutSpecialConditions": "Fără condiții speciale de muncă",
+      "yourCategories": "Condițiile Tale Speciale de Muncă",
+      "retirementAge": "Vârsta de Pensionare",
+      "yearsWorked": "Ani Lucrați",
+      "yearsRequired": "Ani Necesari",
+      "currentlyEligible": "Ești eligibil în prezent pentru această vârstă redusă de pensionare!",
+      "yearsUntilEligible": "{{years}} ani până atingi această vârstă de pensionare",
+      "needsMinimumContribution": "Trebuie să îndeplinești cerința minimă de 15 ani de contribuție",
+      "needsMoreYearsInCondition": "Mai ai nevoie de {{needed}} ani în această condiție pentru reducerea completă",
+      "progressToMinimum": "Progres către cerința minimă",
+      "bestOption": "Cea Mai Bună Opțiune de Pensionare Anticipată",
+      "bestOptionDetails": "Pe baza istoricului tău de muncă, poți ieși la pensie la {{age}} ani (cu {{reduction}} ani mai devreme decât standardul)",
+      "disclaimer": "Aceste calcule sunt estimări bazate pe legislația română a pensiilor (Legea 263/2010). Eligibilitatea efectivă poate depinde de factori suplimentari. Vă rugăm să consultați Casa Națională de Pensii Publice (CNPP) pentru informații oficiale.",
+      "categories": {
+        "groupI": {
+          "name": "Grupa I - Condiții Foarte Dificile",
+          "description": "Minerit subteran, industria nucleară, chimică și alte activități periculoase cu bonus de 50% și pensionare cu până la 10 ani mai devreme"
+        },
+        "groupII": {
+          "name": "Grupa II - Condiții Dificile",
+          "description": "Industrie grea, construcții, metalurgie cu bonus de 25% și pensionare cu până la 5 ani mai devreme"
+        },
+        "specialConditions": {
+          "name": "Condiții Speciale",
+          "description": "Alte medii de lucru periculoase cu bonus de 50% și pensionare cu până la 10 ani mai devreme"
+        }
+      }
+    },
+    "stabilityTracker": {
+      "title": "Progres Bonus de Stabilitate",
+      "tier1": "Nivel 1 (26-30 ani)",
+      "tier2": "Nivel 2 (31-35 ani)",
+      "tier3": "Nivel 3 (36-40 ani)",
+      "overallProgress": "Progres General Stabilitate",
+      "minimumRequired": "Contribuție Minimă Necesară",
+      "needMoreYears": "Mai aveți nevoie de {{years}} ani de contribuții pentru a începe să câștigați puncte de stabilitate.",
+      "current": "Actual",
+      "pointsPerYear": "pct/an",
+      "yearsRange": "Anii {{start}}-{{end}}",
+      "nextTier": "Următorul Nivel",
+      "yearsToNextTier": "{{years}} ani până la următorul nivel",
+      "maxTierReached": "Nivel Maxim Atins!",
+      "congratulations": "Ați atins nivelul maxim de bonus de stabilitate. Excelent!",
+      "totalStabilityPoints": "Total Puncte de Stabilitate",
+      "contributionYears": "Ani de Contribuție"
+    },
+    "comparison": {
+      "title": "Comparație cu Pensiile Naționale",
+      "percentileRanking": "Clasament Percentilă",
+      "percentileDescription": "dintre pensionarii români câștigă mai puțin",
+      "visualComparison": "Comparație Vizuală",
+      "yourPension": "Pensia Ta",
+      "nationalAverage": "Media Națională",
+      "minimumPension": "Pensia Minimă",
+      "aboveAverage": "peste medie",
+      "belowAverage": "sub medie",
+      "aboveMinimum": "peste minim",
+      "atMinimum": "La sau aproape de pensia minimă",
+      "vsAverageLabel": "vs. Media",
+      "vsMinimumLabel": "vs. Minim",
+      "sourceNote": "Bazat pe statisticile CNPP pentru pensii din {{year}}",
+      "category": {
+        "excellent": "Excelent",
+        "good": "Bine",
+        "above_average": "Peste Medie",
+        "average": "Medie",
+        "below_average": "Sub Medie",
+        "low": "Scăzută"
+      },
+      "percentileContext": {
+        "excellent": "Pensia ta este în primele 10% la nivel național. Venituri excelente la pensie!",
+        "good": "Pensia ta este mai mare decât a 75% dintre pensionarii români. Foarte bine!",
+        "above_average": "Pensia ta este peste media națională. Te descurci bine!",
+        "average": "Pensia ta este în jurul mediei naționale.",
+        "below_average": "Pensia ta este sub media națională. Ia în considerare economii suplimentare.",
+        "low": "Pensia ta este în intervalul inferior. O planificare suplimentară pentru pensie ar putea fi benefică."
+      }
+    },
+    "inflationAdjustment": {
+      "title": "Analiza Impactului Inflatiei",
+      "description": "Vedeti cum inflatia ar putea afecta puterea de cumparare a pensiei dvs. in timp",
+      "inflationRate": "Rata Anuala a Inflatiei",
+      "projectionYears": "Perioada de Proiectie",
+      "yearsLabel": "ani",
+      "currentPension": "Valoarea Curenta a Pensiei",
+      "futureValue": "Puterea de Cumparare Viitoare",
+      "purchasingPowerLoss": "Pierderea Puterii de Cumparare",
+      "afterYears": "Dupa {{years}} ani",
+      "perMonth": "/luna",
+      "realValue": "Valoare Reala",
+      "nominalValue": "Valoare Nominala",
+      "cumulativeInflation": "Inflatie Cumulata",
+      "yearByYear": "Proiectie An cu An",
+      "year": "An",
+      "realPurchasingPower": "Valoare Reala",
+      "loss": "Pierdere",
+      "lossPercent": "Pierdere %",
+      "summary": "Dupa {{years}} ani la o inflatie anuala de {{rate}}%, pensia dvs. de {{pension}} ar avea puterea de cumparare de {{realValue}} in banii de astazi - o pierdere de {{lossPercent}}%.",
+      "averageAnnualLoss": "Pierdere Medie Anuala",
+      "presets": {
+        "optimistic": "Optimist (2,5%)",
+        "moderate": "Moderat (4%)",
+        "pessimistic": "Pesimist (6%)",
+        "high": "Ridicat (10%)",
+        "custom": "Personalizat"
+      },
+      "severity": {
+        "low": "Impact Redus",
+        "moderate": "Impact Moderat",
+        "high": "Impact Ridicat",
+        "severe": "Impact Sever"
+      },
+      "note": "Aceasta proiectie presupune ca nu exista indexare a pensiei. In practica, pensiile romanesti sunt ajustate periodic de guvern, ceea ce poate compensa partial inflatia.",
+      "disclaimer": "Aceste proiectii sunt estimari doar in scop de planificare. Ratele reale ale inflatiei vor varia. Consultati un consilier financiar pentru planificarea personalizata a pensionarii."
+    },
+    "recommendations": {
+      "title": "Recomandari Personalizate",
+      "highPriorityCount": "importante",
+      "recommendationCount": "{{count}} sfaturi",
+      "potentialGain": "Crestere Potentiala a Pensiei",
+      "perMonth": "/luna",
+      "showMore": "Afiseaza inca {{count}} sfaturi",
+      "showLess": "Afiseaza mai putin",
+      "disclaimer": "Aceste recomandari sunt estimari bazate pe legislatia actuala. Rezultatele reale pot varia. Consultati CNPP pentru informatii oficiale.",
+      "priority": {
+        "high": "Important",
+        "medium": "Sugerat",
+        "low": "Sfat"
+      },
+      "milestones": {
+        "minimumTitle": "Atingeti Perioada Minima de Contributie",
+        "minimumDescription": "Mai aveti nevoie de {{years}} ani de contributii pentru a atinge cerinta minima de {{minimum}} ani si a deveni eligibil pentru pensie.",
+        "completeTitle": "Atingeti Perioada Completa de Contributie",
+        "completeDescription": "Contribuind inca {{years}} ani pentru a atinge {{complete}} ani ar debloca eligibilitatea pentru pensionare anticipata si ar adauga aproximativ {{additionalPension}} RON/luna."
+      },
+      "stability": {
+        "nextTierTitle": "Deblocati Nivelul de Stabilitate {{tier}}",
+        "nextTierDescription": "In inca {{years}} ani de contributii, veti intra in Nivelul de stabilitate {{tier}} castigand {{pointsPerYear}} puncte bonus/an, in valoare de pana la {{potentialPension}} RON/luna in plus.",
+        "currentTierTitle": "Completati Nivelul de Stabilitate {{tier}}",
+        "currentTierDescription": "Sunteti in prezent in Nivelul {{tier}}. Inca {{years}} ani vor completa acest nivel, castigand {{remainingPoints}} puncte suplimentare de stabilitate (+{{remainingPension}} RON/luna).",
+        "maxReachedTitle": "Stabilitate Maxima Atinsa!",
+        "maxReachedDescription": "Felicitari! Ati atins nivelul maxim de bonus de stabilitate. Cariera dvs. lunga este pe deplin recompensata cu cele mai mari puncte de stabilitate."
+      },
+      "salary": {
+        "belowAverageTitle": "Salariul Sub Media Nationala",
+        "belowAverageDescription": "Salariul actual ({{currentSalary}} RON) este sub media nationala ({{nationalAverage}} RON). Atingerea mediei ar adauga {{additionalPointsPerYear}} puncte pe an (+{{additionalPensionPerYear}} RON/luna).",
+        "increaseImpactTitle": "Impactul unei Cresteri Salariale de 20%",
+        "increaseImpactDescription": "O crestere salariala de {{increaseAmount}} RON ar adauga {{additionalPointsPerYear}} puncte suplimentare de contributie pe an, crescand pensia cu aproximativ {{additionalPensionPerYear}} RON/luna."
+      },
+      "conditions": {
+        "awarenessTitle": "Verificati Conditiile de Munca",
+        "awarenessDescription": "Toate perioadele sunt setate pe conditii normale. Daca lucrati in conditii dificile, periculoase sau speciale, actualizarea ar putea adauga 25-50% puncte bonus si ar permite pensionarea anticipata."
+      },
+      "retirement": {
+        "canReachCompleteTitle": "Contributie Completa la Indemana",
+        "canReachCompleteDescription": "Cu {{yearsToRetirement}} ani pana la pensionare si {{currentYears}} ani contribuiti, puteti atinge perioada completa de {{target}} ani. Continuati sa lucrati pentru a maximiza pensia.",
+        "maximizeRemainingTitle": "Maximizati Anii Ramasi",
+        "maximizeRemainingDescription": "Cu {{yearsToRetirement}} ani pana la pensionare, concentrati-va pe maximizarea contributiilor. Puteti acumula pana la {{maxYears}} ani totali (tinta: {{complete}} ani).",
+        "earlyStartTitle": "Inceput Timpuriu Excelent!",
+        "earlyStartDescription": "Inceperea contributiilor devreme va ofera un avantaj puternic. Cu {{yearsToRetirement}} ani pana la pensionare, ati putea acumula pana la {{projectedYears}} ani de contributie."
+      }
+    }
+  },
+  "print": {
+    "button": "Tipărire Rezultate",
+    "buttonLabel": "Tipărire rezultatele calculului",
+    "generatedOn": "Tipărit pe {{date}} la {{time}}",
+    "disclaimer": "Acesta este doar un estimat. Pentru informații oficiale despre pensii, consultați Casa Națională de Pensii Publice (CNPP).",
+    "summaryTitle": "Rezumatul Calculului de Pensie",
+    "monthlyPension": "Pensie Lunară (estimat)",
+    "yearlyPension": "Pensie Anuală (estimat)",
+    "totalPoints": "Puncte Totale",
+    "contributionPoints": "Puncte de Contribuție",
+    "stabilityPoints": "Puncte de Stabilitate",
+    "nonContributivePoints": "Puncte Necontributive",
+    "contributiveYears": "Ani Contributivi",
+    "currentAge": "Vârsta Actuală / Vârsta de Pensionare",
+    "totalPeriods": "Perioade de Contribuție",
+    "nonContributive": "necontributive",
+    "birthDate": "Data Nașterii"
+  },
+  "theme": {
+    "light": "Luminos",
+    "dark": "Întunecat",
+    "system": "Sistem",
+    "selectTheme": "Selectați tema",
+    "themeOptions": "Opțiuni temă",
+    "switchToLight": "Treceți la modul luminos",
+    "switchToDark": "Treceți la modul întunecat"
+  },
+  "history": {
+    "title": "Istoricul Calculelor",
+    "saveCurrentCalculation": "Salvează Calculul Curent",
+    "snapshotName": "Nume Versiune",
+    "namePlaceholder": "ex: Înainte de mărirea salariului",
+    "notes": "Note",
+    "notesPlaceholder": "Adaugă note despre acest calcul...",
+    "unnamedSnapshot": "Versiune Fără Nume",
+    "month": "lună",
+    "noChange": "Fără modificări",
+    "totalPoints": "Total Puncte",
+    "periods": "Perioade",
+    "viewDetails": "Vezi Detalii",
+    "restore": "Restaurează",
+    "restoreSnapshot": "Restaurează Versiunea",
+    "restoreWarningTitle": "Înlocuiești Datele Curente?",
+    "restoreWarningMessage": "Restaurarea acestei versiuni va înlocui toate datele de calcul curente. Această acțiune nu poate fi anulată.",
+    "monthlyPension": "Pensie Lunară",
+    "employmentPeriods": "angajare",
+    "nonContributive": "necontributive",
+    "noSnapshots": "Niciun calcul salvat încă",
+    "noSnapshotsHint": "Salvează calculul curent pentru a-l compara cu versiuni viitoare",
+    "capacityWarning": "Istoricul este la capacitate maximă. Cele mai vechi înregistrări vor fi eliminate la salvarea altora noi.",
+    "clearAll": "Șterge Tot Istoricul",
+    "clearConfirm": "Sigur doriți să ștergeți toate calculele salvate?",
+    "clearAllConfirm": "Da, Șterge Tot",
+    "saveSuccess": "Calcul salvat în istoric",
+    "deleteSuccess": "Versiune ștearsă",
+    "restoreSuccess": "Calcul restaurat cu succes",
+    "clearSuccess": "Istoric șters",
+    "openHistory": "Istoric"
+  },
+  "lawVersions": {
+    "title": "Versiunea Legii Pensiilor",
+    "tooltip": "Legea pensiilor din Romania s-a schimbat de-a lungul anilor. Selectati o versiune a legii pentru a calcula pensia pe baza acelui cadru legislativ.",
+    "expand": "Afiseaza optiunile versiunii legii",
+    "current": "Actuala",
+    "selected": "Selectata",
+    "effectiveFrom": "In vigoare de la",
+    "until": "pana la",
+    "historicalWarning": "Calculati cu o versiune istorica a legii. Rezultatele reflecta legislatia anterioara si pot diferi de calculele actuale ale pensiei.",
+    "switchToCurrent": "Treci la legea actuala",
+    "availableVersions": "Versiuni Disponibile ale Legii",
+    "selectVersion": "Selectati o versiune a legii pensiilor",
+    "keyChanges": "Modificari Cheie in Aceasta Lege",
+    "showComparison": "Compara cu legea actuala",
+    "hideComparison": "Ascunde comparatia",
+    "noChanges": "Nu exista modificari semnificative ale parametrilor intre aceste versiuni.",
+    "parameters": "Parametri de Calcul",
+    "paramLabels": {
+      "retirementAge": "Varsta de Pensionare",
+      "vpr": "VPR",
+      "minContribution": "Contributie Min.",
+      "completeContribution": "Contributie Completa",
+      "earlyPenalty": "Penalizare Pensionare Anticipata",
+      "minEarlyAge": "Varsta Min. Pensionare Anticipata"
+    },
+    "descriptions": {
+      "legea_360_2023": "Reforma pensiilor din septembrie 2024 cu noua formula de calcul bazata pe VPR",
+      "oug_163_2022": "Ordonanta de urgenta pentru ajustarea indexarii pensiilor si pensiei minime",
+      "legea_127_2019": "Modificari ale valorii punctului de pensie si regulilor de indexare",
+      "legea_263_2010": "Sistemul unitar de pensii publice care a stabilit formula bazata pe puncte",
+      "legea_19_2000": "Prima lege moderna a pensiilor care a introdus sistemul de puncte de contributie"
+    },
+    "changes": {
+      "360_vpr": "A introdus VPR (Valoarea Punctului de Referinta) = 81.03 RON",
+      "360_formula": "Noua formula de calcul: Pensie Lunara = Total Puncte x VPR",
+      "360_stabilityPoints": "Sistem imbunatatit de puncte de stabilitate cu trei niveluri",
+      "360_recalculation": "Recalcularea obligatorie a tuturor pensiilor existente",
+      "163_indexation": "Formula actualizata de indexare a pensiilor",
+      "163_pensionPoint": "Valoarea punctului de pensie stabilita la 75.00 RON",
+      "163_minimumPension": "Cresterea pensiei minime garantate",
+      "127_pensionPoint": "Crestere semnificativa a valorii punctului de pensie",
+      "127_indexation": "Nou mecanism de indexare bazat pe inflatie",
+      "127_specialConditions": "Criterii actualizate pentru conditii speciale de munca",
+      "263_unifiedSystem": "Unificarea tuturor schemelor de pensii publice intr-un singur sistem",
+      "263_retirementAge": "Varsta standard de pensionare stabilita la 65 de ani",
+      "263_contributionYears": "Contributie minima: 15 ani, Completa: 35 ani",
+      "263_pointSystem": "Metodologie rafinata de calcul al punctelor de pensie",
+      "19_firstModernLaw": "Prima lege moderna a pensiilor care a stabilit un sistem bazat pe puncte",
+      "19_pointSystem": "A introdus puncte de contributie bazate pe raportul salariu/medie",
+      "19_retirementAge": "Varsta initiala de pensionare stabilita la 63 de ani",
+      "19_workingConditions": "Definirea categoriilor de conditii de munca (Grupa I, II, Speciale)"
+    },
+    "comparison": {
+      "retirementAge": "Varsta de Pensionare",
+      "minimumContributionYears": "Ani Minimi de Contributie",
+      "completeContributionYears": "Ani de Contributie Completa",
+      "vprValue": "Valoarea Punctului de Referinta",
+      "earlyRetirementPenalty": "Penalizare Pensionare Anticipata",
+      "minimumEarlyRetirementAge": "Varsta Minima Pensionare Anticipata"
+    },
+    "timeline": {
+      "title": "Cronologie Legislativa"
+    },
+    "toast": {
+      "versionChanged": "Versiunea legii schimbata la {{name}}"
+    }
+  },
+  "pwa": {
+    "install": {
+      "title": "Instalati Calculatorul de Pensii",
+      "description": "Instalati aplicatia pentru acces rapid si utilizare offline pe dispozitivul dumneavoastra.",
+      "installButton": "Instaleaza",
+      "notNow": "Nu acum"
+    },
+    "update": {
+      "title": "Actualizare Disponibila",
+      "description": "O noua versiune a aplicatiei este disponibila cu imbunatatiri si corectii.",
+      "updateButton": "Actualizeaza Acum",
+      "later": "Mai tarziu"
+    },
+    "offline": {
+      "youAreOffline": "Sunteti offline. Aplicatia va continua sa functioneze cu datele stocate local.",
+      "backOnline": "Sunteti din nou online!",
+      "dataSaved": "Datele sunt salvate local si disponibile offline."
+    }
+  },
+  "scenarios": {
+    "title": "Scenarii Ce-ar fi daca",
+    "count": "{{count}} scenarii",
+    "baseline": "Referinta",
+    "currentSituation": "Situatia Curenta",
+    "perMonth": "/luna",
+    "noChange": "Fara modificari",
+    "percentChange": "Modificare %",
+    "pointsDiff": "Dif. puncte",
+    "pensionDetails": "Detalii Pensie",
+    "comparedToBaseline": "Comparativ cu Referinta",
+    "monthlyDiff": "Dif. Lunara",
+    "yearlyDiff": "Dif. Anuala",
+    "totalPointsDiff": "Dif. Puncte",
+    "salary": "salariu",
+    "retireAt": "Pensionare la",
+    "createNew": "Creeaza Scenariu",
+    "quickScenarios": "Scenarii Rapide",
+    "viewCards": "Vizualizare Carduri",
+    "viewTable": "Vizualizare Tabel",
+    "atCapacity": "Maximum {{max}} scenarii permise. Stergeti unul pentru a crea altul nou.",
+    "clearAll": "Sterge Toate Scenariile",
+    "noScenarios": "Creati scenarii mai sus pentru a compara diferite rezultate ale pensiei",
+    "needContributions": "Adaugati mai intai perioade de contributie pentru a crea scenarii",
+    "intro": {
+      "title": "Explorati Diferite Posibilitati",
+      "description": "Creati scenarii ce-ar fi daca pentru a vedea cum schimbari precum mariri de salariu sau lucrul mai multi ani ar putea afecta pensia."
+    },
+    "comparison": {
+      "metric": "Metrica"
+    },
+    "modifications": {
+      "title": "Modificari Aplicate",
+      "salaryChange": "{{percent}}% modificare salariu",
+      "additionalYears": "Lucru {{years}} ani in plus",
+      "workingConditionChange": "Schimbare la conditii {{condition}}",
+      "retirementAgeChange": "Pensionare la varsta {{age}}"
+    },
+    "modTypes": {
+      "salaryChange": "Modificare Salariu",
+      "additionalYears": "Ani Suplimentari",
+      "workingConditionChange": "Conditii de Munca",
+      "retirementAgeChange": "Varsta de Pensionare"
+    },
+    "createForm": {
+      "title": "Creeaza Scenariu Nou",
+      "name": "Nume Scenariu",
+      "namePlaceholder": "ex., Cu marire de salariu",
+      "description": "Descriere",
+      "descriptionPlaceholder": "Note optionale despre acest scenariu",
+      "modifications": "Ce modificari sa aplice?",
+      "modificationType": "Tipul modificarii",
+      "percentChange": "Modificare %",
+      "yearsToAdd": "Ani de adaugat",
+      "newCondition": "Conditie",
+      "targetAge": "Varsta"
+    },
+    "createScenario": "Creeaza Scenariu",
+    "templates": {
+      "title": "Sabloane Scenarii Rapide",
+      "salaryIncrease10": {
+        "name": "Marire Salariu 10%",
+        "description": "Vedeti impactul unei mariri de 10% pe toate perioadele"
+      },
+      "salaryIncrease20": {
+        "name": "Marire Salariu 20%",
+        "description": "Vedeti impactul unei mariri de 20% pe toate perioadele"
+      },
+      "work2MoreYears": {
+        "name": "Lucru 2 Ani in Plus",
+        "description": "Prelungiti cariera cu 2 ani"
+      },
+      "work5MoreYears": {
+        "name": "Lucru 5 Ani in Plus",
+        "description": "Prelungiti cariera cu 5 ani"
+      },
+      "groupIIConditions": {
+        "name": "Conditii Grupa II",
+        "description": "Aplicati bonus de 25% pentru conditii dificile"
+      },
+      "salaryIncreaseAndWorkLonger": {
+        "name": "Marire 15% + 3 Ani in Plus",
+        "description": "Marire de salariu combinata cu cariera extinsa"
+      }
+    }
+  },
+  "sharing": {
+    "title": "Rezultatele Calculului de Pensie",
+    "shareText": "Verifică rezultatele calculului meu de pensie de la Calculatorul de Pensii Românesc",
+    "shareResults": "Distribuie Rezultatele",
+    "buttonLabel": "Distribuie rezultatele calculului de pensie",
+    "sharedResults": "Rezultate de Pensie Distribuite",
+    "pensionEstimate": "Estimare Pensie",
+    "copied": "Link Copiat!",
+    "linkCopied": "Link-ul de distribuire a fost copiat în clipboard",
+    "sharedSuccessfully": "Rezultatele au fost distribuite cu succes",
+    "privacyNotice": "Acest rezultat distribuit conține doar date de calcul anonimizate. Nu sunt incluse informații personale (data nașterii, numele companiilor sau datele specifice de angajare).",
+    "contributionYears": "Ani de Contribuție",
+    "yearsToRetirement": "Ani Până la Pensionare",
+    "calculatedWith": "Calculat cu",
+    "calculateYourOwn": "Doriți să calculați propria pensie?",
+    "startCalculating": "Începe Calculul",
+    "timestamp": {
+      "justNow": "Distribuit chiar acum",
+      "minutesAgo": "Distribuit acum {{minutes}} minute",
+      "hoursAgo": "Distribuit acum {{hours}} ore",
+      "daysAgo": "Distribuit acum {{days}} zile"
+    },
+    "error": {
+      "invalidFormat": "Format invalid al link-ului distribuit",
+      "newerVersion": "Acest link a fost creat cu o versiune mai nouă a calculatorului",
+      "decodeError": "Nu s-au putut decoda datele distribuite",
+      "urlError": "URL de distribuire invalid",
+      "copyFailed": "Nu s-a putut copia link-ul în clipboard",
+      "shareFailed": "Nu s-au putut distribui rezultatele"
     }
   }
 }

@@ -1,3 +1,1398 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ========================================
+   Base Dark Mode Styles
+   ======================================== */
+
+@layer base {
+  /* Smooth theme transitions */
+  html {
+    @apply transition-colors duration-200;
+  }
+
+  /* Dark mode base styles */
+  html.dark {
+    color-scheme: dark;
+  }
+
+  /* Dark mode body background */
+  html.dark body {
+    background-color: #0f172a;
+    color: #f8fafc;
+  }
+}
+
+/* ========================================
+   WCAG AA Accessibility Color Utilities
+   ======================================== */
+
+@layer components {
+  /*
+   * WCAG AA Color Contrast Utility Classes
+   * These classes ensure text meets minimum 4.5:1 contrast ratio
+   * for normal text and 3:1 for large text (18pt/14pt bold)
+   */
+
+  /* Success State - Green */
+  .a11y-success {
+    @apply bg-a11y-success-bg border-a11y-success-border text-a11y-success-text;
+  }
+  .a11y-success-subtle {
+    @apply bg-a11y-success-bg-subtle border-a11y-success-border text-a11y-success-text;
+  }
+  .a11y-success-icon {
+    @apply text-a11y-success-icon;
+  }
+
+  /* Error State - Red */
+  .a11y-error {
+    @apply bg-a11y-error-bg border-a11y-error-border text-a11y-error-text;
+  }
+  .a11y-error-subtle {
+    @apply bg-a11y-error-bg-subtle border-a11y-error-border text-a11y-error-text;
+  }
+  .a11y-error-icon {
+    @apply text-a11y-error-icon;
+  }
+
+  /* Warning State - Amber */
+  .a11y-warning {
+    @apply bg-a11y-warning-bg border-a11y-warning-border text-a11y-warning-text;
+  }
+  .a11y-warning-subtle {
+    @apply bg-a11y-warning-bg-subtle border-a11y-warning-border text-a11y-warning-text;
+  }
+  .a11y-warning-icon {
+    @apply text-a11y-warning-icon;
+  }
+
+  /* Info State - Blue */
+  .a11y-info {
+    @apply bg-a11y-info-bg border-a11y-info-border text-a11y-info-text;
+  }
+  .a11y-info-subtle {
+    @apply bg-a11y-info-bg-subtle border-a11y-info-border text-a11y-info-text;
+  }
+  .a11y-info-icon {
+    @apply text-a11y-info-icon;
+  }
+
+  /* Neutral/Default State - Gray */
+  .a11y-neutral {
+    @apply bg-a11y-neutral-bg border-a11y-neutral-border text-a11y-neutral-text;
+  }
+  .a11y-neutral-subtle {
+    @apply bg-a11y-neutral-bg-subtle border-a11y-neutral-border text-a11y-neutral-text;
+  }
+  .a11y-neutral-muted {
+    @apply text-a11y-neutral-text-muted;
+  }
+}
+
+/* ========================================
+   Mobile Touch Optimization Styles
+   ======================================== */
+
+@layer components {
+  /* Touch-friendly target sizes (minimum 44x44px as per WCAG guidelines) */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  /* Smaller touch target for compact UI elements (36x36px) */
+  .touch-target-small {
+    @apply min-h-[36px] min-w-[36px];
+  }
+
+  /* Touch-optimized input fields */
+  .touch-input {
+    @apply min-h-[48px] text-base;
+    /* Prevent zoom on iOS when focusing inputs */
+    font-size: 16px;
+  }
+
+  /* Touch-optimized buttons */
+  .touch-button {
+    @apply min-h-[48px] px-4 py-3;
+  }
+
+  /* Touch-optimized select dropdowns */
+  .touch-select {
+    @apply min-h-[48px] text-base;
+    font-size: 16px;
+  }
+
+  /* Swipeable container styles */
+  .swipeable {
+    @apply touch-pan-y;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Period card with swipe indicator */
+  .swipeable-card {
+    @apply relative overflow-hidden;
+    transition: transform 0.2s ease-out;
+  }
+
+  .swipeable-card.swiping {
+    transition: none;
+  }
+
+  /* Swipe action indicators */
+  .swipe-indicator {
+    @apply absolute top-0 bottom-0 flex items-center justify-center;
+    width: 80px;
+  }
+
+  .swipe-indicator-left {
+    @apply left-0 bg-gradient-to-r from-red-500 to-transparent text-white;
+    transform: translateX(-100%);
+  }
+
+  .swipe-indicator-right {
+    @apply right-0 bg-gradient-to-l from-blue-500 to-transparent text-white;
+    transform: translateX(100%);
+  }
+
+  /* Touch feedback states */
+  .touch-feedback {
+    @apply transition-colors duration-150;
+  }
+
+  .touch-feedback:active {
+    @apply bg-gray-100;
+  }
+
+  /* Dark mode touch feedback */
+  .dark .touch-feedback:active {
+    @apply bg-dark-bg-tertiary;
+  }
+
+  /* Larger tap areas for small interactive elements */
+  .tap-area-expand {
+    @apply relative;
+  }
+
+  .tap-area-expand::before {
+    content: '';
+    @apply absolute -inset-2;
+  }
+}
+
+@layer utilities {
+  /* Disable text selection during touch interactions */
+  .no-select {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+
+  /* Improve scrolling on touch devices */
+  .smooth-scroll {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  /* Disable tap highlight on webkit browsers */
+  .no-tap-highlight {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Enable hardware acceleration for smoother animations */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* Touch manipulation - allows panning and pinch-to-zoom */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+
+  /* Pan only in specific directions */
+  .touch-pan-x {
+    touch-action: pan-x;
+  }
+
+  .touch-pan-y {
+    touch-action: pan-y;
+  }
+
+  /* Disable touch manipulation (for custom gesture handlers) */
+  .touch-none {
+    touch-action: none;
+  }
+
+  /* ========================================
+     Tab Enhancement Utilities
+     ======================================== */
+
+  /* Tab transitions */
+  .tab-transition {
+    transition: all 0.2s ease-in-out;
+  }
+
+  /* Hover scale effect */
+  .hover-scale {
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.02);
+  }
+
+  /* Subtle gradient backgrounds */
+  .gradient-subtle {
+    background: linear-gradient(
+      to bottom,
+      rgba(59, 130, 246, 0.05),
+      transparent
+    );
+  }
+
+  html.dark .gradient-subtle {
+    background: linear-gradient(
+      to bottom,
+      rgba(59, 130, 246, 0.1),
+      transparent
+    );
+  }
+
+  /* Glass effect (glassmorphism) */
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  html.dark .glass-effect {
+    background: rgba(15, 23, 42, 0.8);
+  }
+
+  /* ========================================
+     Multi-Layered Elevation Shadows (Material Design 3.0)
+     ======================================== */
+
+  /* Basic elevation levels (backward compatibility) */
+  .elevation-1 {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .elevation-2 {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .elevation-3 {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  html.dark .elevation-1 {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  html.dark .elevation-2 {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  html.dark .elevation-3 {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Material Design 3.0 Multi-Layered Shadows */
+  .elevation-multi-layer {
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.07),
+      0 2px 4px rgba(0, 0, 0, 0.07),
+      0 4px 8px rgba(0, 0, 0, 0.07),
+      0 8px 16px rgba(0, 0, 0, 0.07),
+      0 0 0 1px rgba(0, 0, 0, 0.05) inset;
+  }
+
+  html.dark .elevation-multi-layer {
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.15),
+      0 2px 4px rgba(0, 0, 0, 0.15),
+      0 4px 8px rgba(0, 0, 0, 0.15),
+      0 8px 16px rgba(0, 0, 0, 0.15),
+      0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  }
+
+  /* Active tab elevation (closer to viewer) */
+  .shadow-elevation-active {
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.08),
+      0 4px 8px rgba(0, 0, 0, 0.08),
+      0 8px 16px rgba(0, 0, 0, 0.08),
+      0 0 0 1px rgba(59, 130, 246, 0.1) inset;
+  }
+
+  html.dark .shadow-elevation-active {
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.2),
+      0 4px 8px rgba(0, 0, 0, 0.2),
+      0 8px 16px rgba(0, 0, 0, 0.2),
+      0 0 0 1px rgba(59, 130, 246, 0.2) inset;
+  }
+
+  /* Hover tab elevation (subtle lift) */
+  .shadow-elevation-hover:hover {
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.06),
+      0 2px 6px rgba(0, 0, 0, 0.06),
+      0 4px 12px rgba(0, 0, 0, 0.06),
+      0 0 0 1px rgba(0, 0, 0, 0.04) inset;
+    transition: box-shadow 0.2s ease-in-out;
+  }
+
+  html.dark .shadow-elevation-hover:hover {
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.12),
+      0 2px 6px rgba(0, 0, 0, 0.12),
+      0 4px 12px rgba(0, 0, 0, 0.12),
+      0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+  }
+
+  /* ========================================
+     Scrollable Column Layout Utilities
+     ======================================== */
+
+  /* Custom scrollbar styling for better UX */
+  .scrollbar-styled {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
+  }
+
+  .scrollbar-styled::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .scrollbar-styled::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-styled::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175, 0.5);
+    border-radius: 4px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+
+  .scrollbar-styled::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(107, 114, 128, 0.7);
+  }
+
+  /* Dark mode scrollbar */
+  .dark .scrollbar-styled {
+    scrollbar-color: rgba(71, 85, 105, 0.5) transparent;
+  }
+
+  .dark .scrollbar-styled::-webkit-scrollbar-thumb {
+    background-color: rgba(71, 85, 105, 0.5);
+  }
+
+  .dark .scrollbar-styled::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(71, 85, 105, 0.7);
+  }
+
+  /* ========================================
+     Hidden Scrollbar for Cleaner Sticky Form
+     ======================================== */
+
+  /* Completely hide scrollbar while keeping scroll functionality */
+  .scrollbar-hidden {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+  }
+
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+}
+
+/* ========================================
+   Animation Keyframes
+   ======================================== */
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-down {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out;
+}
+
+.animate-slide-down {
+  animation: slide-down 0.3s ease-out;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.2s ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.2s ease-out;
+}
+
+/* Period card entrance animation */
+@keyframes period-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Duration display subtle pop-in */
+@keyframes duration-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  60% {
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Period card enter animation */
+.period-card-enter {
+  animation: period-enter 0.25s ease-out;
+}
+
+/* Duration display animation */
+.duration-display {
+  animation: duration-pop 0.3s ease-out;
+}
+
+/* Quick duration buttons entrance */
+@keyframes quick-duration-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.quick-duration-enter {
+  animation: quick-duration-enter 0.2s ease-out;
+}
+
+/* Salary context bar entrance */
+@keyframes salary-context-enter {
+  from {
+    opacity: 0;
+    transform: translateY(4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.salary-context-enter {
+  animation: salary-context-enter 0.3s ease-out;
+}
+
+/* Empty state entrance */
+@keyframes empty-state-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.empty-state-enter {
+  animation: empty-state-enter 0.35s ease-out;
+}
+
+/* Tab content fade in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.15s ease-out;
+}
+
+/* ========================================
+   Tab Visual Enhancements
+   ======================================== */
+
+/* Directional slide transitions for tab content */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.25s ease-out;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.25s ease-out;
+}
+
+/* Badge pulse animation */
+@keyframes badgePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.badge-pulse {
+  animation: badgePulse 0.6s ease-in-out;
+}
+
+/* Badge appear animation */
+@keyframes badgeAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.badge-appear {
+  animation: badgeAppear 0.3s ease-out;
+}
+
+/* ========================================
+   Enhanced Focus Ring (WCAG 2.4.13 AAA Compliance)
+   ======================================== */
+
+/* Enhanced focus ring with 3px outline, 3:1 contrast, and pulse */
+.focus-ring-enhanced {
+  position: relative;
+  outline: none;
+}
+
+.focus-ring-enhanced:focus {
+  outline: 3px solid rgba(59, 130, 246, 0.8);
+  outline-offset: 2px;
+  border-radius: 0.75rem;
+  animation: focusPulse 2s ease-in-out infinite;
+}
+
+html.dark .focus-ring-enhanced:focus {
+  outline: 3px solid rgba(96, 165, 250, 0.9);
+}
+
+@keyframes focusPulse {
+  0%, 100% {
+    outline-width: 3px;
+    outline-color: rgba(59, 130, 246, 0.8);
+  }
+  50% {
+    outline-width: 3px;
+    outline-color: rgba(59, 130, 246, 1);
+  }
+}
+
+/* Focus glow effect (layered on top of outline) */
+.focus-ring-enhanced:focus::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 1rem;
+  background: linear-gradient(135deg,
+    rgba(59, 130, 246, 0.2),
+    rgba(147, 51, 234, 0.2)
+  );
+  filter: blur(12px);
+  opacity: 0;
+  animation: focusGlow 0.3s ease-out forwards;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes focusGlow {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Legacy tab-focus support (backward compatibility) */
+.tab-focus {
+  position: relative;
+  outline: none;
+}
+
+.tab-focus:focus {
+  outline: 3px solid rgba(59, 130, 246, 0.8);
+  outline-offset: 2px;
+  border-radius: 0.75rem;
+}
+
+html.dark .tab-focus:focus {
+  outline: 3px solid rgba(96, 165, 250, 0.9);
+}
+
+.tab-focus:focus::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 1rem;
+  background: linear-gradient(135deg,
+    rgba(59, 130, 246, 0.2),
+    rgba(147, 51, 234, 0.2)
+  );
+  filter: blur(12px);
+  opacity: 0;
+  animation: focusGlow 0.3s ease-out forwards;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ========================================
+   Mobile-specific Media Queries
+   ======================================== */
+
+@media (max-width: 640px) {
+  /* Increase base touch target sizes on mobile */
+  button,
+  [role="button"],
+  input[type="checkbox"],
+  input[type="radio"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Larger form inputs on mobile */
+  input[type="text"],
+  input[type="number"],
+  input[type="date"],
+  input[type="email"],
+  input[type="tel"],
+  select,
+  textarea {
+    min-height: 48px;
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 12px 16px;
+  }
+
+  /* Better spacing for mobile forms */
+  .mobile-form-spacing > * + * {
+    margin-top: 1rem;
+  }
+
+  /* Full-width buttons on mobile */
+  .mobile-full-width {
+    width: 100%;
+  }
+
+  /* Sticky bottom actions on mobile */
+  .mobile-sticky-bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: white;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 40;
+  }
+
+  /* Dark mode sticky bottom */
+  .dark .mobile-sticky-bottom {
+    background: #1e293b;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Add safe area padding for devices with notch */
+  .safe-area-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+
+  .safe-area-top {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+}
+
+/* ========================================
+   Touch Device Hover State Override
+   ======================================== */
+
+@media (hover: none) and (pointer: coarse) {
+  /* Remove hover effects on touch devices */
+  .touch-no-hover:hover {
+    background-color: inherit;
+    color: inherit;
+  }
+
+  /* Use active state instead of hover on touch devices */
+  .touch-active:active {
+    @apply bg-gray-100;
+  }
+
+  .dark .touch-active:active {
+    @apply bg-dark-bg-tertiary;
+  }
+}
+
+/* ========================================
+   High Contrast Mode Support
+   ======================================== */
+
+@media (prefers-contrast: high) {
+  .touch-target,
+  .touch-button,
+  .touch-input {
+    border-width: 2px;
+  }
+}
+
+/* ========================================
+   Reduced Motion Support
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-slide-up,
+  .animate-slide-down,
+  .animate-fade-in,
+  .animate-scale-in,
+  .period-card-enter,
+  .duration-display,
+  .quick-duration-enter,
+  .salary-context-enter,
+  .empty-state-enter,
+  .animate-slideInRight,
+  .animate-slideInLeft,
+  .badge-pulse,
+  .badge-appear {
+    animation: none;
+  }
+
+  .swipeable-card {
+    transition: none;
+  }
+
+  /* Disable theme transition */
+  html {
+    transition: none !important;
+  }
+
+  /* Disable tab transitions */
+  .tab-transition,
+  .hover-scale {
+    transition: none !important;
+  }
+
+  /* Disable focus glow animation but keep outline */
+  .tab-focus:focus::before,
+  .focus-ring-enhanced:focus::before {
+    animation: none;
+    opacity: 0;
+  }
+
+  .focus-ring-enhanced:focus {
+    animation: none;
+    outline: 3px solid rgba(59, 130, 246, 1);
+  }
+
+  html.dark .focus-ring-enhanced:focus {
+    outline: 3px solid rgba(96, 165, 250, 1);
+  }
+}
+
+/* ========================================
+   Print Stylesheet
+   Optimized for A4 paper with proper page breaks
+   ======================================== */
+
+@media print {
+  /* ---- Page Setup ---- */
+  /* Default: A4 portrait with comfortable margins */
+  @page {
+    size: A4 portrait;
+    margin: 15mm 12mm 20mm 12mm;
+  }
+
+  /* First page has extra top margin for the print header */
+  @page :first {
+    margin-top: 10mm;
+  }
+
+  /* ---- Reset & Base ---- */
+  *,
+  *::before,
+  *::after {
+    color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html {
+    font-size: 10.5pt !important;
+    transition: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: #1f2937 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    line-height: 1.4 !important;
+  }
+
+  /* ---- Hide Non-Essential Elements ---- */
+  /* Navigation, fixed buttons, modals, tooltips, toasts */
+  nav,
+  .fixed,
+  [role="dialog"],
+  [data-radix-popper-content-wrapper],
+  .toast-container,
+  button[data-testid="open-vpr-admin"],
+  button[data-testid="open-shortcuts-modal"],
+  button[data-testid="open-history-button"],
+  aside,
+  footer,
+  .no-print,
+  .print\\:hidden {
+    display: none !important;
+  }
+
+  /* Hide the print button itself when printing */
+  .print-button {
+    display: none !important;
+  }
+
+  /* Hide the input form column when printing - show only results */
+  .print-hide-input-form {
+    display: none !important;
+  }
+
+  /* Hide law version selector in print */
+  .print-hide-law-selector {
+    display: none !important;
+  }
+
+  /* Hide interactive elements not useful in print */
+  .swipe-indicator,
+  .swipe-indicator-left,
+  .swipe-indicator-right {
+    display: none !important;
+  }
+
+  /* ---- Show print-only elements ---- */
+  .print\\:block {
+    display: block !important;
+  }
+
+  .print\\:flex {
+    display: flex !important;
+  }
+
+  .print\\:table {
+    display: table !important;
+  }
+
+  .print\\:table-row {
+    display: table-row !important;
+  }
+
+  .print\\:table-cell {
+    display: table-cell !important;
+  }
+
+  /* ---- Layout Overrides ---- */
+  /* Remove fixed positioning, sticky, and z-index */
+  .lg\:sticky,
+  .sticky {
+    position: static !important;
+  }
+
+  /* Full width containers */
+  .max-w-7xl {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Override grid layout for single-column print */
+  .grid {
+    display: block !important;
+  }
+
+  .grid > * {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* ---- Spacing ---- */
+  .space-y-6 > * + * {
+    margin-top: 10pt !important;
+  }
+
+  .py-12 {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .py-8 {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .gap-6 {
+    gap: 10pt !important;
+  }
+
+  /* Compact card padding for print */
+  .p-6 {
+    padding: 10pt !important;
+  }
+
+  .p-4 {
+    padding: 8pt !important;
+  }
+
+  /* ---- Header Styling ---- */
+  header.text-center {
+    margin-bottom: 12pt !important;
+    padding-bottom: 6pt !important;
+    border-bottom: 2pt solid #2563eb !important;
+  }
+
+  header h1 {
+    font-size: 16pt !important;
+    color: #1e3a8a !important;
+  }
+
+  header p {
+    font-size: 9pt !important;
+    color: #4b5563 !important;
+  }
+
+  /* ---- Card Styling ---- */
+  .rounded-xl,
+  .rounded-lg {
+    border-radius: 4pt !important;
+  }
+
+  .shadow-sm,
+  .shadow-lg {
+    box-shadow: none !important;
+  }
+
+  /* Cards - ensure visible borders */
+  .bg-white,
+  .dark\:bg-dark-bg-secondary {
+    background: white !important;
+    border: 0.5pt solid #d1d5db !important;
+  }
+
+  /* ---- Pension Estimate Card (Blue gradient) ---- */
+  section[data-tour="pension-estimate"] {
+    background: #2563eb !important;
+    color: white !important;
+    border: 1pt solid #1d4ed8 !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    margin-bottom: 12pt !important;
+  }
+
+  section[data-tour="pension-estimate"] * {
+    color: white !important;
+  }
+
+  section[data-tour="pension-estimate"] .text-blue-100,
+  section[data-tour="pension-estimate"] .text-blue-200,
+  section[data-tour="pension-estimate"] .text-blue-100\/80 {
+    color: rgba(255, 255, 255, 0.85) !important;
+  }
+
+  /* ---- Status Cards ---- */
+  .a11y-success,
+  .a11y-success-subtle,
+  .bg-a11y-success-bg-subtle {
+    background-color: #f0fdf4 !important;
+    border-color: #86efac !important;
+  }
+
+  .a11y-warning,
+  .a11y-warning-subtle,
+  .bg-a11y-warning-bg-subtle {
+    background-color: #fffbeb !important;
+    border-color: #fcd34d !important;
+  }
+
+  .a11y-error,
+  .a11y-error-subtle,
+  .bg-a11y-error-bg-subtle {
+    background-color: #fef2f2 !important;
+    border-color: #fca5a5 !important;
+  }
+
+  .a11y-info,
+  .a11y-info-subtle,
+  .bg-a11y-info-bg-subtle {
+    background-color: #eff6ff !important;
+    border-color: #93c5fd !important;
+  }
+
+  /* ---- Progress Bars ---- */
+  .bg-blue-500 {
+    background-color: #3b82f6 !important;
+  }
+
+  .bg-orange-500 {
+    background-color: #f97316 !important;
+  }
+
+  .bg-gray-100 {
+    background-color: #f3f4f6 !important;
+  }
+
+  /* Ensure progress bar backgrounds print correctly */
+  [role="progressbar"] {
+    background-color: #f3f4f6 !important;
+    border: 0.5pt solid #e5e7eb !important;
+  }
+
+  [role="progressbar"] > div {
+    min-height: 6pt !important;
+  }
+
+  /* ---- Typography ---- */
+  h2, h3 {
+    color: #1f2937 !important;
+    font-weight: 600 !important;
+    font-size: 11pt !important;
+  }
+
+  h2 {
+    font-size: 12pt !important;
+  }
+
+  .text-sm {
+    font-size: 9pt !important;
+  }
+
+  .text-xs {
+    font-size: 8pt !important;
+  }
+
+  .text-lg {
+    font-size: 11pt !important;
+  }
+
+  .text-gray-600,
+  .text-gray-500,
+  .dark\:text-dark-text-secondary,
+  .dark\:text-dark-text-muted {
+    color: #4b5563 !important;
+  }
+
+  .text-gray-900,
+  .dark\:text-dark-text {
+    color: #1f2937 !important;
+  }
+
+  .text-blue-600 {
+    color: #2563eb !important;
+  }
+
+  /* ---- Dark Mode Override for Print ---- */
+  html.dark body,
+  .dark .bg-dark-bg,
+  .dark .bg-dark-bg-secondary {
+    background: white !important;
+    color: #1f2937 !important;
+  }
+
+  .dark .text-dark-text,
+  .dark .text-dark-text-secondary,
+  .dark .text-dark-text-muted {
+    color: #1f2937 !important;
+  }
+
+  .dark .border-dark-border,
+  .dark .border-dark-border-subtle {
+    border-color: #d1d5db !important;
+  }
+
+  .dark .bg-dark-bg {
+    background-color: #f9fafb !important;
+  }
+
+  .dark section[data-tour="pension-estimate"] {
+    background: #2563eb !important;
+  }
+
+  .dark section[data-tour="pension-estimate"] * {
+    color: white !important;
+  }
+
+  /* ---- Page Break Control ---- */
+  /* Prevent breaking inside key cards */
+  section,
+  .bg-white.rounded-xl,
+  [role="status"],
+  .divide-y > div {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Allow page breaks between major sections */
+  .space-y-6 > * {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+
+  /* Force page break before certain long sections */
+  .print-page-break-before {
+    page-break-before: always !important;
+    break-before: always !important;
+  }
+
+  /* Force page break after a section */
+  .print-page-break-after {
+    page-break-after: always !important;
+    break-after: always !important;
+  }
+
+  /* Avoid page break inside */
+  .print-no-break {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Keep headers with their content */
+  h2, h3, .font-medium {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  /* Orphan/widow control for text blocks */
+  p, li, div {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* ---- Table & Period Breakdown ---- */
+  .divide-y > div {
+    border-bottom: 0.5pt solid #e5e7eb !important;
+    padding: 6pt 10pt !important;
+  }
+
+  /* ---- Print Header/Footer Stamp ---- */
+  .print-header {
+    display: block !important;
+    text-align: center;
+    margin-bottom: 10pt;
+    padding-bottom: 6pt;
+    border-bottom: 1.5pt solid #2563eb;
+  }
+
+  .print-footer {
+    display: block !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 7pt;
+    color: #9ca3af;
+    padding-top: 4pt;
+    border-top: 0.5pt solid #e5e7eb;
+  }
+
+  /* ---- Print Summary Section ---- */
+  .print-summary {
+    display: block !important;
+    background: #f8fafc !important;
+    border: 1pt solid #2563eb !important;
+    border-radius: 4pt !important;
+    padding: 12pt !important;
+    margin-bottom: 12pt !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .print-summary-title {
+    font-size: 11pt !important;
+    font-weight: 700 !important;
+    color: #1e3a8a !important;
+    margin-bottom: 8pt !important;
+    padding-bottom: 4pt !important;
+    border-bottom: 1pt solid #dbeafe !important;
+  }
+
+  .print-summary-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 6pt 16pt !important;
+  }
+
+  .print-summary-item {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: baseline !important;
+    padding: 3pt 0 !important;
+    border-bottom: 0.5pt dotted #d1d5db !important;
+  }
+
+  .print-summary-label {
+    font-size: 8.5pt !important;
+    color: #4b5563 !important;
+  }
+
+  .print-summary-value {
+    font-size: 9.5pt !important;
+    font-weight: 600 !important;
+    color: #1f2937 !important;
+  }
+
+  .print-summary-highlight {
+    font-size: 13pt !important;
+    font-weight: 700 !important;
+    color: #2563eb !important;
+  }
+
+  /* ---- Links ---- */
+  a[href]::after {
+    content: none !important; /* Don't show URL after links */
+  }
+
+  /* ---- Animations & Transitions ---- */
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* ---- Min-height overrides ---- */
+  .min-h-screen {
+    min-height: auto !important;
+  }
+
+  /* ---- Background color overrides ---- */
+  .bg-gray-50 {
+    background-color: #f9fafb !important;
+  }
+
+  /* ---- Chart visibility in print ---- */
+  canvas {
+    max-width: 100% !important;
+    height: auto !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* ---- Charts Section for Print ---- */
+  .print-charts-section {
+    page-break-before: always !important;
+    break-before: always !important;
+  }
+
+  .print-chart-container {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    margin-bottom: 12pt !important;
+  }
+
+  /* Ensure chart containers have proper sizing */
+  .print-chart-container canvas {
+    max-height: 250pt !important;
+  }
+
+  /* ---- Print-specific two-column layout for compact sections ---- */
+  .print-two-col {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8pt !important;
+  }
+
+  /* ---- Collapsible sections: force expanded in print ---- */
+  .print-force-expand {
+    display: block !important;
+    max-height: none !important;
+    overflow: visible !important;
+    opacity: 1 !important;
+  }
+}
