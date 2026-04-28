@@ -25,4 +25,4 @@ export default tseslint.config({ ignores: ['dist'] }, {
       { allowConstantExport: true },
     ],
   },
-}, storybook.configs["flat/recommended"]);
+}, ...storybook.configs["flat/recommended"]);

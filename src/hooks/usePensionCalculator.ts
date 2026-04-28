@@ -36,7 +36,7 @@ export interface PensionDetails {
  */
 const DEFAULT_INPUTS: PensionInputs = {
   birthDate: '1996-08-26',
-  retirementYear: 65,
+  retirementYear: 2061,
   contributionPeriods: [
     {
       fromDate: '2015-09-01',

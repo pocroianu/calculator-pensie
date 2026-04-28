@@ -5,7 +5,7 @@ import {
   CURRENT_AVERAGE_SALARY
 } from "../data/historicalSalaries";
 import { getCurrentVPR, getVPRConfig } from "../config/vprConfig";
-import { pensionCache, hashContributionPeriods, hashPeriod } from "./memoization";
+import { pensionCache, hashContributionPeriods } from "./memoization";
 import { LawCalculationParameters } from "../types/lawVersionTypes";
 
 // Legacy constant for backward compatibility - now reads from config

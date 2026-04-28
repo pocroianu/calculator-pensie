@@ -14,10 +14,10 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { ContributionPeriod } from '../types/pensionTypes';
-import { getAverageSalaryForYear, HISTORICAL_AVERAGE_SALARIES } from '../data/historicalSalaries';
+import { getAverageSalaryForYear } from '../data/historicalSalaries';
 import { formatCurrency } from '../utils/formatters';
 import { useTranslation } from 'react-i18next';
-import { TrendingUp, TrendingDown, Minus } from 'lucide-react';
+import { TrendingUp, TrendingDown } from 'lucide-react';
 
 // Register Chart.js components for Line chart
 ChartJS.register(

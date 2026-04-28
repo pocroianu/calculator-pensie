@@ -1,5 +1,5 @@
 import { useMemo, useState, useCallback, forwardRef, useImperativeHandle, useRef } from 'react';
-import { CalendarDays, Plus, Clock, AlertCircle, AlertTriangle, ChevronUp, ChevronDown, Smartphone, FileText, Briefcase, TrendingUp, CheckCircle2, ArrowRight } from 'lucide-react';
+import { CalendarDays, Plus, Clock, AlertCircle, AlertTriangle, ChevronUp, ChevronDown, Smartphone, FileText, Briefcase, CheckCircle2, ArrowRight } from 'lucide-react';
 import { PensionInputs, ContributionPeriod as ContributionPeriodType } from '../types/pensionTypes';
 import ContributionPeriod from './ContributionPeriod';
 import PeriodTemplatesPanel from './PeriodTemplatesPanel';
