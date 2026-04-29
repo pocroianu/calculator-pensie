@@ -15,7 +15,7 @@ const DYNAMIC_CACHE = `pension-calc-dynamic-${CACHE_VERSION}`;
 const OFFLINE_CACHE = `pension-calc-offline-${CACHE_VERSION}`;
 
 // Base path for GitHub Pages deployment
-const BASE_PATH = '/calculator_pensie/';
+const BASE_PATH = '/calculator-pensie/';
 
 // Static assets to pre-cache during install
 const PRECACHE_ASSETS = [

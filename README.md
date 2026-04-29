@@ -79,7 +79,7 @@ This project is configured for automatic deployment to GitHub Pages. To deploy:
 
 1. Push your changes to the main branch
 2. GitHub Actions will automatically build and deploy to GitHub Pages
-3. Your site will be available at `https://[your-username].github.io/calculator_pensie/`
+3. Your site will be available at `https://[your-username].github.io/calculator-pensie/`
 
 ## Tech Stack
 

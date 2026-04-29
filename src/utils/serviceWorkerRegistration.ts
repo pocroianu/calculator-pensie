@@ -8,7 +8,7 @@
  * - Communication with the service worker
  */
 
-const SW_PATH = '/calculator_pensie/sw.js';
+const SW_PATH = '/calculator-pensie/sw.js';
 const SYNC_TAG = 'pension-data-sync';
 
 interface SWRegistrationConfig {
@@ -44,7 +44,7 @@ export async function registerServiceWorker(
 
   try {
     const registration = await navigator.serviceWorker.register(SW_PATH, {
-      scope: '/calculator_pensie/',
+      scope: '/calculator-pensie/',
     });
 
     console.log('[SWR] Service worker registered:', registration.scope);
