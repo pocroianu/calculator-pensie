@@ -25,6 +25,13 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Verify GitHub Pages artifact
+        run: |
+          test -f dist/index.html
+          test -f dist/manifest.json
+          test -f dist/icons/icon-192x192.svg
+          grep -q "/calculator-pensie/assets/" dist/index.html
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
