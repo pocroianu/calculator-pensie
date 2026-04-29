@@ -3,7 +3,6 @@ import {
   VPRConfig,
   VPRValue,
   getVPRConfig,
-  saveVPRConfig,
   updateCurrentVPR,
   resetVPRConfig,
   addHistoricalVPR,

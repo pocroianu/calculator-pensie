@@ -24,7 +24,7 @@ interface Milestone {
   reached: boolean;
 }
 
-const RetirementCountdown: React.FC<Props> = ({ birthDate, currentAge }) => {
+const RetirementCountdown: React.FC<Props> = ({ birthDate }) => {
   const { t } = useTranslation();
 
   const countdown = useMemo((): CountdownTime | null => {

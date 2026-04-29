@@ -31,7 +31,7 @@ export interface PdfExportData {
 /**
  * Translation function type
  */
-type TranslateFunction = (key: string, options?: Record<string, any>) => string;
+type TranslateFunction = (key: string, options?: Record<string, unknown>) => string;
 
 /**
  * Helper function to format a date string for display
@@ -97,22 +97,6 @@ function getNonContributiveTypeText(type: NonContributivePeriodType | undefined,
     default:
       return '-';
   }
-}
-
-/**
- * Add text with automatic line wrapping
- */
-function addWrappedText(
-  doc: jsPDF,
-  text: string,
-  x: number,
-  y: number,
-  maxWidth: number,
-  lineHeight: number
-): number {
-  const lines = doc.splitTextToSize(text, maxWidth);
-  doc.text(lines, x, y);
-  return y + (lines.length * lineHeight);
 }
 
 /**

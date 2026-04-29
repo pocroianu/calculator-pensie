@@ -71,10 +71,9 @@ export function announceToScreenReader(
 
 /**
  * Creates a status announcer for form validation
- * @param containerId - ID of the container to add the announcer to
  * @returns Object with announce function
  */
-export function createFormStatusAnnouncer(containerId: string) {
+export function createFormStatusAnnouncer() {
   return {
     announceError: (fieldName: string, errorMessage: string) => {
       announceToScreenReader(`${fieldName}: ${errorMessage}`, 'assertive');

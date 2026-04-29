@@ -504,9 +504,7 @@ test.describe('End-to-End User Journey', () => {
     const statsCards = page.locator('.bg-white.rounded-xl');
     await expect(statsCards.first()).toBeVisible();
 
-    // Step 5: Verify contribution progress is shown
-    const progressBar = page.locator('.bg-blue-500.h-2.5.rounded-full');
-    // Just verify page loaded correctly by checking stats cards
+    // Step 5: Just verify page loaded correctly by checking stats cards
 
     // Step 6: Try collapsing periods (need at least 2 periods)
     const collapseAllBtn = page.locator('[data-testid="collapse-all-button"]');

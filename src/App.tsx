@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './components/LanguageSwitcher';
 import LegalDisclaimer from './components/LegalDisclaimer';
 import HelpPanel from './components/HelpPanel';
-import ShortcutHint from './components/ShortcutHint';
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
 import { ModalLoadingFallback } from './components/LoadingSpinner';
 import { ToastProvider } from './contexts/ToastContext';
@@ -30,6 +29,9 @@ function App() {
   const [isShortcutsModalOpen, setIsShortcutsModalOpen] = useState(false);
   const [sharedData, setSharedData] = useState<ShareableData | null>(null);
   const [isSharedModalOpen, setIsSharedModalOpen] = useState(false);
+  const [hasAcceptedLegal, setHasAcceptedLegal] = useState(() => {
+    return localStorage.getItem('legal_disclaimer_accepted') === '1.0';
+  });
 
   // Check for shared data in URL on mount
   useEffect(() => {
@@ -91,18 +93,18 @@ function App() {
     <AnalyticsProvider>
       <ThemeProvider>
         <ToastProvider>
-          <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors">
+          <div className="min-h-screen bg-slate-50 text-slate-950 dark:bg-dark-bg dark:text-dark-text transition-colors">
             {/* Toast Notifications */}
             <ToastContainer />
 
             {/* PWA Components */}
             <OfflineIndicator />
-            <PWAInstallPrompt />
+            <PWAInstallPrompt enabled={hasAcceptedLegal} />
             <PWAUpdateNotification />
 
             {/* Fixed Controls - Navigation Region */}
             <nav
-              className="fixed top-4 right-4 z-50 flex items-center gap-2"
+              className="relative z-40 mx-auto flex max-w-7xl items-center justify-end gap-2 px-4 pt-4 sm:fixed sm:right-4 sm:top-4 sm:mx-0 sm:px-0 sm:pt-0"
               aria-label={t('nav.quickActions')}
             >
               {/* Theme Toggle */}
@@ -140,14 +142,16 @@ function App() {
             {/* Main Content Area */}
             <main id="main-content" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
               {/* Page Header */}
-              <header className="text-center mb-12">
-                <div className="flex items-center justify-center gap-3 mb-4">
-                  <Calculator className="w-8 h-8 text-blue-600 dark:text-blue-400" aria-hidden="true" />
-                  <h1 className="text-3xl font-bold text-gray-900 dark:text-dark-text">
+              <header className="mx-auto mb-10 max-w-3xl text-center sm:mb-12">
+                <div className="mb-4 flex items-center justify-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-700 ring-1 ring-blue-100 dark:bg-blue-900/20 dark:text-blue-300 dark:ring-blue-800" aria-hidden="true">
+                    <Calculator className="h-6 w-6" />
+                  </span>
+                  <h1 className="text-3xl font-semibold tracking-normal text-slate-950 dark:text-dark-text sm:text-4xl">
                     {t('pension.title')}
                   </h1>
                 </div>
-                <p className="text-lg text-gray-600 dark:text-dark-text-secondary max-w-3xl mx-auto">
+                <p className="mx-auto max-w-2xl text-base leading-7 text-slate-600 dark:text-dark-text-secondary sm:text-lg">
                   {t('pension.description')}
                 </p>
               </header>
@@ -160,7 +164,7 @@ function App() {
 
             {/* Help Panel with FAQ and Guided Tour - Complementary Region */}
             <aside aria-label={t('help.title')}>
-              <HelpPanel ref={helpPanelRef} />
+              <HelpPanel ref={helpPanelRef} deferTourPrompt={!hasAcceptedLegal} />
             </aside>
 
             {/* Keyboard Shortcuts Modal - Lazy loaded */}
@@ -184,7 +188,7 @@ function App() {
 
             {/* Legal Disclaimer with Footer */}
             <footer>
-              <LegalDisclaimer />
+              <LegalDisclaimer onAccept={() => setHasAcceptedLegal(true)} />
             </footer>
           </div>
         </ToastProvider>

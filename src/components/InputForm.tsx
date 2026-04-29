@@ -21,7 +21,7 @@ import { useToast } from '../contexts/ToastContext';
 
 interface InputFormProps {
   inputs: PensionInputs;
-  onChange: (field: keyof PensionInputs, value: any) => void;
+  onChange: <K extends keyof PensionInputs>(field: K, value: PensionInputs[K]) => void;
 }
 
 export interface InputFormRef {

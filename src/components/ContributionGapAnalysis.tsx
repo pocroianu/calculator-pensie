@@ -214,7 +214,7 @@ const GapCard: React.FC<GapCardProps> = ({ gap, index, t, formatGapDuration }) =
 
 interface StrategyCardProps {
   strategy: GapFillStrategy;
-  t: (key: string, params?: Record<string, any>) => string;
+  t: (key: string, params?: Record<string, unknown>) => string;
   getFeasibilityColor: (feasibility: GapFillStrategy['feasibility']) => string;
   getFeasibilityLabel: (feasibility: GapFillStrategy['feasibility']) => string;
 }

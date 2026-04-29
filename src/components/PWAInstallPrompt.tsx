@@ -10,15 +10,30 @@ import { usePWAInstall } from '../hooks/usePWAInstall';
  * when the app can be installed. Follows the existing design
  * patterns (Tailwind, dark mode, accessibility).
  */
-const PWAInstallPrompt: React.FC = () => {
+interface PWAInstallPromptProps {
+  enabled?: boolean;
+}
+
+const PWAInstallPrompt: React.FC<PWAInstallPromptProps> = ({ enabled = true }) => {
   const { t } = useTranslation();
   const { isInstallable, promptInstall, dismissInstall } = usePWAInstall();
+  const [isReadyToShow, setIsReadyToShow] = React.useState(false);
 
-  if (!isInstallable) return null;
+  React.useEffect(() => {
+    if (!enabled) {
+      setIsReadyToShow(false);
+      return;
+    }
+
+    const timeoutId = window.setTimeout(() => setIsReadyToShow(true), 5000);
+    return () => window.clearTimeout(timeoutId);
+  }, [enabled]);
+
+  if (!enabled || !isReadyToShow || !isInstallable) return null;
 
   return (
     <div
-      className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-4 sm:max-w-md z-50 animate-slide-up"
+      className="fixed bottom-20 left-4 right-4 z-40 animate-slide-up sm:bottom-16 sm:left-auto sm:right-4 sm:max-w-md"
       role="complementary"
       aria-label={t('pwa.install.title')}
       data-testid="pwa-install-prompt"

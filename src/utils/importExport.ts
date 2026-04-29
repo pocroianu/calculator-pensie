@@ -39,30 +39,31 @@ const VALID_NON_CONTRIBUTIVE_TYPES: NonContributivePeriodType[] = ['military', '
 /**
  * Validate a contribution period object
  */
-function isValidContributionPeriod(period: any): period is ContributionPeriod {
+function isValidContributionPeriod(period: unknown): period is ContributionPeriod {
   if (typeof period !== 'object' || period === null) {
     return false;
   }
+  const candidate = period as Partial<ContributionPeriod>;
 
   // Required fields
-  if (typeof period.fromDate !== 'string' || typeof period.toDate !== 'string') {
+  if (typeof candidate.fromDate !== 'string' || typeof candidate.toDate !== 'string') {
     return false;
   }
 
   // Optional fields validation
-  if (period.company !== undefined && typeof period.company !== 'string') {
+  if (candidate.company !== undefined && typeof candidate.company !== 'string') {
     return false;
   }
 
-  if (period.monthlyGrossSalary !== undefined && typeof period.monthlyGrossSalary !== 'number') {
+  if (candidate.monthlyGrossSalary !== undefined && typeof candidate.monthlyGrossSalary !== 'number') {
     return false;
   }
 
-  if (period.workingCondition !== undefined && !VALID_WORKING_CONDITIONS.includes(period.workingCondition)) {
+  if (candidate.workingCondition !== undefined && !VALID_WORKING_CONDITIONS.includes(candidate.workingCondition)) {
     return false;
   }
 
-  if (period.nonContributiveType !== undefined && !VALID_NON_CONTRIBUTIVE_TYPES.includes(period.nonContributiveType)) {
+  if (candidate.nonContributiveType !== undefined && !VALID_NON_CONTRIBUTIVE_TYPES.includes(candidate.nonContributiveType)) {
     return false;
   }
 
@@ -72,26 +73,27 @@ function isValidContributionPeriod(period: any): period is ContributionPeriod {
 /**
  * Validate pension inputs structure
  */
-function isValidPensionInputs(inputs: any): inputs is PensionInputs {
+function isValidPensionInputs(inputs: unknown): inputs is PensionInputs {
   if (typeof inputs !== 'object' || inputs === null) {
     return false;
   }
+  const candidate = inputs as Partial<PensionInputs>;
 
   // Required fields
-  if (typeof inputs.birthDate !== 'string') {
+  if (typeof candidate.birthDate !== 'string') {
     return false;
   }
 
-  if (typeof inputs.retirementYear !== 'number') {
+  if (typeof candidate.retirementYear !== 'number') {
     return false;
   }
 
-  if (!Array.isArray(inputs.contributionPeriods)) {
+  if (!Array.isArray(candidate.contributionPeriods)) {
     return false;
   }
 
   // Validate each contribution period
-  for (const period of inputs.contributionPeriods) {
+  for (const period of candidate.contributionPeriods) {
     if (!isValidContributionPeriod(period)) {
       return false;
     }
@@ -103,20 +105,21 @@ function isValidPensionInputs(inputs: any): inputs is PensionInputs {
 /**
  * Validate export data structure
  */
-function isValidExportData(data: any): data is ExportData {
+function isValidExportData(data: unknown): data is ExportData {
   if (typeof data !== 'object' || data === null) {
     return false;
   }
+  const candidate = data as Partial<ExportData>;
 
-  if (typeof data.version !== 'string') {
+  if (typeof candidate.version !== 'string') {
     return false;
   }
 
-  if (typeof data.exportDate !== 'string') {
+  if (typeof candidate.exportDate !== 'string') {
     return false;
   }
 
-  if (!isValidPensionInputs(data.inputs)) {
+  if (!isValidPensionInputs(candidate.inputs)) {
     return false;
   }
 
@@ -189,7 +192,7 @@ export function parseImportData(jsonString: string): ImportResult {
       success: true,
       data: data.inputs
     };
-  } catch (e) {
+  } catch {
     return {
       success: false,
       errorKey: 'importExport.error.parseError'
@@ -243,7 +246,7 @@ export async function importFromJsonFile(file: File): Promise<ImportResult> {
   try {
     const contents = await readFileAsText(file);
     return parseImportData(contents);
-  } catch (e) {
+  } catch {
     return {
       success: false,
       errorKey: 'importExport.error.readError'

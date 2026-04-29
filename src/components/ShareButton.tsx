@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Share2, Link, Check, AlertCircle } from 'lucide-react';
+import { Share2, Check } from 'lucide-react';
 import { useToast } from '../contexts/ToastContext';
 import { useAnalytics } from '../hooks/useAnalytics';
 import { PensionDetails } from '../types/pensionTypes';

@@ -1,6 +1,6 @@
 import React, { useCallback, forwardRef, useImperativeHandle, useRef, useState, lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
-import { History } from 'lucide-react';
+import { FileJson, History } from 'lucide-react';
 import PensionStats from './PensionStats';
 import InputForm, { InputFormRef } from './InputForm';
 import ErrorBoundary from './ErrorBoundary';
@@ -31,7 +31,9 @@ export interface PensionCalculatorRef {
   expandAll: () => void;
 }
 
-const PensionCalculator = forwardRef<PensionCalculatorRef, {}>((_, ref) => {
+type PensionCalculatorProps = Record<never, never>;
+
+const PensionCalculator = forwardRef<PensionCalculatorRef, PensionCalculatorProps>((_, ref) => {
   const { t } = useTranslation();
   const {
     inputs,
@@ -82,9 +84,8 @@ const PensionCalculator = forwardRef<PensionCalculatorRef, {}>((_, ref) => {
   }, [handleInputChange]);
 
   return (
-    <div className="bg-gray-50 dark:bg-dark-bg">
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <section className="bg-slate-50 dark:bg-dark-bg" aria-label={t('pension.title')}>
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
           {/* Left Column - Hidden when printing (input form is not needed in print output) */}
           <div className="space-y-6 print-hide-input-form lg:sticky lg:top-6 lg:max-h-[calc(100vh-3rem)] lg:overflow-y-auto lg:pr-2 smooth-scroll scrollbar-styled">
             {/* Law Version Selector */}
@@ -130,11 +131,19 @@ const PensionCalculator = forwardRef<PensionCalculatorRef, {}>((_, ref) => {
               </Suspense>
             </ErrorBoundary>
           </div>
-        </div>
-      </main>
+      </div>
 
-      {/* Share and History Buttons - Fixed position */}
-      <div className="fixed bottom-24 right-4 z-40 flex items-center gap-2">
+      {/* Primary utility actions */}
+      <div className="fixed bottom-16 right-4 z-30 flex flex-col items-end gap-2 sm:bottom-16 sm:flex-row print:hidden">
+        <button
+          onClick={() => importExportRef.current?.openPanel()}
+          className="flex h-11 items-center gap-2 rounded-full border border-emerald-200 bg-white px-3 text-sm font-medium text-emerald-800 shadow-lg transition-colors hover:bg-emerald-50 dark:border-emerald-900 dark:bg-dark-bg-secondary dark:text-emerald-300 dark:hover:bg-emerald-900/20 sm:px-4"
+          aria-label={t('importExport.title')}
+          data-testid="import-export-button"
+        >
+          <FileJson className="h-5 w-5" aria-hidden="true" />
+          <span className="hidden sm:inline">{t('importExport.title')}</span>
+        </button>
         {/* Share Button */}
         {monthlyPension > 0 && pensionDetails && vprInfo && (
           <ShareButton
@@ -142,14 +151,14 @@ const PensionCalculator = forwardRef<PensionCalculatorRef, {}>((_, ref) => {
             yearlyPension={yearlyPension}
             pensionDetails={pensionDetails}
             vprInfo={vprInfo}
-            className="shadow-lg rounded-full"
+            className="h-11 rounded-full px-3 shadow-lg sm:px-4"
           />
         )}
 
         {/* History Button */}
         <button
           onClick={() => setIsHistoryOpen(true)}
-          className="flex items-center gap-2 px-4 py-3 bg-indigo-600 text-white rounded-full shadow-lg hover:bg-indigo-700 transition-colors"
+          className="flex h-11 items-center gap-2 rounded-full bg-slate-800 px-3 text-sm font-medium text-white shadow-lg transition-colors hover:bg-slate-900 dark:bg-blue-600 dark:hover:bg-blue-700 sm:px-4"
           aria-label={t('history.openHistory')}
           data-testid="open-history-button"
         >
@@ -169,6 +178,7 @@ const PensionCalculator = forwardRef<PensionCalculatorRef, {}>((_, ref) => {
           monthlyPension={monthlyPension}
           yearlyPension={yearlyPension}
           vprInfo={vprInfo}
+          showTrigger={false}
         />
       </Suspense>
 
@@ -187,7 +197,7 @@ const PensionCalculator = forwardRef<PensionCalculatorRef, {}>((_, ref) => {
           />
         </Suspense>
       )}
-    </div>
+    </section>
   );
 });
 

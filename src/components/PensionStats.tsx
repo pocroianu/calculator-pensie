@@ -28,6 +28,23 @@ interface Props {
   inputs: PensionInputs;
 }
 
+type ResultsTab = 'overview' | 'progress' | 'planning';
+
+const isResultsTab = (value: string | null): value is ResultsTab =>
+  value === 'overview' || value === 'progress' || value === 'planning';
+
+const getInitialTab = (): ResultsTab => {
+  if (typeof window === 'undefined') return 'overview';
+
+  const hashTab = window.location.hash.slice(1);
+  if (isResultsTab(hashTab)) return hashTab;
+
+  const savedTab = localStorage.getItem('pensionCalculator:activeTab');
+  if (isResultsTab(savedTab)) return savedTab;
+
+  return 'overview';
+};
+
 const PensionStats: React.FC<Props> = ({
   pensionDetails,
   inputs
@@ -35,15 +52,9 @@ const PensionStats: React.FC<Props> = ({
   const { t } = useTranslation();
   const { gapAnalysis, hasGaps } = useGapAnalysis(inputs);
   const previousPensionRef = useRef<number>(0);
-  const [activeTab, setActiveTab] = useState<'overview' | 'progress' | 'planning'>('overview');
-
-  // Load saved tab from localStorage
-  useEffect(() => {
-    const savedTab = localStorage.getItem('pensionCalculator:activeTab');
-    if (savedTab && ['overview', 'progress', 'planning'].includes(savedTab)) {
-      setActiveTab(savedTab as 'overview' | 'progress' | 'planning');
-    }
-  }, []);
+  const [activeTab, setActiveTab] = useState<ResultsTab>(getInitialTab);
+  const [isPrinting, setIsPrinting] = useState(false);
+  const hasCalculationError = Boolean(pensionDetails.error);
 
   // Persist tab selection to localStorage
   useEffect(() => {
@@ -58,9 +69,22 @@ const PensionStats: React.FC<Props> = ({
   // Read URL hash on mount for deep linking
   useEffect(() => {
     const hash = window.location.hash.slice(1);
-    if (hash && ['overview', 'progress', 'planning'].includes(hash)) {
-      setActiveTab(hash as 'overview' | 'progress' | 'planning');
+    if (isResultsTab(hash)) {
+      setActiveTab(hash);
     }
+  }, []);
+
+  useEffect(() => {
+    const handleBeforePrint = () => setIsPrinting(true);
+    const handleAfterPrint = () => setIsPrinting(false);
+
+    window.addEventListener('beforeprint', handleBeforePrint);
+    window.addEventListener('afterprint', handleAfterPrint);
+
+    return () => {
+      window.removeEventListener('beforeprint', handleBeforePrint);
+      window.removeEventListener('afterprint', handleAfterPrint);
+    };
   }, []);
 
   // Announce pension changes to screen readers
@@ -172,10 +196,10 @@ const PensionStats: React.FC<Props> = ({
   return (
     <div className="space-y-6" role="region" aria-label={t('accessibility.resultsSection')}>
       {/* Print Header - only visible when printing */}
-      <PrintHeader />
+      {isPrinting && <PrintHeader />}
 
       {/* Print Summary - only visible when printing, shows key results at a glance */}
-      <PrintSummary pensionDetails={pensionDetails} inputs={inputs} />
+      {isPrinting && <PrintSummary pensionDetails={pensionDetails} inputs={inputs} />}
 
       {/* Print Button - hidden when printing */}
       <div className="flex justify-end print:hidden">
@@ -196,7 +220,7 @@ const PensionStats: React.FC<Props> = ({
 
       {/* Retirement Status - Always visible */}
       <div
-        className={`${(pensionDetails.yearsUntilRetirement ?? 0) <= 0 ? 'bg-a11y-info-bg-subtle border-a11y-info-border text-a11y-info-text' : 'bg-a11y-neutral-bg-subtle border-a11y-neutral-border text-a11y-neutral-text'} p-4 rounded-xl border`}
+        className={`${hasCalculationError ? 'bg-a11y-neutral-bg-subtle border-a11y-neutral-border text-a11y-neutral-text' : (pensionDetails.yearsUntilRetirement ?? 0) <= 0 ? 'bg-a11y-info-bg-subtle border-a11y-info-border text-a11y-info-text' : 'bg-a11y-neutral-bg-subtle border-a11y-neutral-border text-a11y-neutral-text'} p-4 rounded-xl border`}
         role="status"
       >
         <div className="flex items-start gap-3">
@@ -204,7 +228,9 @@ const PensionStats: React.FC<Props> = ({
           <div>
             <h3 className="font-medium">{t('pension.stats.retirementStatus.title')}</h3>
             <p className="text-sm">
-              {(pensionDetails.yearsUntilRetirement ?? 0) <= 0
+              {hasCalculationError
+                ? t('pension.stats.retirementStatus.unavailable', 'Complete valid contribution periods to calculate retirement status')
+                : (pensionDetails.yearsUntilRetirement ?? 0) <= 0
                 ? t('pension.stats.retirementStatus.eligible')
                 : t('pension.stats.retirementStatus.yearsRemaining', { years: pensionDetails.yearsUntilRetirement })
               }
@@ -242,7 +268,7 @@ const PensionStats: React.FC<Props> = ({
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <div className="text-sm text-gray-600 dark:text-dark-text-secondary mb-1">{t('pension.stats.timeline.currentAge')}</div>
-                  <div className="text-lg font-medium dark:text-dark-text">{pensionDetails.currentAge} {t('pension.stats.timeline.years')}</div>
+                  <div className="text-lg font-medium dark:text-dark-text">{pensionDetails.currentAge ?? '—'} {pensionDetails.currentAge !== undefined ? t('pension.stats.timeline.years') : ''}</div>
                 </div>
                 <div>
                   <div className="text-sm text-gray-600 dark:text-dark-text-secondary mb-1">{t('pension.stats.timeline.retirementAge')}</div>
@@ -315,12 +341,12 @@ const PensionStats: React.FC<Props> = ({
               {/* Right Column - Pension Estimate (Sticky) */}
               <div className="space-y-6 lg:sticky lg:top-6 lg:self-start">
                 <section
-                  className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg border border-blue-400 overflow-hidden min-w-[280px]"
+                  className="min-w-[280px] overflow-hidden rounded-xl border border-blue-200 bg-blue-700 shadow-sm dark:border-blue-800 dark:bg-blue-900"
                   data-tour="pension-estimate"
                   aria-labelledby="pension-estimate-heading"
                   aria-live="polite"
                 >
-                  <div className="p-4 border-b border-blue-400/30 bg-white/10">
+                  <div className="border-b border-white/15 bg-white/10 p-4">
                     <div className="flex items-center gap-2">
                       <TrendingUp className="w-4 h-4 text-white" aria-hidden="true" />
                       <h2 id="pension-estimate-heading" className="font-medium text-white">{t('pension.stats.pensionEstimate.title')}</h2>
@@ -333,7 +359,7 @@ const PensionStats: React.FC<Props> = ({
                         <div className="text-center">
                           <div className="text-sm text-blue-100 mb-2" id="monthly-pension-label">{t('pension.stats.pensionEstimate.monthlyPension')}</div>
                           <div
-                            className="text-3xl lg:text-4xl font-bold text-white mb-1 whitespace-nowrap"
+                            className="mb-1 whitespace-nowrap text-3xl font-semibold text-white lg:text-4xl"
                             aria-labelledby="monthly-pension-label"
                             role="status"
                           >
@@ -569,7 +595,7 @@ const PensionStats: React.FC<Props> = ({
       </div>
 
       {/* Print-only content - all tabs visible when printing */}
-      <div className="hidden print:block print:space-y-6">
+      {isPrinting && <div className="hidden print:block print:space-y-6">
         {/* Overview content */}
         <div className="space-y-6">
           <h2 className="text-xl font-bold">{t('tabs.overview')}</h2>
@@ -586,7 +612,7 @@ const PensionStats: React.FC<Props> = ({
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <div className="text-sm text-gray-600 dark:text-dark-text-secondary mb-1">{t('pension.stats.timeline.currentAge')}</div>
-                  <div className="text-lg font-medium dark:text-dark-text">{pensionDetails.currentAge} {t('pension.stats.timeline.years')}</div>
+                  <div className="text-lg font-medium dark:text-dark-text">{pensionDetails.currentAge ?? '—'} {pensionDetails.currentAge !== undefined ? t('pension.stats.timeline.years') : ''}</div>
                 </div>
                 <div>
                   <div className="text-sm text-gray-600 dark:text-dark-text-secondary mb-1">{t('pension.stats.timeline.retirementAge')}</div>
@@ -630,7 +656,7 @@ const PensionStats: React.FC<Props> = ({
             />
           )}
         </div>
-      </div>
+      </div>}
     </div>
   );
 };

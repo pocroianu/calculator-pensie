@@ -69,7 +69,7 @@ const getPeriodIcon = (period: ContributionPeriod): React.ReactNode => {
   return <Briefcase className="w-4 h-4" />;
 };
 
-const PeriodSummaryTimeline: React.FC<Props> = ({ contributionPeriods, birthDate }) => {
+const PeriodSummaryTimeline: React.FC<Props> = ({ contributionPeriods }) => {
   const { t } = useTranslation();
 
   // Process and sort periods chronologically

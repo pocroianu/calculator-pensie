@@ -199,16 +199,6 @@ const StabilityBonusTracker: React.FC<Props> = ({
 
   const meetsMinimumContribution = totalContributiveYears >= MINIMUM_CONTRIBUTION_YEARS;
 
-  // Progress percentage within all tiers (26-40 years range)
-  const progressPercentage = useMemo(() => {
-    if (totalContributiveYears < TIER1_START) {
-      return 0;
-    }
-    const yearsInTierRange = Math.min(totalContributiveYears - TIER1_START + 1, TIER3_END - TIER1_START + 1);
-    const totalTierYears = TIER3_END - TIER1_START + 1;
-    return Math.min(100, (yearsInTierRange / totalTierYears) * 100);
-  }, [totalContributiveYears]);
-
   // Calculate color classes based on tier
   const getTierColorClasses = (tier: TierInfo) => {
     if (tier.isLocked) {

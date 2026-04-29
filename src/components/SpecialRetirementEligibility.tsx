@@ -32,8 +32,6 @@ const SpecialRetirementEligibility: React.FC<Props> = ({
     return null;
   }
 
-  const hasEligibleCategories = relevantCategories.some(e => e.meetsMinimumYearsRequirement);
-
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden" data-testid="special-retirement-eligibility">
       {/* Header */}

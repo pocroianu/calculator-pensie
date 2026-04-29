@@ -1,8 +1,7 @@
 import { useEffect, useCallback, useRef } from 'react';
 import {
   KEYBOARD_SHORTCUTS,
-  matchesShortcut,
-  KeyboardShortcut
+  matchesShortcut
 } from '../config/keyboardShortcuts';
 
 export interface ShortcutHandlers {

@@ -12,13 +12,14 @@ const TOUR_COMPLETED_KEY = 'guided_tour_completed';
 
 interface HelpPanelProps {
   className?: string;
+  deferTourPrompt?: boolean;
 }
 
 export interface HelpPanelRef {
   openHelpPanel: () => void;
 }
 
-const HelpPanel = forwardRef<HelpPanelRef, HelpPanelProps>(({ className = '' }, ref) => {
+const HelpPanel = forwardRef<HelpPanelRef, HelpPanelProps>(({ className = '', deferTourPrompt = false }, ref) => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [isTourOpen, setIsTourOpen] = useState(false);
@@ -30,12 +31,18 @@ const HelpPanel = forwardRef<HelpPanelRef, HelpPanelProps>(({ className = '' }, 
   }));
 
   useEffect(() => {
+    if (deferTourPrompt) {
+      setShowTourPrompt(false);
+      return;
+    }
+
     // Show tour prompt for first-time users
     const tourCompleted = localStorage.getItem(TOUR_COMPLETED_KEY);
     if (!tourCompleted) {
-      setShowTourPrompt(true);
+      const timeoutId = window.setTimeout(() => setShowTourPrompt(true), 1200);
+      return () => window.clearTimeout(timeoutId);
     }
-  }, []);
+  }, [deferTourPrompt]);
 
   const handleStartTour = () => {
     setShowTourPrompt(false);
@@ -53,18 +60,18 @@ const HelpPanel = forwardRef<HelpPanelRef, HelpPanelProps>(({ className = '' }, 
       {/* Help Button - Fixed Position */}
       <button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-20 right-4 z-40 flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all hover:shadow-xl ${className}`}
+        className={`fixed bottom-16 left-4 z-30 flex h-11 items-center gap-2 rounded-full border border-slate-200 bg-white px-3 text-sm font-medium text-slate-700 shadow-lg transition-all hover:bg-slate-50 hover:text-blue-700 dark:border-dark-border dark:bg-dark-bg-secondary dark:text-dark-text dark:hover:bg-dark-bg-tertiary sm:px-4 ${className}`}
         aria-label={t('help.openHelp')}
         data-testid="help-button"
       >
-        <HelpCircle className="w-5 h-5" />
-        <span className="text-sm font-medium">{t('help.openHelp')}</span>
+        <HelpCircle className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+        <span className="hidden sm:inline">{t('help.openHelp')}</span>
       </button>
 
       {/* First-time Tour Prompt */}
       {showTourPrompt && (
         <div
-          className="fixed bottom-32 right-4 z-50 bg-white dark:bg-dark-bg-secondary rounded-xl shadow-2xl p-4 w-72 border border-blue-200 dark:border-blue-700"
+          className="fixed bottom-32 left-4 right-4 z-40 rounded-xl border border-blue-200 bg-white p-4 shadow-2xl dark:border-blue-700 dark:bg-dark-bg-secondary sm:left-auto sm:right-4 sm:w-72"
           data-testid="tour-prompt"
         >
           <div className="flex items-start gap-3">

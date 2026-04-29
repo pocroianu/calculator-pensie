@@ -140,8 +140,7 @@ const calculateCurrentAge = (birthDate: string): number => {
  * Generate milestone recommendations (minimum and complete contribution)
  */
 const generateMilestoneRecommendations = (
-  totalContributiveYears: number,
-  pensionDetails: PensionDetails
+  totalContributiveYears: number
 ): ContributionRecommendation[] => {
   const recommendations: ContributionRecommendation[] = [];
   const vpr = getReferenceValue();
@@ -321,8 +320,7 @@ const generateStabilityRecommendations = (
  * Generate salary optimization recommendations
  */
 const generateSalaryRecommendations = (
-  periods: ContributionPeriod[],
-  pensionDetails: PensionDetails
+  periods: ContributionPeriod[]
 ): ContributionRecommendation[] => {
   const recommendations: ContributionRecommendation[] = [];
   const vpr = getReferenceValue();
@@ -342,7 +340,6 @@ const generateSalaryRecommendations = (
 
   // Recommendation: Salary is below national average
   if (currentSalary < CURRENT_AVERAGE_SALARY) {
-    const salaryDifference = CURRENT_AVERAGE_SALARY - currentSalary;
     // Going from current salary to average means gaining (avg/avg - current/avg) = 1 - current/avg points per year
     const additionalPointsPerYear = (CURRENT_AVERAGE_SALARY - currentSalary) / CURRENT_AVERAGE_SALARY;
     const additionalPensionPerYear = additionalPointsPerYear * vpr;
@@ -511,9 +508,9 @@ export const generateContributionRecommendations = (
 
   // Gather recommendations from all generators
   const allRecommendations: ContributionRecommendation[] = [
-    ...generateMilestoneRecommendations(totalContributiveYears, pensionDetails),
+    ...generateMilestoneRecommendations(totalContributiveYears),
     ...generateStabilityRecommendations(totalContributiveYears),
-    ...generateSalaryRecommendations(inputs.contributionPeriods, pensionDetails),
+    ...generateSalaryRecommendations(inputs.contributionPeriods),
     ...generateConditionRecommendations(inputs.contributionPeriods),
     ...generateRetirementRecommendations(inputs, pensionDetails, totalContributiveYears),
   ];

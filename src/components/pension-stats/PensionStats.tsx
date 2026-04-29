@@ -1,5 +1,4 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { COMPLETE_CONTRIBUTION_YEARS } from '../../utils/pensionCalculations';
 import StatusCard from './StatusCard';
 import Timeline from './Timeline';
@@ -21,8 +20,6 @@ const PensionStats: React.FC<Props> = ({
   totalContributiveDays,
   yearsUntilRetirement,
 }) => {
-  const { t } = useTranslation();
-
   const isEligible = totalContributiveYears >= COMPLETE_CONTRIBUTION_YEARS;
 
   return (

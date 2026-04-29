@@ -1,14 +1,12 @@
-import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { PensionInputs } from '../types/pensionTypes';
 import {
   calculateMonthlyPension,
   calculateMonthlyPensionWithLawVersion,
-  getReferenceValue,
   getVPRInfo,
   clearPensionCache
 } from '../utils/pensionCalculations';
 import { CURRENT_AVERAGE_SALARY, getAverageSalaryForYear } from '../data/historicalSalaries';
-import { isRetired } from '../utils/dateCalculations';
 import { validatePensionForm, clearValidationCache } from '../utils/validation';
 import { useLocalStorage } from './useLocalStorage';
 import { VPR_CONFIG_STORAGE_KEY } from '../config/vprConfig';
@@ -34,9 +32,11 @@ export interface PensionDetails {
 /**
  * Default initial values for the pension calculator
  */
+const todayIso = new Date().toISOString().split('T')[0];
+
 const DEFAULT_INPUTS: PensionInputs = {
-  birthDate: '1996-08-26',
-  retirementYear: 2061,
+  birthDate: '1970-08-26',
+  retirementYear: 2035,
   contributionPeriods: [
     {
       fromDate: '2015-09-01',
@@ -44,16 +44,16 @@ const DEFAULT_INPUTS: PensionInputs = {
       nonContributiveType: 'university',
     },
     {
-      fromDate: '2018-01-01',
-      toDate: '2020-12-31',
-      company: 'ISoftbet',
+      fromDate: '1994-07-01',
+      toDate: '2012-12-31',
+      company: 'Exemplu Angajator 1',
       monthlyGrossSalary: 6000,
       workingCondition: 'normal'
     },
     {
-      fromDate: '2021-01-01',
-      toDate: '2060-12-31',
-      company: 'Elektrobit',
+      fromDate: '2013-01-01',
+      toDate: todayIso,
+      company: 'Exemplu Angajator 2',
       monthlyGrossSalary: 10000,
       workingCondition: 'normal'
     }
@@ -61,8 +61,6 @@ const DEFAULT_INPUTS: PensionInputs = {
 };
 
 export const usePensionCalculator = () => {
-  const currentYear = new Date().getFullYear();
-
   // Use localStorage for persistent storage with debounced saving
   const [inputs, setInputs, isStorageLoaded] = useLocalStorage<PensionInputs>(
     STORAGE_KEY,
@@ -102,7 +100,7 @@ export const usePensionCalculator = () => {
   }, [inputs]);
 
   // Get current VPR info
-  const vprInfo = useMemo(() => getVPRInfo(), [vprVersion]);
+  const vprInfo = getVPRInfo();
 
   useEffect(() => {
     // Block calculation if there are overlapping periods
@@ -113,8 +111,12 @@ export const usePensionCalculator = () => {
         contributionPoints: 0,
         stabilityPoints: 0,
         totalPoints: 0,
+        nonContributivePoints: 0,
+        monthlyPension: 0,
+        currentAge: undefined,
+        yearsUntilRetirement: undefined,
         error: 'overlappingPeriods'
-      } as any);
+      });
       return;
     }
 
@@ -137,9 +139,9 @@ export const usePensionCalculator = () => {
     setMonthlyPension(result.monthlyPension);
     setYearlyPension(result.monthlyPension * 12);
     setPensionDetails(result.details);
-  }, [inputs, validationResult.hasOverlaps, vprVersion, lawVersion.selectedVersionId, lawVersion.isHistoricalVersion, lawVersion.parameters]);
+  }, [inputs, validationResult.hasOverlaps, vprVersion, lawVersion.isHistoricalVersion, lawVersion.parameters]);
 
-  const handleInputChange = useCallback((field: keyof PensionInputs, value: any) => {
+  const handleInputChange = useCallback(<K extends keyof PensionInputs>(field: K, value: PensionInputs[K]) => {
     setInputs(prev => ({
       ...prev,
       [field]: value

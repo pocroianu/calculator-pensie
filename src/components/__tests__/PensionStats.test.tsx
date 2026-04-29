@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import PensionStats from '../PensionStats';
 import { PensionDetails, PensionInputs, ContributionPeriod, WorkingCondition } from '../../types/pensionTypes';
 import { RETIREMENT_AGE, MINIMUM_CONTRIBUTION_YEARS, COMPLETE_CONTRIBUTION_YEARS } from '../../utils/pensionCalculations';
@@ -17,6 +17,7 @@ jest.mock('react-i18next', () => ({
         'pension.stats.retirementStatus.title': 'Retirement Status',
         'pension.stats.retirementStatus.eligible': 'You are eligible for retirement',
         'pension.stats.retirementStatus.yearsRemaining': `${params?.years || 0} years remaining until retirement`,
+        'pension.stats.retirementStatus.unavailable': 'Complete valid contribution periods to calculate retirement status',
         'pension.stats.timeline.title': 'Timeline',
         'pension.stats.timeline.currentAge': 'Current Age',
         'pension.stats.timeline.retirementAge': 'Retirement Age',
@@ -50,6 +51,9 @@ jest.mock('react-i18next', () => ({
         'pension.contributionPeriods.workingCondition.specialConditions': 'Special Conditions (50% bonus)',
         'common.points': 'points',
         'common.years': 'years',
+        'tabs.overview': 'Overview',
+        'tabs.progress': 'Progress',
+        'tabs.planning': 'Planning',
       };
       return translations[key] || key;
     }
@@ -58,7 +62,8 @@ jest.mock('react-i18next', () => ({
 
 // Mock date-fns
 jest.mock('date-fns', () => ({
-  format: (date: Date, _formatStr: string) => {
+  ...jest.requireActual('date-fns'),
+  format: (date: Date) => {
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     return `${months[date.getMonth()]} ${date.getFullYear()}`;
   }
@@ -109,6 +114,8 @@ describe('PensionStats', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
+    localStorage.clear();
+    window.location.hash = '';
   });
 
   describe('Validation Status Display', () => {
@@ -300,6 +307,10 @@ describe('PensionStats', () => {
   });
 
   describe('Period Breakdown Display', () => {
+    beforeEach(() => {
+      window.location.hash = '#progress';
+    });
+
     it('displays contributive period with company name', () => {
       const pensionDetails = createDefaultPensionDetails();
       const inputs = createDefaultInputs({
@@ -313,7 +324,7 @@ describe('PensionStats', () => {
 
       render(<PensionStats pensionDetails={pensionDetails} inputs={inputs} />);
 
-      expect(screen.getByText('ABC Corporation')).toBeInTheDocument();
+      expect(screen.getAllByText('ABC Corporation').length).toBeGreaterThanOrEqual(1);
     });
 
     it('displays non-contributive period type', () => {
@@ -350,7 +361,7 @@ describe('PensionStats', () => {
 
       render(<PensionStats pensionDetails={pensionDetails} inputs={inputs} />);
 
-      expect(screen.getByText('Jun 2015 - Dec 2020')).toBeInTheDocument();
+      expect(screen.getAllByText('Jun 2015 - Dec 2020').length).toBeGreaterThanOrEqual(1);
     });
 
     it('displays working condition for contributive periods', () => {
@@ -365,7 +376,7 @@ describe('PensionStats', () => {
 
       render(<PensionStats pensionDetails={pensionDetails} inputs={inputs} />);
 
-      expect(screen.getByText(/Group II/)).toBeInTheDocument();
+      expect(screen.getAllByText(/Group II/).length).toBeGreaterThanOrEqual(1);
     });
 
     it('displays message when no periods are added', () => {
@@ -397,7 +408,7 @@ describe('PensionStats', () => {
       render(<PensionStats pensionDetails={pensionDetails} inputs={inputs} />);
 
       expect(screen.queryByText('Incomplete Company')).not.toBeInTheDocument();
-      expect(screen.getByText('Valid Company')).toBeInTheDocument();
+      expect(screen.getAllByText('Valid Company').length).toBeGreaterThanOrEqual(1);
     });
   });
 
@@ -510,6 +521,7 @@ describe('PensionStats', () => {
     });
 
     it('handles multiple contribution periods of different types', () => {
+      window.location.hash = '#progress';
       const pensionDetails = createDefaultPensionDetails();
       const inputs = createDefaultInputs({
         contributionPeriods: [
@@ -535,14 +547,15 @@ describe('PensionStats', () => {
 
       render(<PensionStats pensionDetails={pensionDetails} inputs={inputs} />);
 
-      expect(screen.getByText('First Job')).toBeInTheDocument();
+      expect(screen.getAllByText('First Job').length).toBeGreaterThanOrEqual(1);
       // University Studies appears twice for non-contributive periods (title and details)
       const universityElements = screen.getAllByText('University Studies');
       expect(universityElements.length).toBeGreaterThanOrEqual(1);
-      expect(screen.getByText('Second Job')).toBeInTheDocument();
+      expect(screen.getAllByText('Second Job').length).toBeGreaterThanOrEqual(1);
     });
 
     it('handles periods with invalid dates gracefully', () => {
+      window.location.hash = '#progress';
       const pensionDetails = createDefaultPensionDetails();
       const inputs = createDefaultInputs({
         contributionPeriods: [
@@ -561,11 +574,15 @@ describe('PensionStats', () => {
 
       // Invalid period should be skipped
       expect(screen.queryByText('Invalid Period Company')).not.toBeInTheDocument();
-      expect(screen.getByText('Valid Period Company')).toBeInTheDocument();
+      expect(screen.getAllByText('Valid Period Company').length).toBeGreaterThanOrEqual(1);
     });
   });
 
   describe('Data Transformations', () => {
+    beforeEach(() => {
+      window.location.hash = '#progress';
+    });
+
     it('calculates correct period years for display', () => {
       const pensionDetails = createDefaultPensionDetails();
       const inputs = createDefaultInputs({
@@ -581,7 +598,7 @@ describe('PensionStats', () => {
       render(<PensionStats pensionDetails={pensionDetails} inputs={inputs} />);
 
       // The component should show approximately 5 years
-      expect(screen.getByText('Five Year Company')).toBeInTheDocument();
+      expect(screen.getAllByText('Five Year Company').length).toBeGreaterThanOrEqual(1);
     });
 
     it('calculates non-contributive points for military service', () => {
@@ -640,7 +657,7 @@ describe('PensionStats', () => {
       const { container } = render(<PensionStats pensionDetails={pensionDetails} inputs={inputs} />);
 
       // Check for error styling
-      const errorCard = container.querySelector('.bg-red-50');
+      const errorCard = container.querySelector('.bg-a11y-error-bg-subtle');
       expect(errorCard).toBeInTheDocument();
     });
 
@@ -653,7 +670,7 @@ describe('PensionStats', () => {
       const { container } = render(<PensionStats pensionDetails={pensionDetails} inputs={inputs} />);
 
       // Check for warning styling
-      const warningCard = container.querySelector('.bg-yellow-50');
+      const warningCard = container.querySelector('.bg-a11y-warning-bg-subtle');
       expect(warningCard).toBeInTheDocument();
     });
 
@@ -673,7 +690,7 @@ describe('PensionStats', () => {
       const { container } = render(<PensionStats pensionDetails={pensionDetails} inputs={inputs} />);
 
       // Check for success styling
-      const successCard = container.querySelector('.bg-green-50');
+      const successCard = container.querySelector('.bg-a11y-success-bg-subtle');
       expect(successCard).toBeInTheDocument();
     });
 
@@ -686,7 +703,7 @@ describe('PensionStats', () => {
       const { container } = render(<PensionStats pensionDetails={pensionDetails} inputs={inputs} />);
 
       // Check for eligible styling
-      const eligibleCard = container.querySelector('.bg-blue-50');
+      const eligibleCard = container.querySelector('.bg-a11y-info-bg-subtle');
       expect(eligibleCard).toBeInTheDocument();
     });
   });
@@ -737,15 +754,17 @@ describe('PensionStats', () => {
       // Verify all major sections are rendered
       expect(screen.getByText('Timeline')).toBeInTheDocument();
       expect(screen.getByText('Points Breakdown')).toBeInTheDocument();
-      expect(screen.getByText('Period Breakdown')).toBeInTheDocument();
       expect(screen.getByText('Pension Estimate')).toBeInTheDocument();
 
+      fireEvent.click(screen.getByRole('tab', { name: /Progress/i }));
+      expect(screen.getByText('Period Breakdown')).toBeInTheDocument();
+
       // Verify specific data
-      expect(screen.getByText('First Company Ltd')).toBeInTheDocument();
+      expect(screen.getAllByText('First Company Ltd').length).toBeGreaterThanOrEqual(1);
       // Medical Leave appears twice for non-contributive periods (title and details)
       const medicalElements = screen.getAllByText('Medical Leave');
       expect(medicalElements.length).toBeGreaterThanOrEqual(1);
-      expect(screen.getByText('Second Company Inc')).toBeInTheDocument();
+      expect(screen.getAllByText('Second Company Inc').length).toBeGreaterThanOrEqual(1);
       expect(screen.getByText('10 years remaining until retirement')).toBeInTheDocument();
     });
 
@@ -770,6 +789,7 @@ describe('PensionStats', () => {
       render(<PensionStats pensionDetails={pensionDetails} inputs={inputs} />);
 
       expect(screen.getByText('No contribution periods added yet')).toBeInTheDocument();
+      fireEvent.click(screen.getByRole('tab', { name: /Progress/i }));
       expect(screen.getByText('No periods added yet')).toBeInTheDocument();
       expect(screen.getByText('40 years remaining until retirement')).toBeInTheDocument();
     });

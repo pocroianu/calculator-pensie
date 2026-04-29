@@ -68,12 +68,12 @@ const LanguageSwitcher: React.FC = () => {
         aria-haspopup="listbox"
       >
         <Languages className="w-4 h-4 text-gray-500 dark:text-dark-text-muted" />
-        <span>{SUPPORTED_LANGUAGES[currentLang].name}</span>
+        <span className="hidden sm:inline">{SUPPORTED_LANGUAGES[currentLang].name}</span>
         <ChevronDown
           className={`w-3 h-3 text-gray-400 dark:text-dark-text-muted transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
           aria-hidden="true"
         />
-        <ShortcutHint shortcutId="toggleLanguage" />
+        <ShortcutHint shortcutId="toggleLanguage" className="hidden sm:inline-flex" />
       </button>
 
       {isOpen && (

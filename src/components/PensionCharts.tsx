@@ -1,5 +1,5 @@
 import React from 'react';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, Chart, TooltipItem } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import { ContributionPeriod } from '../types/pensionTypes';
 import { formatYears } from '../utils/formatters';
@@ -141,7 +141,7 @@ const PensionCharts: React.FC<Props> = ({ contributionPeriods, birthDate, classN
             size: 11
           },
           // Wrap text if too long
-          generateLabels: function(chart: any) {
+          generateLabels: function(chart: Chart<'pie'>) {
             const datasets = chart.data.datasets;
             if (datasets.length === 0) {
               return [];
@@ -162,7 +162,7 @@ const PensionCharts: React.FC<Props> = ({ contributionPeriods, birthDate, classN
       },
       tooltip: {
         callbacks: {
-          label: function(context: any) {
+          label: function(context: TooltipItem<'pie'>) {
             const label = context.label || '';
             const value = context.raw || 0;
             return `${label}: ${formatYears(value)} years`;

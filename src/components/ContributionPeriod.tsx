@@ -88,7 +88,7 @@ const ContributionPeriod: React.FC<Props> = ({
     onSwipeLeft: handleSwipeLeft, onSwipeRight: handleSwipeRight,
   }, { enabled: isTouch && !isCollapsed, swipeThreshold: 60 });
 
-  const handleChange = (field: keyof ContributionPeriodType, value: any) => {
+  const handleChange = <K extends keyof ContributionPeriodType>(field: K, value: ContributionPeriodType[K]) => {
     if (field === 'nonContributiveType') {
       if (value) { onUpdate({ ...period, [field]: value, monthlyGrossSalary: 0, workingCondition: 'normal' }); }
       else { onUpdate({ ...period, [field]: value }); }
@@ -126,7 +126,7 @@ const ContributionPeriod: React.FC<Props> = ({
 
   const hasOverlapError = errors.some(e => e.field.includes('overlap'));
   const overlapError = errors.find(e => e.field.includes('overlap'));
-  const typeConfig = useMemo(() => getPeriodTypeConfig(period), [period.nonContributiveType, period.workingCondition]);
+  const typeConfig = useMemo(() => getPeriodTypeConfig(period), [period]);
   const TypeIcon = typeConfig.icon;
   const duration = useMemo(() => calculateDuration(period.fromDate, period.toDate), [period.fromDate, period.toDate]);
   const isSalaryInvalid = !period.nonContributiveType && (!period.monthlyGrossSalary || period.monthlyGrossSalary <= 0);

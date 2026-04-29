@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { X, Keyboard, Navigation, Zap, Settings } from 'lucide-react';
 import {
-  KEYBOARD_SHORTCUTS,
   getShortcutDisplayString,
   getShortcutsByCategory,
   KeyboardShortcut

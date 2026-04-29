@@ -2,6 +2,14 @@ import { render, screen } from '@testing-library/react';
 import PensionCharts from '../PensionCharts';
 import { ContributionPeriod, WorkingCondition, NonContributivePeriodType } from '../../types/pensionTypes';
 
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (key: string) => ({
+      'pension.contributionAnalysis.title': 'Contribution Analysis',
+    }[key] || key)
+  })
+}));
+
 // Mock Chart.js to avoid canvas rendering issues in tests
 jest.mock('chart.js', () => ({
   Chart: {

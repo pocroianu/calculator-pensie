@@ -12,10 +12,7 @@ import {
   Save,
   Trash2,
   X,
-  ChevronDown,
-  ChevronUp,
   AlertCircle,
-  GitCompare,
 } from 'lucide-react';
 import { useCalculationHistory } from '../hooks/useCalculationHistory';
 import { useToast } from '../contexts/ToastContext';
@@ -73,8 +70,6 @@ const CalculationHistoryPanel: React.FC<CalculationHistoryPanelProps> = ({
   const [showSaveForm, setShowSaveForm] = useState(false);
   const [snapshotToRestore, setSnapshotToRestore] = useState<CalculationSnapshot | null>(null);
   const [showClearConfirm, setShowClearConfirm] = useState(false);
-  const [compareMode, setCompareMode] = useState(false);
-  const [selectedForCompare, setSelectedForCompare] = useState<string[]>([]);
 
   // Sort snapshots by timestamp (newest first)
   const sortedSnapshots = useMemo(() => {

@@ -31,6 +31,7 @@ interface ImportExportPanelProps {
     year: number;
     effectiveDate: string;
   };
+  showTrigger?: boolean;
 }
 
 export interface ImportExportPanelRef {
@@ -46,7 +47,8 @@ const ImportExportPanel = forwardRef<ImportExportPanelRef, ImportExportPanelProp
   pensionDetails,
   monthlyPension,
   yearlyPension,
-  vprInfo
+  vprInfo,
+  showTrigger = true
 }, ref) => {
   const { t } = useTranslation();
   const { showToast } = useToast();
@@ -64,7 +66,7 @@ const ImportExportPanel = forwardRef<ImportExportPanelRef, ImportExportPanelProp
       exportToJson(inputs);
       showToast('success', 'importExport.export.success');
       trackDataExported('json');
-    } catch (error) {
+    } catch {
       showToast('error', 'importExport.error.readError');
     }
   }, [inputs, showToast, trackDataExported]);
@@ -187,15 +189,17 @@ const ImportExportPanel = forwardRef<ImportExportPanelRef, ImportExportPanelProp
   return (
     <>
       {/* Import/Export Button - Fixed Position */}
-      <button
-        onClick={() => setIsOpen(true)}
-        className={`fixed bottom-36 right-4 z-40 flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-full shadow-lg hover:bg-emerald-700 transition-all hover:shadow-xl ${className}`}
-        aria-label={t('importExport.title')}
-        data-testid="import-export-button"
-      >
-        <FileJson className="w-5 h-5" />
-        <span className="text-sm font-medium">{t('importExport.title')}</span>
-      </button>
+      {showTrigger && (
+        <button
+          onClick={() => setIsOpen(true)}
+          className={`fixed bottom-36 right-4 z-40 flex items-center gap-2 rounded-full bg-emerald-700 px-4 py-2 text-white shadow-lg transition-all hover:bg-emerald-800 hover:shadow-xl ${className}`}
+          aria-label={t('importExport.title')}
+          data-testid="import-export-button"
+        >
+          <FileJson className="w-5 h-5" />
+          <span className="text-sm font-medium">{t('importExport.title')}</span>
+        </button>
+      )}
 
       {/* Panel Slide-out */}
       {isOpen && (

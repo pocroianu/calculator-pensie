@@ -54,7 +54,7 @@ const LawVersionTimeline: React.FC<LawVersionTimelineProps> = ({
 
           {/* Timeline nodes */}
           <div className="space-y-6">
-            {sortedVersions.map((version, index) => {
+            {sortedVersions.map((version) => {
               const isSelected = version.id === selectedVersionId;
               const isActive = version.isActive;
 

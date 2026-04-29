@@ -22,10 +22,9 @@ import {
   Filler,
   ChartConfiguration,
 } from 'chart.js';
-import { ContributionPeriod, WorkingCondition } from '../types/pensionTypes';
+import { ContributionPeriod } from '../types/pensionTypes';
 import { getAverageSalaryForYear } from '../data/historicalSalaries';
 import { getWorkingConditionMultiplier } from './pensionCalculations';
-import { formatCurrency } from './formatters';
 
 // Ensure Chart.js components are registered
 ChartJS.register(
@@ -43,7 +42,7 @@ ChartJS.register(
 /**
  * Translation function type
  */
-type TranslateFunction = (key: string, options?: Record<string, any>) => string;
+type TranslateFunction = (key: string, options?: Record<string, unknown>) => string;
 
 /**
  * Chart image data returned by generators

@@ -179,7 +179,7 @@ export function parseCSV(csvString: string): CSVParseResult {
       headers,
       rows
     };
-  } catch (error) {
+  } catch {
     return {
       success: false,
       headers: [],
@@ -558,7 +558,7 @@ export async function importFromCSVFile(file: File): Promise<{ parseResult: CSVP
     };
 
     return { parseResult, preview };
-  } catch (error) {
+  } catch {
     return {
       parseResult: {
         success: false,

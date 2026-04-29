@@ -39,7 +39,6 @@ const HistoryItemCard: React.FC<HistoryItemCardProps> = ({
   onRestore,
   onDelete,
   onViewDetails,
-  isExpanded = false,
 }) => {
   const { t, i18n } = useTranslation();
 

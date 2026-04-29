@@ -12,7 +12,6 @@ import {
   ScenarioComparisonResult,
   PensionInputs,
   PensionDetails,
-  ContributionPeriod,
   WorkingCondition,
   SCENARIO_CONFIG,
 } from '../types/pensionTypes';
@@ -477,9 +476,10 @@ export function getModificationDescription(
   t: (key: string, params?: Record<string, unknown>) => string
 ): string {
   switch (mod.type) {
-    case 'salaryChange':
+    case 'salaryChange': {
       const sign = (mod.salaryChangePercent || 0) >= 0 ? '+' : '';
       return t('scenarios.modifications.salaryChange', { percent: `${sign}${mod.salaryChangePercent}` });
+    }
     case 'additionalYears':
       return t('scenarios.modifications.additionalYears', { years: mod.additionalYears });
     case 'workingConditionChange':

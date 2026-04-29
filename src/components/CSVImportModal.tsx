@@ -6,7 +6,6 @@ import {
   CSVColumnMapping,
   CSVPreviewData,
   CSVImportResult,
-  CSVRowError,
   importFromCSVFile,
   autoDetectMapping,
   validateMapping,
@@ -91,7 +90,7 @@ const CSVImportModal: React.FC<CSVImportModalProps> = ({ isOpen, onClose, onImpo
       setMapping(detectedMapping);
 
       setStep('mapping');
-    } catch (err) {
+    } catch {
       setError(t('csvImport.error.readError'));
     } finally {
       setIsLoading(false);
