@@ -3,6 +3,12 @@ import InputForm from '../InputForm';
 import { PensionInputs, WorkingCondition } from '../../types/pensionTypes';
 import { ToastProvider } from '../../contexts/ToastContext';
 
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (key: string) => key,
+  }),
+}));
+
 describe('InputForm', () => {
   const mockOnChange = jest.fn();
 
