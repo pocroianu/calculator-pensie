@@ -82,8 +82,8 @@ describe('PensionCharts', () => {
 
       // Check for main container styling
       expect(container.querySelector('.bg-white')).toBeInTheDocument();
-      expect(container.querySelector('.rounded-xl')).toBeInTheDocument();
-      expect(container.querySelector('.border-gray-200')).toBeInTheDocument();
+      expect(container.querySelector('.rounded-lg')).toBeInTheDocument();
+      expect(container.querySelector('.border-slate-200')).toBeInTheDocument();
     });
 
     it('renders grid layout for charts', () => {

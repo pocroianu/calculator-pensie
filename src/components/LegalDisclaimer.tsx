@@ -85,7 +85,7 @@ const LegalDisclaimer: React.FC<LegalDisclaimerProps> = ({ onAccept }) => {
     <>
       {/* Footer Link to Open Disclaimer */}
       <footer
-        className="fixed bottom-0 left-0 right-0 bg-white dark:bg-dark-bg-secondary border-t border-gray-200 dark:border-dark-border py-3 px-4 z-40"
+        className="border-t border-slate-200 bg-white px-4 py-4 dark:border-dark-border dark:bg-dark-bg-secondary"
         role="contentinfo"
         aria-label={t('legal.footerAriaLabel', 'Legal information and copyright')}
       >
@@ -116,16 +116,16 @@ const LegalDisclaimer: React.FC<LegalDisclaimerProps> = ({ onAccept }) => {
         >
           <div
             ref={modalRef}
-            className="bg-white dark:bg-dark-bg-secondary rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col"
+          className="flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-lg bg-white shadow-2xl dark:bg-dark-bg-secondary"
             role="dialog"
             aria-modal="true"
             aria-labelledby="legal-disclaimer-title"
             aria-describedby="legal-disclaimer-description"
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-dark-border bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20">
+            <div className="flex items-center justify-between border-b border-slate-200 bg-slate-50 p-6 dark:border-dark-border dark:bg-dark-bg">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-blue-100 rounded-full" aria-hidden="true">
+                <div className="rounded-lg bg-blue-50 p-2" aria-hidden="true">
                   <Scale className="w-6 h-6 text-blue-600" />
                 </div>
                 <h2 id="legal-disclaimer-title" className="text-xl font-semibold text-gray-900 dark:text-dark-text">
@@ -147,7 +147,7 @@ const LegalDisclaimer: React.FC<LegalDisclaimerProps> = ({ onAccept }) => {
             {/* Content */}
             <div
               id="legal-disclaimer-description"
-              className="overflow-y-auto p-6 space-y-6 flex-1"
+              className="flex-1 space-y-5 overflow-y-auto p-6"
               tabIndex={0}
               role="document"
             >
@@ -159,7 +159,7 @@ const LegalDisclaimer: React.FC<LegalDisclaimerProps> = ({ onAccept }) => {
                     {t('legal.limitations.title')}
                   </h3>
                 </div>
-                <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-100 dark:border-amber-700 rounded-lg p-4">
+                <div className="rounded-lg border border-amber-100 bg-amber-50 p-4 dark:border-amber-700 dark:bg-amber-900/20">
                   <ul className="space-y-2 text-gray-700 dark:text-dark-text text-sm" role="list" aria-label={t('legal.limitations.title')}>
                     <li className="flex items-start gap-2">
                       <span className="text-amber-500 mt-1" aria-hidden="true">•</span>
@@ -193,7 +193,7 @@ const LegalDisclaimer: React.FC<LegalDisclaimerProps> = ({ onAccept }) => {
                     {t('legal.privacy.title')}
                   </h3>
                 </div>
-                <div className="bg-green-50 dark:bg-green-900/20 border border-green-100 dark:border-green-700 rounded-lg p-4">
+                <div className="rounded-lg border border-green-100 bg-green-50 p-4 dark:border-green-700 dark:bg-green-900/20">
                   <ul className="space-y-2 text-gray-700 dark:text-dark-text text-sm" role="list" aria-label={t('legal.privacy.title')}>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" aria-hidden="true" />
@@ -227,7 +227,7 @@ const LegalDisclaimer: React.FC<LegalDisclaimerProps> = ({ onAccept }) => {
                     {t('legal.terms.title')}
                   </h3>
                 </div>
-                <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-700 rounded-lg p-4">
+                <div className="rounded-lg border border-blue-100 bg-blue-50 p-4 dark:border-blue-700 dark:bg-blue-900/20">
                   <ul className="space-y-2 text-gray-700 dark:text-dark-text text-sm" role="list" aria-label={t('legal.terms.title')}>
                     <li className="flex items-start gap-2">
                       <span className="text-blue-500 mt-1" aria-hidden="true">•</span>
@@ -257,7 +257,7 @@ const LegalDisclaimer: React.FC<LegalDisclaimerProps> = ({ onAccept }) => {
                     {t('legal.compliance.title')}
                   </h3>
                 </div>
-                <div className="bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-100 dark:border-indigo-700 rounded-lg p-4 text-sm text-gray-700 dark:text-dark-text">
+                <div className="rounded-lg border border-indigo-100 bg-indigo-50 p-4 text-sm text-gray-700 dark:border-indigo-700 dark:bg-indigo-900/20 dark:text-dark-text">
                   <p className="mb-2">{t('legal.compliance.description')}</p>
                   <p className="text-xs text-gray-500 dark:text-dark-text-muted mt-2">
                     {t('legal.compliance.laws')}

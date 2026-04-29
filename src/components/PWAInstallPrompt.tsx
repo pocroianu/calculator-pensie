@@ -33,15 +33,15 @@ const PWAInstallPrompt: React.FC<PWAInstallPromptProps> = ({ enabled = true }) =
 
   return (
     <div
-      className="fixed bottom-20 left-4 right-4 z-40 animate-slide-up sm:bottom-16 sm:left-auto sm:right-4 sm:max-w-md"
+      className="fixed left-4 right-4 top-24 z-40 animate-slide-down sm:left-auto sm:right-4 sm:max-w-md"
       role="complementary"
       aria-label={t('pwa.install.title')}
       data-testid="pwa-install-prompt"
     >
-      <div className="bg-white dark:bg-dark-bg-secondary border border-gray-200 dark:border-dark-border rounded-xl shadow-lg p-4">
+      <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-lg dark:border-dark-border dark:bg-dark-bg-secondary">
         <div className="flex items-start gap-3">
           {/* Icon */}
-          <div className="flex-shrink-0 w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
+          <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-900/30">
             <Download className="w-5 h-5 text-blue-600 dark:text-blue-400" aria-hidden="true" />
           </div>
 

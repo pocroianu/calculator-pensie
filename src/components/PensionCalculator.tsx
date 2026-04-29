@@ -84,10 +84,51 @@ const PensionCalculator = forwardRef<PensionCalculatorRef, PensionCalculatorProp
   }, [handleInputChange]);
 
   return (
-    <section className="bg-slate-50 dark:bg-dark-bg" aria-label={t('pension.title')}>
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
-          {/* Left Column - Hidden when printing (input form is not needed in print output) */}
-          <div className="space-y-6 print-hide-input-form lg:sticky lg:top-6 lg:max-h-[calc(100vh-3rem)] lg:overflow-y-auto lg:pr-2 smooth-scroll scrollbar-styled">
+    <section className="space-y-6 dark:bg-dark-bg" aria-label={t('pension.title')}>
+      <div className="flex flex-col gap-4 rounded-lg border border-slate-200 bg-white p-4 shadow-sm dark:border-dark-border dark:bg-dark-bg-secondary md:flex-row md:items-center md:justify-between print:hidden">
+        <div>
+          <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-dark-text-muted">
+            Calculator workspace
+          </h2>
+          <p className="mt-1 text-sm text-slate-600 dark:text-dark-text-secondary">
+            {monthlyPension > 0
+              ? t('pension.stats.pensionEstimate.basedOn', { points: pensionDetails?.totalPoints?.toFixed(2) ?? '0.00' })
+              : t('pension.stats.retirementStatus.unavailable', 'Complete valid contribution periods to calculate retirement status')}
+          </p>
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
+          <button
+            onClick={() => importExportRef.current?.openPanel()}
+            className="inline-flex h-10 items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-3 text-sm font-medium text-emerald-800 transition-colors hover:bg-emerald-100 dark:border-emerald-900 dark:bg-emerald-900/20 dark:text-emerald-300 dark:hover:bg-emerald-900/30 sm:px-4"
+            aria-label={t('importExport.title')}
+            data-testid="import-export-button"
+          >
+            <FileJson className="h-4 w-4" aria-hidden="true" />
+            <span>{t('importExport.title')}</span>
+          </button>
+          {monthlyPension > 0 && pensionDetails && vprInfo && (
+            <ShareButton
+              monthlyPension={monthlyPension}
+              yearlyPension={yearlyPension}
+              pensionDetails={pensionDetails}
+              vprInfo={vprInfo}
+              className="h-10 rounded-lg px-3 shadow-none sm:px-4"
+            />
+          )}
+          <button
+            onClick={() => setIsHistoryOpen(true)}
+            className="inline-flex h-10 items-center gap-2 rounded-lg bg-slate-800 px-3 text-sm font-medium text-white transition-colors hover:bg-slate-900 dark:bg-blue-600 dark:hover:bg-blue-700 sm:px-4"
+            aria-label={t('history.openHistory')}
+            data-testid="open-history-button"
+          >
+            <History className="h-4 w-4" />
+            <span>{t('history.openHistory')}</span>
+          </button>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 gap-6 xl:grid-cols-[minmax(400px,0.8fr)_minmax(0,1.2fr)]">
+          <div className="space-y-5 print-hide-input-form">
             {/* Law Version Selector */}
             <LawVersionSelector
               versions={lawVersion.versions}
@@ -118,54 +159,21 @@ const PensionCalculator = forwardRef<PensionCalculatorRef, PensionCalculatorProp
                 inputs={inputs}
               />
             </ErrorBoundary>
-            <ErrorBoundary
-              title={t('error.chartError')}
-              description={t('error.chartErrorDescription')}
-            >
-              <Suspense fallback={<ChartLoadingFallback />}>
-                <PensionCharts
-                  className="print-charts-section"
-                  contributionPeriods={inputs.contributionPeriods}
-                  birthDate={inputs.birthDate}
-                />
-              </Suspense>
-            </ErrorBoundary>
           </div>
       </div>
 
-      {/* Primary utility actions */}
-      <div className="fixed bottom-16 right-4 z-30 flex flex-col items-end gap-2 sm:bottom-16 sm:flex-row print:hidden">
-        <button
-          onClick={() => importExportRef.current?.openPanel()}
-          className="flex h-11 items-center gap-2 rounded-full border border-emerald-200 bg-white px-3 text-sm font-medium text-emerald-800 shadow-lg transition-colors hover:bg-emerald-50 dark:border-emerald-900 dark:bg-dark-bg-secondary dark:text-emerald-300 dark:hover:bg-emerald-900/20 sm:px-4"
-          aria-label={t('importExport.title')}
-          data-testid="import-export-button"
-        >
-          <FileJson className="h-5 w-5" aria-hidden="true" />
-          <span className="hidden sm:inline">{t('importExport.title')}</span>
-        </button>
-        {/* Share Button */}
-        {monthlyPension > 0 && pensionDetails && vprInfo && (
-          <ShareButton
-            monthlyPension={monthlyPension}
-            yearlyPension={yearlyPension}
-            pensionDetails={pensionDetails}
-            vprInfo={vprInfo}
-            className="h-11 rounded-full px-3 shadow-lg sm:px-4"
+      <ErrorBoundary
+        title={t('error.chartError')}
+        description={t('error.chartErrorDescription')}
+      >
+        <Suspense fallback={<ChartLoadingFallback />}>
+          <PensionCharts
+            className="print-charts-section"
+            contributionPeriods={inputs.contributionPeriods}
+            birthDate={inputs.birthDate}
           />
-        )}
-
-        {/* History Button */}
-        <button
-          onClick={() => setIsHistoryOpen(true)}
-          className="flex h-11 items-center gap-2 rounded-full bg-slate-800 px-3 text-sm font-medium text-white shadow-lg transition-colors hover:bg-slate-900 dark:bg-blue-600 dark:hover:bg-blue-700 sm:px-4"
-          aria-label={t('history.openHistory')}
-          data-testid="open-history-button"
-        >
-          <History className="w-5 h-5" />
-          <span className="hidden sm:inline font-medium">{t('history.openHistory')}</span>
-        </button>
-      </div>
+        </Suspense>
+      </ErrorBoundary>
 
       {/* Import/Export Panel - Lazy loaded */}
       <Suspense fallback={<PanelLoadingFallback />}>

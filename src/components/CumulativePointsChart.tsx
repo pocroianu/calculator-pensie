@@ -192,7 +192,7 @@ const CumulativePointsChart: React.FC<Props> = ({ contributionPeriods, birthDate
   // If no data, show placeholder
   if (!chartData || chartData.length === 0) {
     return (
-      <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+      <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
         <div className="p-4 border-b border-gray-200 bg-gray-50">
           <h3 className="font-medium text-gray-900">{t('pension.pointsAccumulation.title')}</h3>
         </div>
@@ -326,7 +326,7 @@ const CumulativePointsChart: React.FC<Props> = ({ contributionPeriods, birthDate
   };
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+    <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
       <div className="p-4 border-b border-gray-200 bg-gray-50">
         <div className="flex items-center gap-2">
           <TrendingUp className="w-5 h-5 text-emerald-500" />

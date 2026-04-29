@@ -127,12 +127,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs, activeTab, onChange, children }) => {
       <div
         role="tablist"
         aria-label={t('pension.stats.pensionEstimate.title')}
-        className="sticky top-0 z-10 bg-gradient-to-b from-gray-50/95 to-white/95
-                   dark:from-dark-bg/95 dark:to-dark-bg-secondary/95
-                   backdrop-blur-sm
-                   border-b border-gray-200 dark:border-dark-border
-                   shadow-sm
-                   overflow-x-auto"
+        className="overflow-x-auto border-b border-slate-200 bg-white dark:border-dark-border dark:bg-dark-bg-secondary"
       >
         <div className="relative">
           <div className="flex gap-2 min-w-max px-4">
@@ -155,15 +150,11 @@ const Tabs: React.FC<TabsProps> = ({ tabs, activeTab, onChange, children }) => {
                     relative tab-focus
                     ${
                       isActive
-                        ? `bg-gradient-to-b from-blue-50 to-white
-                           dark:from-blue-900/20 dark:to-transparent
-                           text-blue-600 dark:text-blue-400
-                           shadow-sm`
+                        ? `bg-blue-50 text-blue-700 dark:bg-blue-900/20 dark:text-blue-300`
                         : `text-gray-600 dark:text-dark-text-secondary
                            hover:bg-gray-50 dark:hover:bg-dark-bg
                            hover:text-gray-900 dark:hover:text-dark-text
-                           hover:scale-[1.02]
-                           hover:shadow-sm`
+                           hover:bg-slate-50 dark:hover:bg-dark-bg`
                     }
                     focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-dark-bg
                   `}

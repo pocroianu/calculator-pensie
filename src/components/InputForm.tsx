@@ -217,13 +217,13 @@ const InputForm = forwardRef<InputFormRef, InputFormProps>(({
   }, [inputs.contributionPeriods]);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5">
       {/* Personal Information Section */}
       <section
-        className="bg-white dark:bg-dark-bg-secondary rounded-xl shadow-sm border border-gray-200 dark:border-dark-border overflow-hidden"
+        className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm dark:border-dark-border dark:bg-dark-bg-secondary"
         aria-labelledby="personal-info-heading"
       >
-        <div className="p-4 border-b border-gray-200 dark:border-dark-border bg-gray-50 dark:bg-dark-bg">
+        <div className="border-b border-slate-200 bg-slate-50 p-4 dark:border-dark-border dark:bg-dark-bg">
           <div className="flex items-center gap-2">
             <CalendarDays className="w-4 h-4 text-gray-500 dark:text-dark-text-muted" aria-hidden="true" />
             <h2 id="personal-info-heading" className="font-medium text-gray-900 dark:text-dark-text">{t('pension.personalInfo.title')}</h2>
@@ -316,10 +316,10 @@ const InputForm = forwardRef<InputFormRef, InputFormProps>(({
 
       {/* Contribution Periods Section */}
       <section
-        className="bg-white dark:bg-dark-bg-secondary rounded-xl shadow-sm border border-gray-200 dark:border-dark-border overflow-hidden"
+        className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm dark:border-dark-border dark:bg-dark-bg-secondary"
         aria-labelledby="contribution-periods-heading"
       >
-        <div className="p-4 border-b border-gray-200 dark:border-dark-border bg-gray-50 dark:bg-dark-bg">
+        <div className="border-b border-slate-200 bg-slate-50 p-4 dark:border-dark-border dark:bg-dark-bg">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2">
               <Clock className="w-4 h-4 text-gray-500 dark:text-dark-text-muted" aria-hidden="true" />
@@ -405,12 +405,15 @@ const InputForm = forwardRef<InputFormRef, InputFormProps>(({
         <div className="p-6">
           {/* Overlap Warning Banner */}
           {validationResult.hasOverlaps && (
-            <div className="mb-4 bg-a11y-error-bg border border-a11y-error-border rounded-lg p-4" data-testid="overlap-warning-banner" role="alert" aria-live="assertive">
+            <div className="mb-4 rounded-lg border border-a11y-error-border bg-a11y-error-bg p-4" data-testid="overlap-warning-banner" role="alert" aria-live="assertive">
               <div className="flex items-start gap-3">
                 <AlertTriangle className="w-5 h-5 text-a11y-error-icon flex-shrink-0 mt-0.5" aria-hidden="true" />
                 <div className="flex-1">
                   <h3 className="text-sm font-semibold text-a11y-error-text">{t('pension.contributionPeriods.validation.overlapWarningTitle')}</h3>
-                  <p className="text-sm text-a11y-error-text mt-1">{t('pension.contributionPeriods.validation.overlapWarningDescription')}</p>
+                  <p className="mt-1 text-sm text-a11y-error-text">{t('pension.contributionPeriods.validation.overlapWarningDescription')}</p>
+                  <p className="mt-2 text-sm font-medium text-a11y-error-text">
+                    Review the highlighted period cards below and adjust start or end dates.
+                  </p>
                   <ul className="mt-2 space-y-1">
                     {validationResult.overlappingPeriods.map(([i, j], idx) => (
                       <li key={idx} className="text-sm text-a11y-error-text flex items-center gap-1">

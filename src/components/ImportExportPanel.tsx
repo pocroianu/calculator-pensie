@@ -213,16 +213,16 @@ const ImportExportPanel = forwardRef<ImportExportPanelRef, ImportExportPanelProp
 
           {/* Panel */}
           <div
-            className="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-50 overflow-y-auto"
+          className="fixed right-0 top-0 z-50 flex h-full w-full max-w-xl flex-col overflow-hidden bg-white shadow-2xl dark:bg-dark-bg-secondary"
             data-testid="import-export-panel"
           >
             {/* Header */}
-            <div className="sticky top-0 flex items-center justify-between p-4 border-b border-gray-200 bg-gradient-to-r from-emerald-50 to-teal-50 z-10">
+            <div className="flex flex-shrink-0 items-center justify-between border-b border-slate-200 bg-slate-50 p-5 dark:border-dark-border dark:bg-dark-bg">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-emerald-100 rounded-full">
+                <div className="rounded-lg bg-emerald-50 p-2">
                   <FileJson className="w-5 h-5 text-emerald-600" />
                 </div>
-                <h2 className="text-lg font-semibold text-gray-900">
+                <h2 className="text-lg font-semibold text-gray-900 dark:text-dark-text">
                   {t('importExport.title')}
                 </h2>
               </div>
@@ -237,10 +237,10 @@ const ImportExportPanel = forwardRef<ImportExportPanelRef, ImportExportPanelProp
             </div>
 
             {/* Content */}
-            <div className="p-4 space-y-6">
+            <div className="flex-1 space-y-5 overflow-y-auto p-5">
               {/* Export Section */}
-              <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-                <div className="p-4 border-b border-gray-100 bg-gray-50">
+              <div className="overflow-hidden rounded-lg border border-slate-200 bg-white dark:border-dark-border dark:bg-dark-bg-secondary">
+                <div className="border-b border-slate-100 bg-slate-50 p-4 dark:border-dark-border dark:bg-dark-bg">
                   <div className="flex items-center gap-2">
                     <Download className="w-4 h-4 text-gray-500" />
                     <h3 className="font-medium text-gray-900">{t('importExport.export.title')}</h3>
@@ -263,8 +263,8 @@ const ImportExportPanel = forwardRef<ImportExportPanelRef, ImportExportPanelProp
               </div>
 
               {/* PDF Export Section */}
-              <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-                <div className="p-4 border-b border-gray-100 bg-gray-50">
+              <div className="overflow-hidden rounded-lg border border-slate-200 bg-white dark:border-dark-border dark:bg-dark-bg-secondary">
+                <div className="border-b border-slate-100 bg-slate-50 p-4 dark:border-dark-border dark:bg-dark-bg">
                   <div className="flex items-center gap-2">
                     <FileText className="w-4 h-4 text-gray-500" />
                     <h3 className="font-medium text-gray-900">{t('importExport.pdf.title')}</h3>
@@ -291,8 +291,8 @@ const ImportExportPanel = forwardRef<ImportExportPanelRef, ImportExportPanelProp
               </div>
 
               {/* Import Section */}
-              <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-                <div className="p-4 border-b border-gray-100 bg-gray-50">
+              <div className="overflow-hidden rounded-lg border border-slate-200 bg-white dark:border-dark-border dark:bg-dark-bg-secondary">
+                <div className="border-b border-slate-100 bg-slate-50 p-4 dark:border-dark-border dark:bg-dark-bg">
                   <div className="flex items-center gap-2">
                     <Upload className="w-4 h-4 text-gray-500" />
                     <h3 className="font-medium text-gray-900">{t('importExport.import.title')}</h3>
@@ -340,8 +340,8 @@ const ImportExportPanel = forwardRef<ImportExportPanelRef, ImportExportPanelProp
 
               {/* CSV Import Section */}
               {onImportPeriods && (
-                <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-                  <div className="p-4 border-b border-gray-100 bg-gray-50">
+                <div className="overflow-hidden rounded-lg border border-slate-200 bg-white dark:border-dark-border dark:bg-dark-bg-secondary">
+                  <div className="border-b border-slate-100 bg-slate-50 p-4 dark:border-dark-border dark:bg-dark-bg">
                     <div className="flex items-center gap-2">
                       <FileSpreadsheet className="w-4 h-4 text-gray-500" />
                       <h3 className="font-medium text-gray-900">{t('csvImport.title')}</h3>

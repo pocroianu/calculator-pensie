@@ -181,8 +181,8 @@ const PensionCharts: React.FC<Props> = ({ contributionPeriods, birthDate, classN
       <SalaryHistoryChart contributionPeriods={contributionPeriods} />
 
       {/* Contribution Analysis - Pie charts */}
-      <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden print-chart-container">
-        <div className="p-4 border-b border-gray-200 bg-gray-50">
+      <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm print-chart-container">
+        <div className="border-b border-slate-200 bg-slate-50 p-4">
           <h3 className="font-medium text-gray-900">{t('pension.contributionAnalysis.title')}</h3>
         </div>
         <div className="p-6">

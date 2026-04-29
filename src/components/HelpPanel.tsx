@@ -13,13 +13,14 @@ const TOUR_COMPLETED_KEY = 'guided_tour_completed';
 interface HelpPanelProps {
   className?: string;
   deferTourPrompt?: boolean;
+  showFloatingButton?: boolean;
 }
 
 export interface HelpPanelRef {
   openHelpPanel: () => void;
 }
 
-const HelpPanel = forwardRef<HelpPanelRef, HelpPanelProps>(({ className = '', deferTourPrompt = false }, ref) => {
+const HelpPanel = forwardRef<HelpPanelRef, HelpPanelProps>(({ className = '', deferTourPrompt = false, showFloatingButton = true }, ref) => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [isTourOpen, setIsTourOpen] = useState(false);
@@ -57,21 +58,22 @@ const HelpPanel = forwardRef<HelpPanelRef, HelpPanelProps>(({ className = '', de
 
   return (
     <>
-      {/* Help Button - Fixed Position */}
-      <button
-        onClick={() => setIsOpen(true)}
-        className={`fixed bottom-16 left-4 z-30 flex h-11 items-center gap-2 rounded-full border border-slate-200 bg-white px-3 text-sm font-medium text-slate-700 shadow-lg transition-all hover:bg-slate-50 hover:text-blue-700 dark:border-dark-border dark:bg-dark-bg-secondary dark:text-dark-text dark:hover:bg-dark-bg-tertiary sm:px-4 ${className}`}
-        aria-label={t('help.openHelp')}
-        data-testid="help-button"
-      >
-        <HelpCircle className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-        <span className="hidden sm:inline">{t('help.openHelp')}</span>
-      </button>
+      {showFloatingButton && (
+        <button
+          onClick={() => setIsOpen(true)}
+          className={`fixed bottom-6 left-4 z-30 flex h-11 items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 text-sm font-medium text-slate-700 shadow-md transition-all hover:bg-slate-50 hover:text-blue-700 dark:border-dark-border dark:bg-dark-bg-secondary dark:text-dark-text dark:hover:bg-dark-bg-tertiary sm:px-4 ${className}`}
+          aria-label={t('help.openHelp')}
+          data-testid="help-button"
+        >
+          <HelpCircle className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+          <span className="hidden sm:inline">{t('help.openHelp')}</span>
+        </button>
+      )}
 
       {/* First-time Tour Prompt */}
       {showTourPrompt && (
         <div
-          className="fixed bottom-32 left-4 right-4 z-40 rounded-xl border border-blue-200 bg-white p-4 shadow-2xl dark:border-blue-700 dark:bg-dark-bg-secondary sm:left-auto sm:right-4 sm:w-72"
+          className="fixed right-4 top-24 z-40 rounded-lg border border-blue-200 bg-white p-4 shadow-xl dark:border-blue-700 dark:bg-dark-bg-secondary sm:w-80"
           data-testid="tour-prompt"
         >
           <div className="flex items-start gap-3">
@@ -118,13 +120,13 @@ const HelpPanel = forwardRef<HelpPanelRef, HelpPanelProps>(({ className = '', de
 
           {/* Panel */}
           <div
-            className="fixed top-0 right-0 h-full w-full max-w-lg bg-white dark:bg-dark-bg-secondary shadow-2xl z-50 overflow-y-auto"
+            className="fixed right-0 top-0 z-50 flex h-full w-full max-w-xl flex-col overflow-hidden bg-white shadow-2xl dark:bg-dark-bg-secondary"
             data-testid="help-panel"
           >
             {/* Header */}
-            <div className="sticky top-0 flex items-center justify-between p-4 border-b border-gray-200 dark:border-dark-border bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 z-10">
+            <div className="flex flex-shrink-0 items-center justify-between border-b border-slate-200 bg-slate-50 p-5 dark:border-dark-border dark:bg-dark-bg">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+                <div className="rounded-lg bg-blue-50 p-2 dark:bg-blue-900/30">
                   <BookOpen className="w-5 h-5 text-blue-600" />
                 </div>
                 <h2 className="text-lg font-semibold text-gray-900 dark:text-dark-text">
@@ -142,23 +144,23 @@ const HelpPanel = forwardRef<HelpPanelRef, HelpPanelProps>(({ className = '', de
             </div>
 
             {/* Content */}
-            <div className="p-4 space-y-6">
+            <div className="flex-1 space-y-6 overflow-y-auto p-5">
               {/* Tour Button */}
-              <div className="bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl p-5 text-white">
+              <div className="rounded-lg border border-blue-100 bg-blue-50 p-5 text-slate-900 dark:border-blue-900 dark:bg-blue-900/20 dark:text-dark-text">
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-white/20 rounded-full">
+                  <div className="rounded-lg bg-white p-3 text-blue-700 dark:bg-dark-bg-secondary dark:text-blue-300">
                     <Compass className="w-6 h-6" />
                   </div>
                   <div className="flex-1">
                     <h3 className="font-semibold mb-1">
                       {t('help.tour.welcome.title')}
                     </h3>
-                    <p className="text-sm text-blue-100 mb-3">
+                    <p className="mb-3 text-sm text-slate-600 dark:text-dark-text-secondary">
                       {t('help.tour.welcome.description')}
                     </p>
                     <button
                       onClick={handleStartTour}
-                      className="px-4 py-2 bg-white text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition-colors"
+                      className="rounded-lg bg-blue-600 px-4 py-2 font-medium text-white transition-colors hover:bg-blue-700"
                       data-testid="help-panel-start-tour"
                     >
                       {t('help.startTour')}

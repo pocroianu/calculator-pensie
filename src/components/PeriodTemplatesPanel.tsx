@@ -162,7 +162,7 @@ const PeriodTemplatesPanel: React.FC<PeriodTemplatesPanelProps> = ({
 
   if (isLoading) {
     return (
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
+      <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
         <div className="animate-pulse flex items-center gap-2">
           <div className="w-5 h-5 bg-gray-200 rounded" />
           <div className="h-4 bg-gray-200 rounded w-32" />
@@ -172,14 +172,14 @@ const PeriodTemplatesPanel: React.FC<PeriodTemplatesPanelProps> = ({
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+    <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm dark:border-dark-border dark:bg-dark-bg-secondary">
       {/* Header - Click to expand/collapse */}
       <button
         onClick={() => {
           lightTap();
           setIsExpanded(!isExpanded);
         }}
-        className="w-full p-4 flex items-center justify-between bg-gradient-to-r from-indigo-50 to-purple-50 hover:from-indigo-100 hover:to-purple-100 transition-colors"
+        className="flex w-full items-center justify-between bg-slate-50 p-4 transition-colors hover:bg-slate-100 dark:bg-dark-bg dark:hover:bg-dark-bg-tertiary"
         data-testid="templates-panel-toggle"
       >
         <div className="flex items-center gap-2">

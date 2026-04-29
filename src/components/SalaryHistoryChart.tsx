@@ -162,7 +162,7 @@ const SalaryHistoryChart: React.FC<Props> = ({ contributionPeriods }) => {
   // If no data, show placeholder
   if (!chartData || chartData.length === 0) {
     return (
-      <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+      <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
         <div className="p-4 border-b border-gray-200 bg-gray-50">
           <h3 className="font-medium text-gray-900">{t('pension.salaryHistory.title')}</h3>
         </div>
@@ -298,7 +298,7 @@ const SalaryHistoryChart: React.FC<Props> = ({ contributionPeriods }) => {
 
   return (
     <section
-      className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden"
+      className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm"
       aria-labelledby="salary-history-title"
     >
       <div className="p-4 border-b border-gray-200 bg-gray-50">

@@ -194,21 +194,89 @@ const PensionStats: React.FC<Props> = ({
   const gapCount = hasGaps ? gapAnalysis.gaps.length : 0;
 
   return (
-    <div className="space-y-6" role="region" aria-label={t('accessibility.resultsSection')}>
+    <div className="space-y-5" role="region" aria-label={t('accessibility.resultsSection')}>
       {/* Print Header - only visible when printing */}
       {isPrinting && <PrintHeader />}
 
       {/* Print Summary - only visible when printing, shows key results at a glance */}
       {isPrinting && <PrintSummary pensionDetails={pensionDetails} inputs={inputs} />}
 
-      {/* Print Button - hidden when printing */}
-      <div className="flex justify-end print:hidden">
-        <PrintButton />
-      </div>
+      <section
+        className="overflow-hidden rounded-lg border border-blue-100 bg-white shadow-sm dark:border-blue-900 dark:bg-dark-bg-secondary print-no-break"
+        data-tour="pension-estimate"
+        aria-labelledby="pension-estimate-heading"
+        aria-live="polite"
+      >
+        <div className="flex flex-col gap-3 border-b border-blue-100 bg-blue-50 px-5 py-4 dark:border-blue-900 dark:bg-blue-900/20 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-center gap-2">
+            <TrendingUp className="h-5 w-5 text-blue-700 dark:text-blue-300" aria-hidden="true" />
+            <h2 id="pension-estimate-heading" className="font-semibold text-slate-950 dark:text-dark-text">
+              {t('pension.stats.pensionEstimate.title')}
+            </h2>
+          </div>
+          <PrintButton />
+        </div>
+
+        <div className="grid gap-5 p-5 lg:grid-cols-[minmax(0,1fr)_minmax(240px,0.65fr)] lg:items-center">
+          <div>
+            {pensionDetails.monthlyPension > 0 ? (
+              <>
+                <div className="text-sm font-medium text-slate-500 dark:text-dark-text-muted" id="monthly-pension-label">
+                  {t('pension.stats.pensionEstimate.monthlyPension')}
+                </div>
+                <div
+                  className="mt-2 text-4xl font-semibold tracking-normal text-slate-950 dark:text-dark-text sm:text-5xl"
+                  aria-labelledby="monthly-pension-label"
+                  role="status"
+                >
+                  {formatCurrency(pensionDetails.monthlyPension)}
+                </div>
+                <p className="mt-2 text-sm text-slate-600 dark:text-dark-text-secondary">
+                  {t('pension.stats.pensionEstimate.basedOn', { points: formatPoints(pensionDetails.totalPoints) })}
+                </p>
+              </>
+            ) : (
+              <div className="flex items-start gap-4" data-testid="pension-blocked-message" role="status">
+                <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg bg-red-50 text-red-600 dark:bg-red-900/20 dark:text-red-300" aria-hidden="true">
+                  {pensionDetails.error === 'overlappingPeriods' ? (
+                    <AlertCircle className="h-6 w-6" />
+                  ) : (
+                    <Clock className="h-6 w-6" />
+                  )}
+                </div>
+                <div>
+                  <div className="text-sm font-medium uppercase tracking-wide text-red-700 dark:text-red-300">
+                    Action needed
+                  </div>
+                  <p className="mt-2 max-w-xl text-base leading-7 text-slate-700 dark:text-dark-text-secondary">
+                    {pensionDetails.error === 'overlappingPeriods'
+                      ? t('pension.contributionPeriods.validation.calculationBlockedByOverlap')
+                      : pensionDetails.error || t('pension.stats.pensionEstimate.completeMinimum')}
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="rounded-lg border border-slate-200 bg-slate-50 p-4 dark:border-dark-border dark:bg-dark-bg">
+            <div className="flex items-center justify-between gap-4">
+              <span className="text-sm text-slate-600 dark:text-dark-text-secondary">
+                {t('pension.stats.pensionEstimate.yearlyPension')}
+              </span>
+              <span className="text-lg font-semibold text-slate-950 dark:text-dark-text">
+                {formatCurrency((pensionDetails.monthlyPension || 0) * 12)}
+              </span>
+            </div>
+            <div className="mt-3 border-t border-slate-200 pt-3 text-xs leading-5 text-slate-500 dark:border-dark-border dark:text-dark-text-muted">
+              {t('pension.stats.pensionEstimate.formula')}
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Status Card - Always visible */}
       <div
-        className={`p-4 rounded-xl border ${validationStatus.color}`}
+        className={`rounded-lg border p-4 ${validationStatus.color}`}
         role="status"
         aria-live="polite"
       >
@@ -220,7 +288,7 @@ const PensionStats: React.FC<Props> = ({
 
       {/* Retirement Status - Always visible */}
       <div
-        className={`${hasCalculationError ? 'bg-a11y-neutral-bg-subtle border-a11y-neutral-border text-a11y-neutral-text' : (pensionDetails.yearsUntilRetirement ?? 0) <= 0 ? 'bg-a11y-info-bg-subtle border-a11y-info-border text-a11y-info-text' : 'bg-a11y-neutral-bg-subtle border-a11y-neutral-border text-a11y-neutral-text'} p-4 rounded-xl border`}
+        className={`${hasCalculationError ? 'bg-a11y-neutral-bg-subtle border-a11y-neutral-border text-a11y-neutral-text' : (pensionDetails.yearsUntilRetirement ?? 0) <= 0 ? 'bg-a11y-info-bg-subtle border-a11y-info-border text-a11y-info-text' : 'bg-a11y-neutral-bg-subtle border-a11y-neutral-border text-a11y-neutral-text'} rounded-lg border p-4`}
         role="status"
       >
         <div className="flex items-start gap-3">
@@ -252,12 +320,11 @@ const PensionStats: React.FC<Props> = ({
         >
           {/* Tab Content */}
           {activeTab === 'overview' && (
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Left Column - Timeline */}
-        <div className="lg:col-span-2 space-y-6">
+            <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
+        <div className="space-y-5">
           {/* Timeline Card */}
-          <div className="bg-white dark:bg-dark-bg-secondary rounded-xl shadow-sm border border-gray-200 dark:border-dark-border overflow-hidden print-no-break">
-            <div className="p-4 border-b border-gray-200 dark:border-dark-border bg-gray-50 dark:bg-dark-bg">
+          <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm dark:border-dark-border dark:bg-dark-bg-secondary print-no-break">
+            <div className="border-b border-slate-200 bg-slate-50 p-4 dark:border-dark-border dark:bg-dark-bg">
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-gray-500 dark:text-dark-text-muted" />
                 <h3 className="font-medium text-gray-900 dark:text-dark-text">{t('pension.stats.timeline.title')}</h3>
@@ -306,8 +373,8 @@ const PensionStats: React.FC<Props> = ({
           </div>
 
               {/* Points Breakdown Card */}
-          <div className="bg-white dark:bg-dark-bg-secondary rounded-xl shadow-sm border border-gray-200 dark:border-dark-border overflow-hidden print-no-break">
-            <div className="p-4 border-b border-gray-200 dark:border-dark-border bg-gray-50 dark:bg-dark-bg">
+          <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm dark:border-dark-border dark:bg-dark-bg-secondary print-no-break">
+            <div className="border-b border-slate-200 bg-slate-50 p-4 dark:border-dark-border dark:bg-dark-bg">
               <div className="flex items-center gap-2">
                 <TrendingUp className="w-4 h-4 text-gray-500 dark:text-dark-text-muted" />
                 <h3 className="font-medium text-gray-900 dark:text-dark-text">{t('pension.stats.pointsBreakdown.title')}</h3>
@@ -335,74 +402,10 @@ const PensionStats: React.FC<Props> = ({
               </div>
             </div>
           </div>
-
             </div>
-
-              {/* Right Column - Pension Estimate (Sticky) */}
-              <div className="space-y-6 lg:sticky lg:top-6 lg:self-start">
-                <section
-                  className="min-w-[280px] overflow-hidden rounded-xl border border-blue-200 bg-blue-700 shadow-sm dark:border-blue-800 dark:bg-blue-900"
-                  data-tour="pension-estimate"
-                  aria-labelledby="pension-estimate-heading"
-                  aria-live="polite"
-                >
-                  <div className="border-b border-white/15 bg-white/10 p-4">
-                    <div className="flex items-center gap-2">
-                      <TrendingUp className="w-4 h-4 text-white" aria-hidden="true" />
-                      <h2 id="pension-estimate-heading" className="font-medium text-white">{t('pension.stats.pensionEstimate.title')}</h2>
-                    </div>
-                  </div>
-
-                  <div className="p-6">
-                    {pensionDetails.monthlyPension > 0 ? (
-                      <>
-                        <div className="text-center">
-                          <div className="text-sm text-blue-100 mb-2" id="monthly-pension-label">{t('pension.stats.pensionEstimate.monthlyPension')}</div>
-                          <div
-                            className="mb-1 whitespace-nowrap text-3xl font-semibold text-white lg:text-4xl"
-                            aria-labelledby="monthly-pension-label"
-                            role="status"
-                          >
-                            {formatCurrency(pensionDetails.monthlyPension)}
-                          </div>
-                          <div className="text-xs text-blue-200">
-                            {t('pension.stats.pensionEstimate.basedOn', { points: formatPoints(pensionDetails.totalPoints) })}
-                          </div>
-                        </div>
-                        <div className="text-center mt-6 pt-4 border-t border-blue-400/30">
-                          <div className="text-sm text-blue-100 mb-2">{t('pension.stats.pensionEstimate.yearlyPension')}</div>
-                          <div className="text-xl lg:text-2xl font-semibold text-white whitespace-nowrap">
-                            {formatCurrency(pensionDetails.monthlyPension * 12)}
-                          </div>
-                        </div>
-                      </>
-                    ) : (
-                      <div className="text-center py-8" data-testid="pension-blocked-message" role="status">
-                        <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-4" aria-hidden="true">
-                          {pensionDetails.error === 'overlappingPeriods' ? (
-                            <AlertCircle className="w-6 h-6 text-white" />
-                          ) : (
-                            <Clock className="w-6 h-6 text-white" />
-                          )}
-                        </div>
-                        <p className="text-sm text-white/90 max-w-[240px] mx-auto">
-                          {pensionDetails.error === 'overlappingPeriods'
-                            ? t('pension.contributionPeriods.validation.calculationBlockedByOverlap')
-                            : pensionDetails.error || t('pension.stats.pensionEstimate.completeMinimum')}
-                        </p>
-                      </div>
-                    )}
-                    <div className="text-xs text-center text-blue-100/80 pt-4 border-t border-blue-400/30 mt-4">
-                      {t('pension.stats.pensionEstimate.formula')}
-                    </div>
-                  </div>
-                </section>
-
-                {/* National Pension Comparison Widget */}
-                {pensionDetails.monthlyPension > 0 && (
-                  <PensionComparisonWidget monthlyPension={pensionDetails.monthlyPension} />
-                )}
-              </div>
+            {pensionDetails.monthlyPension > 0 && (
+              <PensionComparisonWidget monthlyPension={pensionDetails.monthlyPension} />
+            )}
             </div>
           )}
 

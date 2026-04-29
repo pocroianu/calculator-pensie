@@ -158,9 +158,9 @@ const CalculationHistoryPanel: React.FC<CalculationHistoryPanelProps> = ({
 
         {/* Panel */}
         <div className="flex min-h-full items-start justify-end">
-          <div className="relative bg-white dark:bg-dark-bg-secondary w-full max-w-lg h-screen shadow-xl transform transition-all overflow-hidden flex flex-col">
+          <div className="relative flex h-screen w-full max-w-xl transform flex-col overflow-hidden bg-white shadow-xl transition-all dark:bg-dark-bg-secondary">
             {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-dark-border flex-shrink-0">
+            <div className="flex flex-shrink-0 items-center justify-between border-b border-slate-200 bg-slate-50 p-5 dark:border-dark-border dark:bg-dark-bg">
               <div className="flex items-center gap-2">
                 <History className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                 <h2 className="text-lg font-semibold text-gray-900 dark:text-dark-text">
@@ -180,7 +180,7 @@ const CalculationHistoryPanel: React.FC<CalculationHistoryPanelProps> = ({
             </div>
 
             {/* Save current calculation section */}
-            <div className="p-4 border-b border-gray-200 dark:border-dark-border flex-shrink-0">
+            <div className="flex-shrink-0 border-b border-slate-200 p-5 dark:border-dark-border">
               {!showSaveForm ? (
                 <button
                   onClick={() => setShowSaveForm(true)}
@@ -255,7 +255,7 @@ const CalculationHistoryPanel: React.FC<CalculationHistoryPanelProps> = ({
             </div>
 
             {/* History list */}
-            <div className="flex-1 overflow-y-auto p-4">
+            <div className="flex-1 overflow-y-auto p-5">
               {!isLoaded ? (
                 <div className="text-center text-gray-500 dark:text-dark-text-secondary py-8">
                   {t('common.loading')}
@@ -283,7 +283,7 @@ const CalculationHistoryPanel: React.FC<CalculationHistoryPanelProps> = ({
 
             {/* Footer with clear all button */}
             {snapshotCount > 0 && (
-              <div className="p-4 border-t border-gray-200 dark:border-dark-border flex-shrink-0">
+              <div className="flex-shrink-0 border-t border-slate-200 p-5 dark:border-dark-border">
                 {!showClearConfirm ? (
                   <button
                     onClick={() => setShowClearConfirm(true)}
