@@ -1,0 +1,1098 @@
+{
+  "keyboard": {
+    "title": "Tastaturkuerzel",
+    "hint": "Druecken Sie Esc, um diesen Dialog zu schliessen. Tastaturkuerzel sind beim Tippen in Eingabefeldern deaktiviert.",
+    "categories": {
+      "actions": "Aktionen",
+      "navigation": "Navigation",
+      "general": "Allgemein"
+    },
+    "shortcuts": {
+      "addPeriod": "Neuen Beitragszeitraum hinzufuegen",
+      "save": "Daten speichern/exportieren",
+      "toggleLanguage": "Sprache wechseln (EN/RO/DE)",
+      "exportData": "Daten in Datei exportieren",
+      "focusBirthDate": "Geburtsdatumsfeld fokussieren",
+      "focusRetirementYear": "Rentenjahrfeld fokussieren",
+      "focusContributionPeriods": "Beitragszeitraeume fokussieren",
+      "collapseAll": "Alle Zeitraeume einklappen",
+      "expandAll": "Alle Zeitraeume ausklappen",
+      "showHelp": "Hilfebereich oeffnen",
+      "showShortcuts": "Tastaturkuerzel anzeigen",
+      "closeModal": "Dialog/Modal schliessen"
+    }
+  },
+  "help": {
+    "title": "Hilfecenter",
+    "close": "Schliessen",
+    "startTour": "Tour starten",
+    "openHelp": "Hilfe",
+    "skipTour": "Ueberspringen",
+    "nextStep": "Weiter",
+    "prevStep": "Zurueck",
+    "finishTour": "Beenden",
+    "stepOf": "Schritt {{current}} von {{total}}",
+    "tour": {
+      "welcome": {
+        "title": "Willkommen beim Rentenrechner!",
+        "description": "Diese gefuehrte Tour hilft Ihnen zu verstehen, wie Sie den Rechner verwenden, um Ihre rumaenische Rente zu schaetzen. Lassen Sie uns beginnen!"
+      },
+      "birthDate": {
+        "title": "Geburtsdatum",
+        "description": "Geben Sie hier Ihr Geburtsdatum ein. Dieses wird verwendet, um Ihr aktuelles Alter zu berechnen und festzustellen, wann Sie rentenberechtigt sind (Standard-Rentenalter ist 65 Jahre)."
+      },
+      "retirementYear": {
+        "title": "Geplantes Rentenjahr",
+        "description": "Geben Sie das Jahr ein, in dem Sie in Rente gehen moechten. Der Rechner schlaegt ein Jahr basierend auf dem Standard-Rentenalter von 65 Jahren vor, aber Sie koennen dies anpassen."
+      },
+      "contributionPeriods": {
+        "title": "Beitragszeitraeume",
+        "description": "Fuegen Sie hier Ihre Beschaeftigungszeitraeume hinzu. Jeder Zeitraum traegt zu Ihren Rentenpunkten bei, basierend auf Gehalt und Dauer. Sie koennen auch beitragsfreie Zeitraeume wie Militaerdienst oder Studium hinzufuegen."
+      },
+      "workingConditions": {
+        "title": "Arbeitsbedingungen",
+        "description": "Wenn Sie unter schwierigen oder besonderen Bedingungen gearbeitet haben, haben Sie moeglicherweise Anspruch auf Bonuspunkte: Grupa II (Schwierig) gibt 25% Bonus, Grupa I (Sehr schwierig) und Sonderbedingungen geben 50% Bonus."
+      },
+      "pensionEstimate": {
+        "title": "Ihre Rentenschaetzung",
+        "description": "Hier wird Ihre geschaetzte monatliche und jaehrliche Rente basierend auf Ihren Gesamtpunkten angezeigt. Die Berechnung verwendet den Referenzwert von 2024 von 81,03 RON pro Punkt."
+      },
+      "complete": {
+        "title": "Tour abgeschlossen!",
+        "description": "Sie kennen jetzt die Grundlagen! Schauen Sie sich gerne den FAQ-Bereich an, um detailliertere Informationen ueber die Rentenberechnung zu erhalten."
+      }
+    },
+    "faq": {
+      "title": "Haeufig gestellte Fragen",
+      "questions": {
+        "howCalculated": {
+          "question": "Wie wird die Rente berechnet?",
+          "answer": "Ihre Rente wird mit folgender Formel berechnet: Monatliche Rente = Gesamtpunkte x Referenzwert (81,03 RON). Die Gesamtpunkte umfassen Beitragspunkte (basierend auf dem Verhaeltnis Ihres Gehalts zum Durchschnittsgehalt), Stabilitaetspunkte (basierend auf den Arbeitsjahren) und beitragsfreie Punkte."
+        },
+        "contributionPoints": {
+          "question": "Was sind Beitragspunkte?",
+          "answer": "Beitragspunkte werden basierend auf dem Verhaeltnis Ihres Bruttogehalts zum nationalen Durchschnittsgehalt fuer jedes Arbeitsjahr berechnet. Wenn Ihr Gehalt dem Durchschnitt entspricht, erhalten Sie 1 Punkt pro Jahr. Hoehere Gehaelter erhalten proportional mehr Punkte."
+        },
+        "stabilityPoints": {
+          "question": "Was sind Stabilitaetspunkte?",
+          "answer": "Stabilitaetspunkte belohnen langfristige Beschaeftigung. Sie erhalten 0,5 Punkte fuer jedes Arbeitsjahr ueber der Mindestbeitragszeit von 15 Jahren, bis zur vollstaendigen Beitragszeit von 35 Jahren."
+        },
+        "nonContributive": {
+          "question": "Was sind beitragsfreie Zeitraeume?",
+          "answer": "Beitragsfreie Zeitraeume sind Zeitraeume, die fuer Ihre Rente zaehlen, auch ohne Gehaltsbeitraege. Dazu gehoeren: Militaerdienst (0,25 Punkte/Jahr), Universitaetsstudium (0,25 Punkte/Jahr), Kinderbetreuung (0,25 Punkte/Jahr) und Krankschreibung (0,20 Punkte/Jahr)."
+        },
+        "workingConditions": {
+          "question": "Wie wirken sich Arbeitsbedingungen auf meine Rente aus?",
+          "answer": "Wenn Sie unter besonderen Bedingungen gearbeitet haben, erhalten Sie Bonuspunkte: Normale Bedingungen - kein Bonus, Grupa II (Schwierige Bedingungen) - 25% Bonus auf Beitragspunkte, Grupa I (Sehr schwierige Bedingungen) - 50% Bonus, Sonderbedingungen - 50% Bonus."
+        },
+        "minimumContribution": {
+          "question": "Was ist die Mindestbeitragszeit?",
+          "answer": "Die Mindestbeitragszeit in Rumaenien betraegt 15 Jahre. Sie benoetigen mindestens so viele Beitragsjahre, um Anspruch auf eine Rente zu haben. Die vollstaendige Beitragszeit betraegt 35 Jahre."
+        },
+        "retirementAge": {
+          "question": "Was ist das Standard-Rentenalter?",
+          "answer": "Das Standard-Rentenalter in Rumaenien betraegt 65 Jahre. Ab diesem Alter sind Sie berechtigt, Ihre vollen Rentenleistungen zu erhalten, vorausgesetzt Sie haben die Mindestbeitragsanforderungen erfuellt."
+        },
+        "referenceValue": {
+          "question": "Was ist der Referenzwert des Rentenpunkts?",
+          "answer": "Der Referenzwert (valoarea punctului de pensie) ist der Betrag in RON, den jeder Rentenpunkt wert ist. Ab 2024 betraegt dieser Wert 81,03 RON. Dieser Wert wird regelmaessig von der Regierung angepasst."
+        }
+      }
+    },
+    "tooltips": {
+      "birthDate": "Ihr Geburtsdatum wird verwendet, um Ihr aktuelles Alter zu berechnen und die Rentenberechtigung zu bestimmen. Das Standard-Rentenalter betraegt 65 Jahre.",
+      "retirementYear": "Das Jahr, in dem Sie in Rente gehen moechten. Sie koennen nach Erreichen des 65. Lebensjahres in Rente gehen, vorausgesetzt die Mindestbeitragsanforderungen sind erfuellt.",
+      "monthlyGrossSalary": "Ihr monatliches Bruttogehalt vor Steuern. Dieses wird mit dem nationalen Durchschnitt verglichen, um Beitragspunkte zu berechnen.",
+      "startDate": "Das Anfangsdatum dieses Beschaeftigungs- oder beitragsfreien Zeitraums.",
+      "endDate": "Das Enddatum dieses Beschaeftigungs- oder beitragsfreien Zeitraums.",
+      "company": "Optional: Der Name des Unternehmens oder der Organisation, bei der Sie gearbeitet haben.",
+      "workingCondition": "Waehlen Sie die Arbeitsbedingungen fuer diesen Zeitraum. Sonderbedingungen gewaehren Bonuspunkte: Grupa II +25%, Grupa I +50%, Sonderbedingungen +50%.",
+      "nonContributiveType": "Die Art des beitragsfreien Zeitraums. Verschiedene Typen erhalten unterschiedliche Punktsaetze pro Jahr.",
+      "contributionPoints": "Punkte, die basierend auf Ihrem Gehalt im Vergleich zum nationalen Durchschnitt verdient werden. Hoeheres Gehalt = mehr Punkte.",
+      "stabilityPoints": "Bonuspunkte fuer langfristige Beschaeftigung. Verdient fuer Jahre ueber dem 15-Jahres-Minimum, bis zu 35 Jahren.",
+      "totalPoints": "Die Summe aller Ihrer Punkte: Beitrag + Stabilitaet + beitragsfrei. Multipliziert mit 81,03 RON fuer Ihre Rente."
+    }
+  },
+  "legal": {
+    "title": "Rechtlicher Hinweis & Datenschutzrichtlinie",
+    "footerLink": "Rechtliches & Datenschutz",
+    "copyright": "Rumaenischer Rentenrechner",
+    "acceptButton": "Ich verstehe und akzeptiere",
+    "closeButton": "Schliessen",
+    "version": "Version {{version}}",
+    "limitations": {
+      "title": "Einschraenkungen des Rechners",
+      "estimateOnly": "Dieser Rechner liefert nur Schaetzungen und sollte nicht als offizielle Rentenberechnung betrachtet werden.",
+      "notOfficial": "Die Ergebnisse sind nicht offiziell und ersetzen keine Beratung durch die Casa Națională de Pensii Publice (CNPP).",
+      "lawChanges": "Rentengesetze und -formeln koennen sich aendern. Der Rechner basiert auf der rumaenischen Rentengesetzgebung von 2024.",
+      "noGuarantee": "Wir garantieren nicht die Genauigkeit, Vollstaendigkeit oder Aktualitaet der Berechnungen.",
+      "consultProfessional": "Fuer offizielle Renteninformationen wenden Sie sich bitte an CNPP oder einen qualifizierten Rentenberater."
+    },
+    "privacy": {
+      "title": "Datenschutzrichtlinie",
+      "localStorage": "Alle Ihre Daten werden nur lokal in Ihrem Browser gespeichert. Es werden keine Daten an einen Server gesendet.",
+      "noServer": "Diese Anwendung laeuft vollstaendig in Ihrem Browser. Wir erfassen, speichern oder verarbeiten Ihre persoenlichen Daten nicht.",
+      "noThirdParty": "Es werden keine Drittanbieter-Tracking-, Analyse- oder Werbedienste verwendet.",
+      "gdprCompliant": "Konform mit GDPR und dem rumaenischen Gesetz Nr. 190/2018 zum Datenschutz.",
+      "deleteAnytime": "Sie koennen alle gespeicherten Daten jederzeit loeschen, indem Sie den lokalen Speicher oder die Website-Daten Ihres Browsers leeren."
+    },
+    "terms": {
+      "title": "Nutzungsbedingungen",
+      "freeUse": "Dieser Rechner wird kostenlos und nur zu Informationszwecken bereitgestellt.",
+      "informationalOnly": "Die bereitgestellten Informationen sollten nur fuer persoenliche Planung und Bildungszwecke verwendet werden.",
+      "noLiability": "Die Entwickler und Betreiber haften nicht fuer Entscheidungen, die auf Grundlage der Ergebnisse des Rechners getroffen werden.",
+      "userResponsibility": "Die Benutzer sind dafuer verantwortlich, alle Informationen mit offiziellen Quellen zu ueberpruefen, bevor sie finanzielle Entscheidungen treffen."
+    },
+    "compliance": {
+      "title": "Einhaltung des rumaenischen Rechts",
+      "description": "Diese Anwendung ist so konzipiert, dass sie den rumaenischen Datenschutzbestimmungen entspricht. Ihre persoenlichen Daten verbleiben jederzeit auf Ihrem Geraet und unter Ihrer Kontrolle.",
+      "laws": "Anwendbare Gesetzgebung: GDPR (EU 2016/679), Rumaenisches Gesetz Nr. 190/2018, Rumaenisches Gesetz Nr. 263/2010 (Rentengesetz)"
+    }
+  },
+  "periodTemplates": {
+    "title": "Zeitraumvorlagen",
+    "available": "verfuegbar",
+    "saveCustomTemplate": "Benutzerdefinierte Vorlage erstellen",
+    "categories": {
+      "all": "Alle",
+      "employment": "Beschaeftigung",
+      "nonContributive": "Beitragsfrei",
+      "custom": "Benutzerdefiniert"
+    },
+    "templates": {
+      "standardEmployment": {
+        "name": "Standardbeschaeftigung",
+        "description": "Normale Arbeitsbedingungen mit regulaerem Gehalt"
+      },
+      "difficultConditions": {
+        "name": "Schwierige Bedingungen (Grupa II)",
+        "description": "25% Bonus auf Beitragspunkte"
+      },
+      "veryDifficultConditions": {
+        "name": "Sehr schwierig (Grupa I)",
+        "description": "50% Bonus auf Beitragspunkte"
+      },
+      "specialConditions": {
+        "name": "Sonderbedingungen",
+        "description": "50% Bonus auf Beitragspunkte fuer gefaehrliche Arbeit"
+      },
+      "university": {
+        "name": "Universitaetsstudium",
+        "description": "0,25 Punkte pro Jahr fuer Hochschulbildung"
+      },
+      "military": {
+        "name": "Militaerdienst",
+        "description": "0,25 Punkte pro Jahr fuer Militaerdienst"
+      },
+      "childCare": {
+        "name": "Elternzeit",
+        "description": "0,25 Punkte pro Jahr fuer Kinderbetreuung"
+      },
+      "medicalLeave": {
+        "name": "Krankschreibung",
+        "description": "0,20 Punkte pro Jahr fuer Krankschreibung"
+      }
+    },
+    "form": {
+      "name": "Vorlagenname",
+      "namePlaceholder": "z.B. Meine IT-Job-Vorlage",
+      "description": "Beschreibung",
+      "descriptionPlaceholder": "Optionale Beschreibung fuer diese Vorlage",
+      "type": "Vorlagentyp"
+    },
+    "validation": {
+      "nameRequired": "Vorlagenname ist erforderlich",
+      "nameTooShort": "Vorlagenname muss mindestens 2 Zeichen lang sein",
+      "nameTooLong": "Vorlagenname darf hoechstens 50 Zeichen lang sein"
+    },
+    "toast": {
+      "templateApplied": "Vorlage angewendet - fuellen Sie die Daten aus",
+      "templateSaved": "Benutzerdefinierte Vorlage erfolgreich gespeichert",
+      "templateDeleted": "Vorlage geloescht"
+    }
+  },
+  "autocomplete": {
+    "suggestions": "Vorschlaege fuer Firmennamen",
+    "source": {
+      "history": "Zuletzt",
+      "popular": "Beliebt"
+    },
+    "noResults": "Keine passenden Unternehmen gefunden",
+    "duration": {
+      "oneYear": "1 Jahr",
+      "twoYears": "2 Jahre",
+      "threeYears": "3 Jahre",
+      "fiveYears": "5 Jahre",
+      "tenYears": "10 Jahre",
+      "fifteenYears": "15 Jahre",
+      "twentyYears": "20 Jahre",
+      "twentyFiveYears": "25 Jahre",
+      "thirtyYears": "30 Jahre",
+      "thirtyFiveYears": "35 Jahre"
+    }
+  },
+  "common": {
+    "add": "Hinzufuegen",
+    "remove": "Entfernen",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Loeschen",
+    "close": "Schliessen",
+    "years": "Jahre",
+    "remaining": "verbleibend",
+    "points": "Punkte",
+    "none": "Keine",
+    "optional": "optional",
+    "selectDate": "Datum waehlen",
+    "today": "Heute",
+    "clear": "Leeren",
+    "previousMonth": "Vorheriger Monat",
+    "nextMonth": "Naechster Monat",
+    "swipeToNavigate": "Wischen Sie links/rechts, um den Monat zu wechseln",
+    "swipeToDelete": "Wischen Sie nach links, um einen Zeitraum zu loeschen",
+    "loading": "Wird geladen..."
+  },
+  "nav": {
+    "quickActions": "Schnellaktionen"
+  },
+  "accessibility": {
+    "skipToMain": "Zum Hauptinhalt springen",
+    "liveRegionUpdate": "Inhalt aktualisiert",
+    "formSection": "Formularbereich",
+    "resultsSection": "Ergebnisbereich",
+    "chartDescription": "Diagramm zeigt {{type}}: {{description}}",
+    "progressBar": "Fortschritt: {{value}}% abgeschlossen",
+    "expandSection": "{{section}} ausklappen",
+    "collapseSection": "{{section}} einklappen",
+    "requiredField": "Pflichtfeld",
+    "errorCount": "{{count}} Fehler gefunden",
+    "validationError": "Validierungsfehler: {{message}}",
+    "calculationResult": "Berechnungsergebnis: {{value}}",
+    "dateFormat": "Datumsformat: JJJJ-MM-TT",
+    "currencyFormat": "Betrag in Rumaenischen Lei (RON)",
+    "percentageFormat": "Wert in Prozent",
+    "periodStatus": "Zeitraum {{index}}: {{status}}",
+    "pensionEstimateUpdate": "Rentenschaetzung aktualisiert: {{monthly}} pro Monat",
+    "contributionPointsUpdate": "Gesamtbeitragspunkte: {{points}}"
+  },
+  "error": {
+    "title": "Etwas ist schiefgelaufen",
+    "description": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut oder laden Sie die Seite neu.",
+    "tryAgain": "Erneut versuchen",
+    "reloadPage": "Seite neu laden",
+    "details": "Fehlerdetails",
+    "chartError": "Diagramm kann nicht angezeigt werden",
+    "chartErrorDescription": "Beim Rendern des Diagramms ist ein Problem aufgetreten. Bitte versuchen Sie es erneut.",
+    "calculationError": "Berechnungsfehler",
+    "calculationErrorDescription": "Bei der Berechnung Ihrer Rente ist ein Problem aufgetreten. Bitte ueberpruefen Sie Ihre Eingaben und versuchen Sie es erneut."
+  },
+  "validation": {
+    "birthDateRequired": "Geburtsdatum ist erforderlich",
+    "birthDateInFuture": "Geburtsdatum darf nicht in der Zukunft liegen",
+    "birthDateTooOld": "Geburtsdatum darf nicht mehr als 120 Jahre zurueckliegen",
+    "retirementYearRequired": "Rentenjahr ist erforderlich",
+    "retirementYearInPast": "Rentenjahr darf nicht in der Vergangenheit liegen",
+    "retirementYearTooFar": "Rentenjahr liegt zu weit in der Zukunft",
+    "retirementAgeTooYoung": "Rentenalter darf nicht unter 50 Jahren liegen",
+    "retirementAgeTooOld": "Rentenalter darf nicht ueber 90 Jahren liegen"
+  },
+  "importExport": {
+    "title": "Datenverwaltung",
+    "export": {
+      "button": "Daten exportieren",
+      "title": "Ihre Daten exportieren",
+      "description": "Laden Sie Ihre Berechnungsdaten als JSON-Datei zur Sicherung oder Uebertragung herunter.",
+      "success": "Daten erfolgreich exportiert",
+      "filename": "renten-daten"
+    },
+    "pdf": {
+      "button": "PDF-Bericht herunterladen",
+      "title": "PDF-Bericht",
+      "description": "Erstellen Sie einen professionellen PDF-Bericht mit Ihrer Rentenberechnungszusammenfassung, Punkteaufschluesselung und Beitragszeitraumliste.",
+      "success": "PDF-Bericht erfolgreich erstellt",
+      "filename": "renten-bericht"
+    },
+    "import": {
+      "button": "Daten importieren",
+      "title": "Daten importieren",
+      "description": "Laden Sie zuvor exportierte Daten aus einer JSON-Datei.",
+      "selectFile": "Datei auswaehlen",
+      "dragDrop": "oder ziehen Sie eine JSON-Datei hierher",
+      "success": "Daten erfolgreich importiert",
+      "confirm": "Importieren",
+      "cancel": "Abbrechen"
+    },
+    "error": {
+      "invalidFormat": "Ungueltiges Dateiformat. Bitte verwenden Sie eine gueltige Exportdatei.",
+      "newerVersion": "Diese Datei wurde mit einer neueren Version der App erstellt.",
+      "parseError": "Die Datei konnte nicht verarbeitet werden. Bitte ueberpruefen Sie, ob es sich um eine gueltige JSON-Datei handelt.",
+      "invalidFileType": "Bitte waehlen Sie eine JSON-Datei.",
+      "fileTooLarge": "Die Datei ist zu gross. Maximale Groesse ist 1 MB.",
+      "readError": "Die Datei konnte nicht gelesen werden. Bitte versuchen Sie es erneut."
+    },
+    "warning": {
+      "title": "Aktuelle Daten ersetzen?",
+      "message": "Durch den Import werden alle Ihre aktuellen Berechnungsdaten ersetzt. Diese Aktion kann nicht rueckgaengig gemacht werden."
+    }
+  },
+  "csvImport": {
+    "title": "Aus CSV importieren",
+    "button": "Zeitraeume aus CSV importieren",
+    "description": "Importieren Sie Beitragszeitraeume aus einer CSV-Datei, die aus Lohnabrechnungssystemen oder Arbeitsverlaufsdokumenten exportiert wurde.",
+    "success": "Beitragszeitraeume erfolgreich importiert",
+    "selectFile": "CSV-Datei auswaehlen",
+    "dragDrop": "oder ziehen Sie eine CSV-Datei hierher",
+    "back": "Zurueck",
+    "next": "Weiter",
+    "import": "{{count}} Zeitraeume importieren",
+    "steps": {
+      "upload": "Waehlen Sie eine CSV-Datei zum Importieren",
+      "mapping": "CSV-Spalten den Zeitraumfeldern zuordnen",
+      "preview": "Ueberpruefen und Import bestaetigen",
+      "result": "Import abgeschlossen"
+    },
+    "info": {
+      "description": "Laden Sie eine CSV-Datei mit Ihrem Arbeitsverlauf hoch. Die Datei sollte Spalten fuer Daten, Gehalt und optional Firmenname und Arbeitsbedingungen enthalten."
+    },
+    "format": {
+      "title": "Unterstuetztes CSV-Format",
+      "headers": "Die erste Zeile sollte Spaltenkoepfe enthalten",
+      "dates": "Daten koennen im Format JJJJ-MM-TT, TT/MM/JJJJ oder TT-MM-JJJJ sein",
+      "salary": "Gehalt sollte eine Zahl sein (Waehrungssymbole werden entfernt)"
+    },
+    "mapping": {
+      "instructions": "Ordnen Sie Ihre CSV-Spalten den entsprechenden Zeitraumfeldern zu. Pflichtfelder sind mit * gekennzeichnet.",
+      "selectColumn": "-- Spalte auswaehlen --",
+      "mapped": "Zugeordnet",
+      "sampleData": "Beispieldaten ({{count}} Zeilen gesamt)"
+    },
+    "fields": {
+      "fromDate": "Anfangsdatum",
+      "toDate": "Enddatum",
+      "company": "Unternehmen",
+      "salary": "Monatliches Bruttogehalt",
+      "workingCondition": "Arbeitsbedingung",
+      "nonContributiveType": "Beitragsfreier Typ"
+    },
+    "preview": {
+      "allValid": "Alle Zeilen sind gueltig und bereit zum Import",
+      "hasErrors": "Einige Zeilen haben Validierungsfehler",
+      "totalRows": "Gesamtzeilen",
+      "validRows": "Gueltige Zeilen",
+      "errors": "{{count}} Validierungsfehler",
+      "errorRow": "Zeile {{row}}",
+      "moreErrors": "...und {{count}} weitere Fehler",
+      "periodsToImport": "{{count}} Zeitraeume zum Importieren",
+      "noCompany": "Unbenannter Zeitraum",
+      "morePeriods": "...und {{count}} weitere Zeitraeume"
+    },
+    "error": {
+      "emptyFile": "Die CSV-Datei ist leer.",
+      "noHeaders": "In der CSV-Datei konnten keine Spaltenkoepfe gefunden werden.",
+      "noDataRows": "Die CSV-Datei enthaelt keine Datenzeilen.",
+      "parseError": "Die CSV-Datei konnte nicht verarbeitet werden. Bitte ueberpruefen Sie das Dateiformat.",
+      "invalidFileType": "Bitte waehlen Sie eine CSV-Datei.",
+      "fileTooLarge": "Die Datei ist zu gross. Maximale Groesse ist 5 MB.",
+      "readError": "Die Datei konnte nicht gelesen werden. Bitte versuchen Sie es erneut.",
+      "missingRequiredFields": "Bitte ordnen Sie alle Pflichtfelder zu: {{fields}}",
+      "requiredFieldsNotMapped": "Bitte ordnen Sie die Pflichtfelder zu (Anfangsdatum und Enddatum).",
+      "invalidDate": "Zeile {{row}}: Ungueltiges Datum in {{field}} (\"{{value}}\")",
+      "endDateBeforeStartDate": "Zeile {{row}}: Enddatum muss nach dem Anfangsdatum liegen",
+      "salaryRequired": "Zeile {{row}}: Gehalt ist fuer Beschaeftigungszeitraeume erforderlich"
+    }
+  },
+  "vprAdmin": {
+    "title": "VPR-Konfiguration",
+    "currentValue": "Aktueller VPR-Wert",
+    "edit": "Bearbeiten",
+    "year": "Jahr",
+    "value": "Wert",
+    "effectiveDate": "Stichtag",
+    "description": "Beschreibung",
+    "optional": "optional",
+    "descriptionPlaceholder": "z.B. Jaehrliche Regierungsaktualisierung",
+    "saving": "Wird gespeichert...",
+    "historicalValues": "Historische Werte",
+    "addHistorical": "Historischen Wert hinzufuegen",
+    "current": "Aktuell",
+    "actions": "Aktionen",
+    "export": "Konfiguration exportieren",
+    "import": "Konfiguration importieren",
+    "reset": "Auf Standardwerte zuruecksetzen",
+    "confirmReset": "Erneut klicken zum Bestaetigen",
+    "lastUpdated": "Zuletzt aktualisiert",
+    "info": "Der VPR (Referenzwert des Rentenpunkts) wird jaehrlich von der rumaenischen Regierung aktualisiert. Aenderungen hier wirken sich sofort auf alle Rentenberechnungen aus.",
+    "updateSuccess": "VPR-Wert erfolgreich aktualisiert",
+    "addSuccess": "Historischer Wert erfolgreich hinzugefuegt",
+    "removeSuccess": "Historischer Wert erfolgreich entfernt",
+    "exportSuccess": "Konfiguration erfolgreich exportiert",
+    "importSuccess": "Konfiguration erfolgreich importiert",
+    "resetSuccess": "Konfiguration auf Standardwerte zurueckgesetzt",
+    "importError": "Konfiguration konnte nicht importiert werden",
+    "readError": "Datei konnte nicht gelesen werden",
+    "openAdmin": "VPR-Einstellungen"
+  },
+  "toast": {
+    "actions": {
+      "dataSaved": "Ihre Daten wurden automatisch gespeichert",
+      "periodAdded": "Neuer Beitragszeitraum hinzugefuegt",
+      "periodRemoved": "Beitragszeitraum entfernt",
+      "formReset": "Formular wurde auf Standardwerte zurueckgesetzt",
+      "languageChanged": "Sprache auf Deutsch geaendert"
+    },
+    "validation": {
+      "hasErrors": "Bitte beheben Sie die Validierungsfehler",
+      "periodsOverlap": "Einige Beitragszeitraeume ueberschneiden sich",
+      "invalidDates": "Bitte ueberpruefen Sie die Datumsfelder",
+      "invalidSalary": "Bitte geben Sie einen gueltigen Gehaltsbetrag ein"
+    },
+    "calculation": {
+      "complete": "Rentenberechnung aktualisiert",
+      "eligibilityMet": "Herzlichen Glueckwunsch! Sie erfuellen alle Voraussetzungen fuer die Rentenberechtigung",
+      "minimumReached": "Sie haben die Mindestbeitragszeit erreicht"
+    }
+  },
+  "pension": {
+    "title": "Rumaenischer Rentenrechner",
+    "description": "Berechnen Sie Ihre Rente nach dem rumaenischen Rentensystem 2024",
+    "personalInfo": {
+      "title": "Persoenliche Informationen",
+      "birthDate": "Geburtsdatum",
+      "plannedRetirementYear": "Geplantes Rentenjahr",
+      "use2061": "2061 verwenden"
+    },
+    "contributionPeriods": {
+      "title": "Beitragszeitraeume",
+      "addPeriod": "Zeitraum hinzufuegen",
+      "removePeriod": "Zeitraum entfernen",
+      "expand": "Zeitraum ausklappen",
+      "collapse": "Zeitraum einklappen",
+      "expandAll": "Alle Zeitraeume ausklappen",
+      "collapseAll": "Alle Zeitraeume einklappen",
+      "monthlyGrossSalary": "Monatliches Bruttogehalt",
+      "startDate": "Anfangsdatum",
+      "endDate": "Enddatum",
+      "company": "Unternehmen",
+      "employmentPeriod": "Beschaeftigungszeitraum",
+      "validation": {
+        "monthlyGrossSalaryRequired": "Monatliches Bruttogehalt ist erforderlich",
+        "startDateRequired": "Anfangsdatum ist erforderlich",
+        "endDateRequired": "Enddatum ist erforderlich",
+        "invalidDate": "Bitte geben Sie ein gueltiges Datum ein",
+        "startDateInFuture": "Anfangsdatum darf nicht in der Zukunft liegen",
+        "endDateInFuture": "Enddatum darf nicht in der Zukunft liegen",
+        "endDateBeforeStartDate": "Enddatum muss nach dem Anfangsdatum liegen",
+        "dateTooOld": "Datum darf nicht mehr als 100 Jahre zurueckliegen",
+        "salaryOutOfRange": "Gehalt muss zwischen {{min}} und {{max}} RON liegen",
+        "periodsOverlap": "Dieser Zeitraum ueberschneidet sich mit Zeitraum {{period1}} und {{period2}}",
+        "overlapWarningTitle": "Ueberschneidende Zeitraeume erkannt",
+        "overlapWarningDescription": "Einige Beitragszeitraeume ueberschneiden sich. Bitte korrigieren Sie die ueberschneidenden Daten, um die Rentenberechnung zu ermoeglichen.",
+        "overlapSummary": "Zeitraum {{period1}} und Zeitraum {{period2}} haben ueberschneidende Daten",
+        "calculationBlockedByOverlap": "Die Rentenberechnung ist deaktiviert, bis die ueberschneidenden Zeitraeume behoben sind"
+      },
+      "workingCondition": {
+        "label": "Arbeitsbedingungen",
+        "normal": "Normale Bedingungen",
+        "groupII": "Grupa II - Schwierig (25% Bonus)",
+        "groupI": "Grupa I - Sehr schwierig (50% Bonus)",
+        "specialConditions": "Sonderbedingungen (50% Bonus)",
+        "bonusApplied": "{{bonus}} Bonus wird auf Beitragspunkte angewendet",
+        "normalShort": "Normal",
+        "groupIIShort": "Gruppe II",
+        "groupIShort": "Gruppe I",
+        "specialConditionsShort": "Spezial"
+      },
+      "nonContributivePeriod": {
+        "label": "Beitragsfreier Zeitraum",
+        "military": "Militaerdienst",
+        "university": "Universitaet",
+        "childCare": "Kinderbetreuung",
+        "medical": "Krankschreibung"
+      },
+      "dateSection": "Wann",
+      "periodType": "Periodentyp",
+      "typeEmployment": "Beschaeftigung",
+      "employmentDetails": "Details",
+      "durationYear": "Jahr",
+      "durationYears": "Jahre",
+      "durationMonth": "Monat",
+      "durationMonths": "Monate",
+      "lessThanMonth": "Weniger als ein Monat",
+      "progressLabel": "Beitragsfortschritt",
+      "minimumLabel": "Minimum",
+      "emptyTitle": "Noch keine Beitragszeiten",
+      "emptyDescription": "Fuegen Sie Ihre Beschaeftigungshistorie und beitragsfreie Zeiten hinzu, um Ihre Rente zu berechnen.",
+      "addEmployment": "Beschaeftigungszeit Hinzufuegen",
+      "addNonContributive": "Beitragsfreie Zeit Hinzufuegen",
+      "quickFill": "Schnellauswahl",
+      "vsNationalAvg": "vs Durchschnitt",
+      "completionLabel": "{{percent}}% fertig"
+    },
+    "contributionAnalysis": {
+      "title": "Beitragsanalyse",
+      "totalPoints": "Gesamtpunkte",
+      "monthlyPension": "Monatliche Rente",
+      "yearlyPension": "Jaehrliche Rente",
+      "retirementAge": "Rentenalter",
+      "contributionYears": "Beitragsjahre",
+      "minimumRequired": "Mindestanforderung",
+      "completeContribution": "Vollstaendiger Beitrag",
+      "stabilityPoints": "Stabilitaetspunkte",
+      "nonContributivePoints": "Beitragsfreie Punkte"
+    },
+    "stats": {
+      "validation": {
+        "noContributionPeriods": "Fuegen Sie Ihre Beitragszeitraeume hinzu, um Ihre Rente zu berechnen",
+        "minimumContributionYears": "Sie benoetigen noch {{years}} Jahre, um die Mindestbeitragszeit von {{minimum}} Jahren zu erreichen",
+        "completeContributionYears": "Sie benoetigen noch {{years}} Jahre, um die vollstaendige Beitragszeit von {{complete}} Jahren zu erreichen",
+        "allConditionsMet": "Alle Rentenvoraussetzungen sind erfuellt"
+      },
+      "retirementStatus": {
+        "title": "Rentenstatus",
+        "eligible": "Rentenberechtigt",
+        "yearsRemaining": "{{years}} Jahre verbleibend"
+      },
+      "timeline": {
+        "title": "Zeitachse",
+        "currentAge": "Aktuelles Alter",
+        "retirementAge": "Rentenalter",
+        "years": "Jahre"
+      },
+      "contributionProgress": {
+        "title": "Beitragsfortschritt",
+        "years": "JAHRE"
+      },
+      "pointsBreakdown": {
+        "title": "Punkteaufschluesselung",
+        "contribution": "Beitrag",
+        "stability": "Stabilitaet",
+        "nonContributive": "Beitragsfrei",
+        "totalPoints": "Gesamtpunkte"
+      },
+      "periodBreakdown": {
+        "title": "Zeitraumaufschluesselung",
+        "noPeriodsYet": "Noch keine Beitragszeitraeume hinzugefuegt",
+        "monthlyGrossSalary": "Monatliches Bruttogehalt",
+        "workingCondition": "Arbeitsbedingung",
+        "nonContributiveType": "Beitragsfreier Typ",
+        "percentageOfTotal": "der Gesamtpunkte"
+      },
+      "pensionEstimate": {
+        "title": "Rentenschaetzung",
+        "monthlyPension": "Monatliche Rente",
+        "yearlyPension": "Jaehrliche Rente",
+        "basedOn": "Basierend auf {{points}} Gesamtpunkten",
+        "formula": "Basierend auf der rumaenischen Rentenberechnungsformel von 2024",
+        "completeMinimum": "Vervollstaendigen Sie die Mindestbeitragszeit, um Ihre geschaetzte Rente zu sehen"
+      }
+    },
+    "gapAnalysis": {
+      "title": "Analyse der Beitragsluecken",
+      "noGapsFound": "Keine wesentlichen Luecken in Ihrem Beitragsverlauf erkannt. Hervorragend, dass Sie eine durchgehende Beschaeftigung beibehalten haben!",
+      "gap": "Luecke",
+      "gaps": "Luecken",
+      "months": "Monate",
+      "totalDuration": "Gesamtdauer der Luecken",
+      "pointsLost": "Geschaetzte verlorene Punkte",
+      "pensionImpact": "Auswirkung auf die Rente",
+      "identifiedGaps": "Erkannte Luecken",
+      "gapLabel": "Luecke",
+      "viewStrategies": "Strategien zum Schliessen der Luecken anzeigen",
+      "suggestedStrategies": "Vorgeschlagene Strategien",
+      "estimatedGain": "Gesch. Punktegewinn",
+      "pensionIncrease": "Rentenerhoehung",
+      "feasibility": {
+        "high": "Hoch",
+        "medium": "Mittel",
+        "low": "Niedrig"
+      },
+      "strategies": {
+        "voluntaryContributions": {
+          "title": "Freiwillige Beitraege",
+          "description": "Leisten Sie rueckwirkende freiwillige Rentenbeitraege, um Lueckenzeitraeume abzudecken. Kontaktieren Sie CNPP fuer die Anspruchsberechtigung."
+        },
+        "extendPreviousEmployment": {
+          "title": "Fruehere Beschaeftigung verlaengern",
+          "description": "Verhandeln Sie wenn moeglich, dass fruehere Beschaeftigungszeitraeume in den Unterlagen verlaengert oder korrigiert werden."
+        },
+        "partTimeWork": {
+          "title": "Teilzeitarbeit",
+          "description": "Erwaegen Sie eine Teilzeitbeschaeftigung, um Beitragspunkte fuer aktuelle/kuerzliche Luecken zu sammeln."
+        },
+        "childCareCredit": {
+          "title": "Kinderbetreuungsgutschrift",
+          "description": "Wenn Sie Kinder haben, koennen Sie moeglicherweise Kinderbetreuungsgutschriften fuer einige Lueckenzeitraeume geltend machen."
+        },
+        "universityCredit": {
+          "title": "Universitaets-/Bildungsgutschrift",
+          "description": "Universitaetsstudienzeiten koennen als beitragsfreie Zeitraeume im Wert von 0,25 Punkten pro Jahr angerechnet werden."
+        }
+      }
+    },
+    "pdfExport": {
+      "generatedOn": "Erstellt am",
+      "yearsUntilRetirement": "Jahre bis zur Rente",
+      "calculationBasis": "Berechnungsgrundlage",
+      "period": "Zeitraum",
+      "dates": "Daten",
+      "condition": "Bedingung",
+      "salaryOrType": "Gehalt/Typ",
+      "years": "Jahre",
+      "nonContributive": "Beitragsfr.",
+      "disclaimer": "Dies ist nur eine Schaetzung. Fuer offizielle Informationen wenden Sie sich an CNPP.",
+      "charts": {
+        "sectionTitle": "Diagramme & Visualisierungen",
+        "sectionDescription": "Visuelle Darstellung Ihrer Rentenberechnungsdaten",
+        "normalEmployment": "Normale Beschaeftigung",
+        "specialConditions": "Sonderbedingungen",
+        "nonContributive": "Nicht-beitragspflichtig",
+        "contributionTypeTitle": "Beitragsverteilung nach Typ",
+        "periodTypeTitle": "Verteilung nach Periodentyp"
+      }
+    },
+    "earlyRetirement": {
+      "title": "Fruehverrentungsszenarien",
+      "scenariosAvailable": "{{count}} Szenarien verfuegbar",
+      "notEligible": "Nicht berechtigt",
+      "infoTitle": "Fruehverrentungsabzuege",
+      "infoDescription": "Eine Verrentung vor dem 65. Lebensjahr fuehrt zu einer Rentenminderung von {{penalty}}% pro Jahr. Das Mindestalter fuer die Fruehverrentung betraegt {{minAge}}.",
+      "eligibilityRequired": "Anspruchsvoraussetzungen",
+      "completeContributionRequired": "Fruehverrentung erfordert {{required}} Beitragsjahre. Sie haben derzeit {{current}} Jahre.",
+      "standardRetirement": "Standardrente (Volle Rente)",
+      "atAge": "Im Alter von {{age}}",
+      "perMonth": "pro Monat",
+      "retireAt": "In Rente mit",
+      "yearsEarly": "Jahre frueher",
+      "penalty": "Abzug",
+      "monthlyPension": "Monatlich",
+      "monthlyLoss": "Verlust",
+      "earliestOption": "Frueheste Option",
+      "earliestOptionDetails": "Rente mit {{age}} Jahren bei {{pension}}/Monat ({{penalty}}% Abzug)",
+      "disclaimer": "Diese Berechnungen sind Schaetzungen basierend auf der aktuellen Gesetzgebung. Die tatsaechlichen Fruehverrentungsbedingungen koennen abweichen. Wenden Sie sich an CNPP fuer offizielle Informationen.",
+      "reasons": {
+        "needsCompleteContribution": "35 Jahre erforderlich",
+        "alreadyPastAge": "Alter ueberschritten",
+        "belowMinimumAge": "Unter Mindestalter"
+      }
+    },
+    "periodSummary": {
+      "title": "Karrierezeitachse",
+      "noPeriods": "Fuegen Sie Beitragszeitraeume hinzu, um Ihre Karrierezeitachse zu sehen",
+      "period": "Zeitraum",
+      "periods": "Zeitraeume",
+      "employment": "Beschaeftigung",
+      "nonContributive": "Beitragsfrei",
+      "totalYears": "Gesamtjahre",
+      "legend": "Legende",
+      "legendGroupII": "Grupa II",
+      "legendGroupI": "Grupa I",
+      "legendSpecial": "Sonderbedingungen"
+    },
+    "countdown": {
+      "title": "Countdown bis zur Rente",
+      "years": "Jahre",
+      "months": "Monate",
+      "days": "Tage",
+      "totalDays": "{{days}} verbleibende Tage insgesamt",
+      "progressToRetirement": "Fortschritt bis zur Rente",
+      "careerStart": "Karrierebeginn",
+      "retirement": "Rente",
+      "alreadyEligible": "Sie haben das Rentenalter erreicht!",
+      "congratulations": "Herzlichen Glueckwunsch zu diesem Meilenstein. Sie sind jetzt berechtigt, Rentenleistungen zu erhalten.",
+      "milestonesTitle": "Meilensteine",
+      "milestones": {
+        "twentyYears": "Noch 20 Jahre",
+        "tenYears": "Noch 10 Jahre",
+        "fiveYears": "Noch 5 Jahre",
+        "oneYear": "Letztes Jahr"
+      },
+      "messages": {
+        "longWay": "Sie haben viel Zeit, Ihre Rente aufzubauen. Zahlen Sie weiter ein!",
+        "goodProgress": "Guter Fortschritt! Ihre Rente rueckt in Sichtweite.",
+        "halfwayThere": "Sie sind auf der Zielgeraden! Machen Sie weiter so.",
+        "almostThere": "Fast geschafft! Ihre Rente ist zum Greifen nah.",
+        "finalStretch": "Der letzte Countdown! Die Rente steht kurz bevor."
+      }
+    },
+    "salaryHistory": {
+      "title": "Gehaltsentwicklung im Zeitverlauf",
+      "description": "Vergleichen Sie Ihren Gehaltsverlauf mit dem nationalen Durchschnitt",
+      "noData": "Fuegen Sie Beschaeftigungszeitraeume mit Gehaltsdaten hinzu, um Ihr Gehaltsentwicklungsdiagramm zu sehen",
+      "yourSalary": "Ihr Gehalt",
+      "nationalAverage": "Nationaler Durchschnitt",
+      "year": "Jahr",
+      "salaryRON": "Gehalt (RON)",
+      "vsAverage": "vs. Durchschnitt",
+      "avgRatio": "Durchschn. vs. National",
+      "yearsAbove": "Jahre ueber Durchschn.",
+      "yearsBelow": "Jahre unter Durchschn.",
+      "aboveAverage": "Ueber Durchschnitt",
+      "belowAverage": "Unter Durchschnitt",
+      "nationalAverageLine": "Nationaler Durchschnitt"
+    },
+    "pointsAccumulation": {
+      "title": "Ansammlung der Rentenpunkte",
+      "description": "Verfolgen Sie, wie Ihre Rentenpunkte im Laufe Ihrer Karriere wachsen",
+      "noData": "Fuegen Sie Beitragszeitraeume hinzu, um Ihr Punkteaufbaudiagramm zu sehen",
+      "year": "Jahr",
+      "points": "Punkte",
+      "totalPoints": "Gesamtpunkte",
+      "contributionPoints": "Beitragspunkte",
+      "stabilityPoints": "Stabilitaetspunkte",
+      "nonContributivePoints": "Beitragsfreie Punkte",
+      "totalPointsLabel": "Gesamtpunkte",
+      "contributionLabel": "Beitrag",
+      "stabilityLabel": "Stabilitaet",
+      "nonContributiveLabel": "Beitragsfr.",
+      "legendTotal": "Gesamtkumulierte Punkte",
+      "legendContribution": "Punkte aus Gehaltsbeitraegen",
+      "legendStability": "Bonuspunkte fuer Beschaeftigungsstabilitaet",
+      "legendNonContributive": "Punkte aus beschaeftigungsfreien Zeitraeumen"
+    },
+    "specialRetirement": {
+      "title": "Rente bei besonderen Arbeitsbedingungen",
+      "earliestAge": "Fruehestens: {{age}} Jahre",
+      "standardAge": "Standard: 65 Jahre",
+      "infoTitle": "Reduziertes Rentenalter fuer besondere Bedingungen",
+      "infoDescription": "Arbeitnehmer, die in Grupa I (sehr schwierig), Grupa II (schwierig) oder unter besonderen Arbeitsbedingungen gearbeitet haben, koennen moeglicherweise frueher als mit dem Standard-Rentenalter von 65 Jahren in Rente gehen.",
+      "standardRetirement": "Standard-Rentenalter",
+      "withoutSpecialConditions": "Ohne besondere Arbeitsbedingungen",
+      "yourCategories": "Ihre besonderen Arbeitsbedingungen",
+      "retirementAge": "Rentenalter",
+      "yearsWorked": "Gearbeitete Jahre",
+      "yearsRequired": "Erforderliche Jahre",
+      "currentlyEligible": "Sie sind derzeit berechtigt fuer dieses reduzierte Rentenalter!",
+      "yearsUntilEligible": "{{years}} Jahre bis Sie dieses Rentenalter erreichen",
+      "needsMinimumContribution": "Sie muessen die Mindestanforderung von 15 Beitragsjahren erfuellen",
+      "needsMoreYearsInCondition": "Es werden noch {{needed}} Jahre unter diesen Bedingungen fuer die volle Reduzierung benoetigt",
+      "progressToMinimum": "Fortschritt zur Mindestanforderung",
+      "bestOption": "Beste Fruehverrentungsoption",
+      "bestOptionDetails": "Basierend auf Ihrem Arbeitsverlauf koennen Sie mit {{age}} Jahren in Rente gehen ({{reduction}} Jahre frueher als Standard)",
+      "disclaimer": "Diese Berechnungen sind Schaetzungen basierend auf dem rumaenischen Rentenrecht (Legea 263/2010). Die tatsaechliche Berechtigung kann von weiteren Faktoren abhaengen. Bitte wenden Sie sich an die Casa Națională de Pensii Publice (CNPP) fuer offizielle Informationen.",
+      "categories": {
+        "groupI": {
+          "name": "Grupa I - Sehr schwierige Bedingungen",
+          "description": "Untertagebau, Kern-, Chemieindustrie und andere gefaehrliche Arbeiten mit 50% Bonus und bis zu 10 Jahre frueherer Verrentung"
+        },
+        "groupII": {
+          "name": "Grupa II - Schwierige Bedingungen",
+          "description": "Schwerindustrie, Bauwesen, Metallurgie mit 25% Bonus und bis zu 5 Jahre frueherer Verrentung"
+        },
+        "specialConditions": {
+          "name": "Sonderbedingungen",
+          "description": "Andere gefaehrliche Arbeitsumgebungen mit 50% Bonus und bis zu 10 Jahre frueherer Verrentung"
+        }
+      }
+    },
+    "stabilityTracker": {
+      "title": "Stabilitaetsbonus-Fortschritt",
+      "tier1": "Stufe 1 (26-30 Jahre)",
+      "tier2": "Stufe 2 (31-35 Jahre)",
+      "tier3": "Stufe 3 (36-40 Jahre)",
+      "overallProgress": "Gesamtfortschritt Stabilitaet",
+      "minimumRequired": "Mindestbeitrag erforderlich",
+      "needMoreYears": "Sie benoetigen noch {{years}} Beitragsjahre, um Stabilitaetspunkte zu sammeln.",
+      "current": "Aktuell",
+      "pointsPerYear": "Pkt/Jahr",
+      "yearsRange": "Jahre {{start}}-{{end}}",
+      "nextTier": "Naechste Stufe",
+      "yearsToNextTier": "{{years}} Jahre bis zur naechsten Stufe",
+      "maxTierReached": "Maximale Stufe erreicht!",
+      "congratulations": "Sie haben die maximale Stabilitaetsbonusstufe erreicht. Ausgezeichnete Arbeit!",
+      "totalStabilityPoints": "Stabilitaetspunkte gesamt",
+      "contributionYears": "Beitragsjahre"
+    },
+    "comparison": {
+      "title": "Nationaler Rentenvergleich",
+      "percentileRanking": "Perzentil-Ranking",
+      "percentileDescription": "der rumaenischen Rentner erhalten weniger",
+      "visualComparison": "Visueller Vergleich",
+      "yourPension": "Ihre Rente",
+      "nationalAverage": "Nationaler Durchschnitt",
+      "minimumPension": "Mindestrente",
+      "aboveAverage": "ueber Durchschnitt",
+      "belowAverage": "unter Durchschnitt",
+      "aboveMinimum": "ueber Minimum",
+      "atMinimum": "Auf oder nahe der Mindestrente",
+      "vsAverageLabel": "vs. Durchschnitt",
+      "vsMinimumLabel": "vs. Minimum",
+      "sourceNote": "Basierend auf CNPP-Rentenstatistiken fuer {{year}}",
+      "category": {
+        "excellent": "Ausgezeichnet",
+        "good": "Gut",
+        "above_average": "Ueberdurchschnittlich",
+        "average": "Durchschnittlich",
+        "below_average": "Unterdurchschnittlich",
+        "low": "Niedrig"
+      },
+      "percentileContext": {
+        "excellent": "Ihre Rente gehoert zu den oberen 10% landesweit. Ausgezeichnetes Renteneinkommen!",
+        "good": "Ihre Rente ist hoeher als bei 75% der rumaenischen Rentner. Sehr gut!",
+        "above_average": "Ihre Rente liegt ueber dem nationalen Durchschnitt. Sie stehen gut da!",
+        "average": "Ihre Rente liegt ungefaehr beim nationalen Durchschnitt.",
+        "below_average": "Ihre Rente liegt unter dem nationalen Durchschnitt. Erwaegen Sie zusaetzliche Ersparnisse.",
+        "low": "Ihre Rente liegt im unteren Bereich. Eine zusaetzliche Rentenplanung koennte vorteilhaft sein."
+      }
+    },
+    "inflationAdjustment": {
+      "title": "Analyse der Inflationsauswirkungen",
+      "description": "Sehen Sie, wie die Inflation die Kaufkraft Ihrer Rente im Laufe der Zeit beeinflussen koennte",
+      "inflationRate": "Jaehrliche Inflationsrate",
+      "projectionYears": "Projektionszeitraum",
+      "yearsLabel": "Jahre",
+      "currentPension": "Aktueller Rentenwert",
+      "futureValue": "Zukuenftige Kaufkraft",
+      "purchasingPowerLoss": "Kaufkraftverlust",
+      "afterYears": "Nach {{years}} Jahren",
+      "perMonth": "/Monat",
+      "realValue": "Realer Wert",
+      "nominalValue": "Nominalwert",
+      "cumulativeInflation": "Kumulative Inflation",
+      "yearByYear": "Jahr-fuer-Jahr-Projektion",
+      "year": "Jahr",
+      "realPurchasingPower": "Realer Wert",
+      "loss": "Verlust",
+      "lossPercent": "Verlust %",
+      "summary": "Nach {{years}} Jahren bei {{rate}}% jaehrlicher Inflation haette Ihre Rente von {{pension}} eine Kaufkraft von {{realValue}} in heutigem Geld - ein Verlust von {{lossPercent}}%.",
+      "averageAnnualLoss": "Durchschnittlicher jaehrlicher Verlust",
+      "presets": {
+        "optimistic": "Optimistisch (2,5%)",
+        "moderate": "Moderat (4%)",
+        "pessimistic": "Pessimistisch (6%)",
+        "high": "Hoch (10%)",
+        "custom": "Benutzerdefiniert"
+      },
+      "severity": {
+        "low": "Geringe Auswirkung",
+        "moderate": "Moderate Auswirkung",
+        "high": "Hohe Auswirkung",
+        "severe": "Schwere Auswirkung"
+      },
+      "note": "Diese Projektion geht davon aus, dass keine Rentenanpassung erfolgt. In der Praxis werden rumaenische Renten regelmaessig von der Regierung angepasst, was die Inflation teilweise ausgleichen kann.",
+      "disclaimer": "Diese Projektionen sind Schaetzungen nur fuer Planungszwecke. Die tatsaechlichen Inflationsraten werden variieren. Konsultieren Sie einen Finanzberater fuer eine persoenliche Rentenplanung."
+    },
+    "recommendations": {
+      "title": "Persoenliche Empfehlungen",
+      "highPriorityCount": "wichtig",
+      "recommendationCount": "{{count}} Tipps",
+      "potentialGain": "Moegliche Rentenerhoehung",
+      "perMonth": "/Monat",
+      "showMore": "{{count}} weitere Tipps anzeigen",
+      "showLess": "Weniger anzeigen",
+      "disclaimer": "Diese Empfehlungen sind Schaetzungen basierend auf der aktuellen Gesetzgebung. Die tatsaechlichen Ergebnisse koennen abweichen. Wenden Sie sich an CNPP fuer offizielle Beratung.",
+      "priority": {
+        "high": "Wichtig",
+        "medium": "Empfohlen",
+        "low": "Tipp"
+      },
+      "milestones": {
+        "minimumTitle": "Mindestbeitragszeit erreichen",
+        "minimumDescription": "Sie benoetigen noch {{years}} Beitragsjahre, um die Mindestanforderung von {{minimum}} Jahren zu erreichen und rentenanspruchsberechtigt zu werden.",
+        "completeTitle": "Vollstaendige Beitragszeit erreichen",
+        "completeDescription": "Wenn Sie noch {{years}} Jahre bis zu {{complete}} Jahren beitragen, erhalten Sie Anspruch auf Fruehverrentung und erhoehen Ihre Rente um ca. {{additionalPension}} RON/Monat."
+      },
+      "stability": {
+        "nextTierTitle": "Stabilitaetsstufe {{tier}} freischalten",
+        "nextTierDescription": "In {{years}} weiteren Beitragsjahren erreichen Sie Stabilitaetsstufe {{tier}} und erhalten {{pointsPerYear}} Bonuspunkte/Jahr, was bis zu {{potentialPension}} RON/Monat zusaetzlich wert ist.",
+        "currentTierTitle": "Stabilitaetsstufe {{tier}} abschliessen",
+        "currentTierDescription": "Sie befinden sich derzeit in Stufe {{tier}}. Noch {{years}} Jahre werden diese Stufe abschliessen und {{remainingPoints}} zusaetzliche Stabilitaetspunkte einbringen (+{{remainingPension}} RON/Monat).",
+        "maxReachedTitle": "Maximale Stabilitaet erreicht!",
+        "maxReachedDescription": "Herzlichen Glueckwunsch! Sie haben die maximale Stabilitaetsbonusstufe erreicht. Ihre lange Karriere wird voll mit den hoechsten Stabilitaetspunkten belohnt."
+      },
+      "salary": {
+        "belowAverageTitle": "Ihr Gehalt liegt unter dem nationalen Durchschnitt",
+        "belowAverageDescription": "Ihr aktuelles Gehalt ({{currentSalary}} RON) liegt unter dem nationalen Durchschnitt ({{nationalAverage}} RON). Das Erreichen des Durchschnitts wuerde {{additionalPointsPerYear}} Punkte pro Jahr hinzufuegen (+{{additionalPensionPerYear}} RON/Monat).",
+        "increaseImpactTitle": "Auswirkung einer 20%igen Gehaltserhoehung",
+        "increaseImpactDescription": "Eine Gehaltserhoehung von {{increaseAmount}} RON wuerde {{additionalPointsPerYear}} zusaetzliche Beitragspunkte pro Jahr einbringen und Ihre Rente um ca. {{additionalPensionPerYear}} RON/Monat erhoehen."
+      },
+      "conditions": {
+        "awarenessTitle": "Ueberpruefen Sie Ihre Arbeitsbedingungen",
+        "awarenessDescription": "Alle Ihre Zeitraeume sind auf normale Bedingungen eingestellt. Wenn Sie unter schwierigen, gefaehrlichen oder besonderen Bedingungen arbeiten, koennte eine Aktualisierung 25-50% Bonuspunkte hinzufuegen und eine fruehere Verrentung ermoeglichen."
+      },
+      "retirement": {
+        "canReachCompleteTitle": "Vollstaendiger Beitrag in Reichweite",
+        "canReachCompleteDescription": "Mit {{yearsToRetirement}} Jahren bis zur Rente und {{currentYears}} geleisteten Beitragsjahren koennen Sie die vollstaendige Beitragszeit von {{target}} Jahren erreichen. Arbeiten Sie weiter, um Ihre Rente zu maximieren.",
+        "maximizeRemainingTitle": "Verbleibende Jahre maximieren",
+        "maximizeRemainingDescription": "Mit {{yearsToRetirement}} Jahren bis zur Rente konzentrieren Sie sich auf die Maximierung der Beitraege. Sie koennen bis zu {{maxYears}} Gesamtjahre ansammeln (Ziel: {{complete}} Jahre).",
+        "earlyStartTitle": "Grossartiger fruehzeitiger Start!",
+        "earlyStartDescription": "Ein frueher Beitragsbeginn gibt Ihnen einen grossen Vorteil. Mit {{yearsToRetirement}} Jahren bis zur Rente koennten Sie bis zu {{projectedYears}} Beitragsjahre ansammeln."
+      }
+    }
+  },
+  "print": {
+    "button": "Ergebnisse drucken",
+    "buttonLabel": "Berechnungsergebnisse drucken",
+    "generatedOn": "Gedruckt am {{date}} um {{time}}",
+    "disclaimer": "Dies ist nur eine Schätzung. Für offizielle Renteninformationen wenden Sie sich an die Casa Nationala de Pensii Publice (CNPP).",
+    "summaryTitle": "Zusammenfassung der Rentenberechnung",
+    "monthlyPension": "Monatliche Rente (geschätzt)",
+    "yearlyPension": "Jährliche Rente (geschätzt)",
+    "totalPoints": "Gesamtpunkte",
+    "contributionPoints": "Beitragspunkte",
+    "stabilityPoints": "Stabilitätspunkte",
+    "nonContributivePoints": "Beitragsfreie Punkte",
+    "contributiveYears": "Beitragsjahre",
+    "currentAge": "Aktuelles Alter / Rentenalter",
+    "totalPeriods": "Beitragsperioden",
+    "nonContributive": "beitragsfrei",
+    "birthDate": "Geburtsdatum"
+  },
+  "theme": {
+    "light": "Hell",
+    "dark": "Dunkel",
+    "system": "System",
+    "selectTheme": "Design auswaehlen",
+    "themeOptions": "Designoptionen",
+    "switchToLight": "Zum hellen Modus wechseln",
+    "switchToDark": "Zum dunklen Modus wechseln"
+  },
+  "history": {
+    "title": "Berechnungsverlauf",
+    "saveCurrentCalculation": "Aktuelle Berechnung speichern",
+    "snapshotName": "Versionsname",
+    "namePlaceholder": "z.B. Vor Gehaltserhoehung",
+    "notes": "Notizen",
+    "notesPlaceholder": "Fuegen Sie Notizen zu dieser Berechnung hinzu...",
+    "unnamedSnapshot": "Unbenannte Version",
+    "month": "Monat",
+    "noChange": "Keine Aenderung",
+    "totalPoints": "Gesamtpunkte",
+    "periods": "Zeitraeume",
+    "viewDetails": "Details anzeigen",
+    "restore": "Wiederherstellen",
+    "restoreSnapshot": "Version wiederherstellen",
+    "restoreWarningTitle": "Aktuelle Daten ersetzen?",
+    "restoreWarningMessage": "Die Wiederherstellung dieser Version ersetzt alle Ihre aktuellen Berechnungsdaten. Diese Aktion kann nicht rueckgaengig gemacht werden.",
+    "monthlyPension": "Monatliche Rente",
+    "employmentPeriods": "Beschaeftigung",
+    "nonContributive": "Beitragsfrei",
+    "noSnapshots": "Noch keine gespeicherten Berechnungen",
+    "noSnapshotsHint": "Speichern Sie Ihre aktuelle Berechnung, um sie mit zukuenftigen Versionen zu vergleichen",
+    "capacityWarning": "Der Verlauf hat die maximale Kapazitaet erreicht. Aelteste Eintraege werden beim Speichern neuer entfernt.",
+    "clearAll": "Gesamten Verlauf loeschen",
+    "clearConfirm": "Sind Sie sicher, dass Sie alle gespeicherten Berechnungen loeschen moechten?",
+    "clearAllConfirm": "Ja, alles loeschen",
+    "saveSuccess": "Berechnung im Verlauf gespeichert",
+    "deleteSuccess": "Version geloescht",
+    "restoreSuccess": "Berechnung erfolgreich wiederhergestellt",
+    "clearSuccess": "Verlauf geloescht",
+    "openHistory": "Verlauf"
+  },
+  "lawVersions": {
+    "title": "Rentengesetz Version",
+    "tooltip": "Das rumaenische Rentengesetz hat sich im Laufe der Jahre geandert. Wahlen Sie eine Version, um Ihre Rente nach diesem Rechtsrahmen zu berechnen.",
+    "expand": "Gesetzversionen anzeigen",
+    "current": "Aktuell",
+    "selected": "Ausgewahlt",
+    "effectiveFrom": "Gultig ab",
+    "until": "bis",
+    "historicalWarning": "Sie berechnen mit einer historischen Gesetzversion. Die Ergebnisse spiegeln die fruhere Gesetzgebung wider.",
+    "switchToCurrent": "Zum aktuellen Gesetz wechseln",
+    "availableVersions": "Verfugbare Versionen",
+    "selectVersion": "Wahlen Sie eine Gesetzversion",
+    "keyChanges": "Wichtige Anderungen",
+    "showComparison": "Mit aktuellem Gesetz vergleichen",
+    "hideComparison": "Vergleich ausblenden",
+    "noChanges": "Keine wesentlichen Anderungen zwischen diesen Versionen.",
+    "parameters": "Berechnungsparameter",
+    "paramLabels": {
+      "retirementAge": "Rentenalter",
+      "vpr": "VPR",
+      "minContribution": "Min. Beitrag",
+      "completeContribution": "Vollstandiger Beitrag",
+      "earlyPenalty": "Fruhverrentungsstrafe",
+      "minEarlyAge": "Min. Fruhverrentungsalter"
+    },
+    "descriptions": {
+      "legea_360_2023": "Rentenreform September 2024 mit neuer VPR-Berechnungsformel",
+      "oug_163_2022": "Notverordnung zur Anpassung der Rentenindexierung",
+      "legea_127_2019": "Anderungen des Rentenpunktwerts",
+      "legea_263_2010": "Einheitliches offentliches Rentensystem",
+      "legea_19_2000": "Erstes modernes Rentengesetz"
+    },
+    "changes": {
+      "360_vpr": "Einfuhrung des VPR = 81.03 RON",
+      "360_formula": "Neue Formel: Monatliche Rente = Gesamtpunkte x VPR",
+      "360_stabilityPoints": "Verbessertes Stabilitatspunktesystem",
+      "360_recalculation": "Pflicht-Neuberechnung aller Renten",
+      "163_indexation": "Aktualisierte Indexierungsformel",
+      "163_pensionPoint": "Rentenpunktwert auf 75.00 RON festgelegt",
+      "163_minimumPension": "Erhohung der Mindestgarantierente",
+      "127_pensionPoint": "Bedeutende Erhohung des Rentenpunktwerts",
+      "127_indexation": "Neuer Indexierungsmechanismus",
+      "127_specialConditions": "Aktualisierte Kriterien fur Sonderbedingungen",
+      "263_unifiedSystem": "Vereinigung aller offentlichen Rentensysteme",
+      "263_retirementAge": "Standard-Rentenalter auf 65 Jahre festgelegt",
+      "263_contributionYears": "Mindestbeitrag: 15 Jahre, Vollstandig: 35 Jahre",
+      "263_pointSystem": "Verfeinerte Punktberechnungsmethodik",
+      "19_firstModernLaw": "Erstes modernes Rentengesetz mit Punktesystem",
+      "19_pointSystem": "Einfuhrung von Beitragspunkten",
+      "19_retirementAge": "Anfangliches Rentenalter auf 63 Jahre festgelegt",
+      "19_workingConditions": "Definition der Arbeitsbedingungskategorien"
+    },
+    "comparison": {
+      "retirementAge": "Rentenalter",
+      "minimumContributionYears": "Mindestbeitragsjahre",
+      "completeContributionYears": "Vollstandige Beitragsjahre",
+      "vprValue": "Rentenpunkt-Referenzwert",
+      "earlyRetirementPenalty": "Fruhverrentungsstrafe",
+      "minimumEarlyRetirementAge": "Mindest-Fruhverrentungsalter"
+    },
+    "timeline": {
+      "title": "Gesetzgebungszeitleiste"
+    },
+    "toast": {
+      "versionChanged": "Gesetzversion geandert zu {{name}}"
+    }
+  },
+  "pwa": {
+    "install": {
+      "title": "Rentenrechner installieren",
+      "description": "Installieren Sie die App fuer schnellen Zugriff und Offline-Nutzung.",
+      "installButton": "Installieren",
+      "notNow": "Nicht jetzt"
+    },
+    "update": {
+      "title": "Update verfuegbar",
+      "description": "Eine neue Version der App ist mit Verbesserungen und Korrekturen verfuegbar.",
+      "updateButton": "Jetzt aktualisieren",
+      "later": "Spaeter"
+    },
+    "offline": {
+      "youAreOffline": "Sie sind offline. Die App funktioniert weiterhin mit zwischengespeicherten Daten.",
+      "backOnline": "Sie sind wieder online!",
+      "dataSaved": "Ihre Daten werden lokal gespeichert und sind offline verfuegbar."
+    }
+  },
+  "sharing": {
+    "title": "Ergebnisse der Rentenberechnung",
+    "shareText": "Sehen Sie sich meine Rentenberechnungsergebnisse vom Rumänischen Rentenrechner an",
+    "shareResults": "Ergebnisse teilen",
+    "buttonLabel": "Teilen Sie Ihre Rentenberechnungsergebnisse",
+    "sharedResults": "Geteilte Rentenergebnisse",
+    "pensionEstimate": "Rentenschätzung",
+    "copied": "Link kopiert!",
+    "linkCopied": "Teilbarer Link in die Zwischenablage kopiert",
+    "sharedSuccessfully": "Ergebnisse erfolgreich geteilt",
+    "privacyNotice": "Dieses geteilte Ergebnis enthält nur anonymisierte Berechnungsdaten. Keine persönlichen Informationen (Geburtsdatum, Firmennamen oder spezifische Beschäftigungsdaten) sind enthalten.",
+    "contributionYears": "Beitragsjahre",
+    "yearsToRetirement": "Jahre bis zur Rente",
+    "calculatedWith": "Berechnet mit",
+    "calculateYourOwn": "Möchten Sie Ihre eigene Rente berechnen?",
+    "startCalculating": "Berechnung starten",
+    "timestamp": {
+      "justNow": "Gerade geteilt",
+      "minutesAgo": "Vor {{minutes}} Minuten geteilt",
+      "hoursAgo": "Vor {{hours}} Stunden geteilt",
+      "daysAgo": "Vor {{days}} Tagen geteilt"
+    },
+    "error": {
+      "invalidFormat": "Ungültiges Format des geteilten Links",
+      "newerVersion": "Dieser Link wurde mit einer neueren Version des Rechners erstellt",
+      "decodeError": "Die geteilten Daten konnten nicht dekodiert werden",
+      "urlError": "Ungültige Freigabe-URL",
+      "copyFailed": "Link konnte nicht in die Zwischenablage kopiert werden",
+      "shareFailed": "Ergebnisse konnten nicht geteilt werden"
+    }
+  }
+}

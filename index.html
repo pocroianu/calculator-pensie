@@ -2,11 +2,33 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="icons/icon-192x192.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <meta name="description" content="Romanian Pension Calculator - Calculate your pension based on contribution periods and salary history" />
+    <title>Romanian Pension Calculator</title>
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#2563eb" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Pension Calc" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Pension Calc" />
+    <meta name="msapplication-TileColor" content="#2563eb" />
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="manifest.json" />
+
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="icons/icon-192x192.svg" />
   </head>
   <body>
+    <!-- Skip to main content link for keyboard users -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:shadow-lg">
+      Skip to main content
+    </a>
+    <!-- Live region for screen reader announcements -->
+    <div id="sr-announcer" role="status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

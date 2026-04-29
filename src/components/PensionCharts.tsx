@@ -1,15 +1,23 @@
 import React from 'react';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, Chart, TooltipItem } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import { ContributionPeriod } from '../types/pensionTypes';
+import { formatYears } from '../utils/formatters';
+import { useTranslation } from 'react-i18next';
+import SalaryHistoryChart from './SalaryHistoryChart';
+import CumulativePointsChart from './CumulativePointsChart';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 interface Props {
   contributionPeriods: ContributionPeriod[];
+  birthDate: string;
+  className?: string;
 }
 
-const PensionCharts: React.FC<Props> = ({ contributionPeriods }) => {
+const PensionCharts: React.FC<Props> = ({ contributionPeriods, birthDate, className = '' }) => {
+  const { t } = useTranslation();
+
   // Calculate data for contribution type pie chart
   const contributionTypeData = React.useMemo(() => {
     const data = {
@@ -25,7 +33,7 @@ const PensionCharts: React.FC<Props> = ({ contributionPeriods }) => {
       
       if (period.nonContributiveType) {
         data.nonContributive += years;
-      } else if (period.workingCondition === 'special') {
+      } else if (period.workingCondition === 'specialConditions' || period.workingCondition === 'groupI' || period.workingCondition === 'groupII') {
         data.special += years;
       } else {
         data.normal += years;
@@ -133,7 +141,7 @@ const PensionCharts: React.FC<Props> = ({ contributionPeriods }) => {
             size: 11
           },
           // Wrap text if too long
-          generateLabels: function(chart: any) {
+          generateLabels: function(chart: Chart<'pie'>) {
             const datasets = chart.data.datasets;
             if (datasets.length === 0) {
               return [];
@@ -154,10 +162,10 @@ const PensionCharts: React.FC<Props> = ({ contributionPeriods }) => {
       },
       tooltip: {
         callbacks: {
-          label: function(context: any) {
+          label: function(context: TooltipItem<'pie'>) {
             const label = context.label || '';
             const value = context.raw || 0;
-            return `${label}: ${value.toFixed(1)} years`;
+            return `${label}: ${formatYears(value)} years`;
           }
         }
       }
@@ -165,22 +173,31 @@ const PensionCharts: React.FC<Props> = ({ contributionPeriods }) => {
   };
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
-      <div className="p-4 border-b border-gray-200 bg-gray-50">
-        <h3 className="font-medium text-gray-900">Contribution Analysis</h3>
-      </div>
-      <div className="p-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div>
-            <h4 className="text-sm font-medium text-gray-900 mb-4 text-center">Contribution Type Distribution</h4>
-            <div className="w-full max-w-[300px] mx-auto">
-              <Pie data={contributionTypeData} options={options} />
+    <div className={`space-y-6 ${className}`}>
+      {/* Cumulative Points Accumulation Chart - Line chart showing points growth over time */}
+      <CumulativePointsChart contributionPeriods={contributionPeriods} birthDate={birthDate} />
+
+      {/* Salary History Chart - Line chart comparing salary to national average */}
+      <SalaryHistoryChart contributionPeriods={contributionPeriods} />
+
+      {/* Contribution Analysis - Pie charts */}
+      <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm print-chart-container">
+        <div className="border-b border-slate-200 bg-slate-50 p-4">
+          <h3 className="font-medium text-gray-900">{t('pension.contributionAnalysis.title')}</h3>
+        </div>
+        <div className="p-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h4 className="text-sm font-medium text-gray-900 mb-4 text-center">Contribution Type Distribution</h4>
+              <div className="w-full max-w-[300px] mx-auto">
+                <Pie data={contributionTypeData} options={options} />
+              </div>
             </div>
-          </div>
-          <div>
-            <h4 className="text-sm font-medium text-gray-900 mb-4 text-center">Period Type Distribution</h4>
-            <div className="w-full max-w-[300px] mx-auto">
-              <Pie data={periodTypeData} options={options} />
+            <div>
+              <h4 className="text-sm font-medium text-gray-900 mb-4 text-center">Period Type Distribution</h4>
+              <div className="w-full max-w-[300px] mx-auto">
+                <Pie data={periodTypeData} options={options} />
+              </div>
             </div>
           </div>
         </div>

@@ -1,0 +1,1098 @@
+{
+  "keyboard": {
+    "title": "Raccourcis Clavier",
+    "hint": "Appuyez sur Echap pour fermer cette boite de dialogue. Les raccourcis sont desactives lors de la saisie dans les champs.",
+    "categories": {
+      "actions": "Actions",
+      "navigation": "Navigation",
+      "general": "General"
+    },
+    "shortcuts": {
+      "addPeriod": "Ajouter une nouvelle periode de cotisation",
+      "save": "Sauvegarder/Exporter les donnees",
+      "toggleLanguage": "Changer de langue (EN/RO/FR)",
+      "exportData": "Exporter les donnees vers un fichier",
+      "focusBirthDate": "Aller au champ date de naissance",
+      "focusRetirementYear": "Aller au champ annee de retraite",
+      "focusContributionPeriods": "Aller aux periodes de cotisation",
+      "collapseAll": "Reduire toutes les periodes",
+      "expandAll": "Developper toutes les periodes",
+      "showHelp": "Ouvrir le panneau d'aide",
+      "showShortcuts": "Afficher les raccourcis clavier",
+      "closeModal": "Fermer la boite de dialogue"
+    }
+  },
+  "help": {
+    "title": "Centre d'Aide",
+    "close": "Fermer",
+    "startTour": "Commencer la Visite",
+    "openHelp": "Aide",
+    "skipTour": "Passer",
+    "nextStep": "Suivant",
+    "prevStep": "Precedent",
+    "finishTour": "Terminer",
+    "stepOf": "Etape {{current}} sur {{total}}",
+    "tour": {
+      "welcome": {
+        "title": "Bienvenue dans le Calculateur de Pension !",
+        "description": "Cette visite guidee vous aidera a comprendre comment utiliser le calculateur pour estimer votre pension roumaine. Commençons !"
+      },
+      "birthDate": {
+        "title": "Date de Naissance",
+        "description": "Entrez votre date de naissance ici. Elle est utilisee pour calculer votre age actuel et determiner quand vous serez eligible a la retraite (l'age standard de la retraite est de 65 ans)."
+      },
+      "retirementYear": {
+        "title": "Annee de Retraite Prevue",
+        "description": "Entrez l'annee a laquelle vous prevoyez de prendre votre retraite. Le calculateur suggere une annee basee sur l'age standard de retraite de 65 ans, mais vous pouvez l'ajuster."
+      },
+      "contributionPeriods": {
+        "title": "Periodes de Cotisation",
+        "description": "Ajoutez vos periodes d'emploi ici. Chaque periode contribue a vos points de pension en fonction du salaire et de la duree. Vous pouvez egalement ajouter des periodes non contributives comme le service militaire ou les etudes universitaires."
+      },
+      "workingConditions": {
+        "title": "Conditions de Travail",
+        "description": "Si vous avez travaille dans des conditions difficiles ou speciales, vous pouvez avoir droit a des points bonus : Grupa II (Difficiles) donne 25% de bonus, Grupa I (Tres Difficiles) et Conditions Speciales donnent 50% de bonus."
+      },
+      "pensionEstimate": {
+        "title": "Votre Estimation de Pension",
+        "description": "Ceci montre votre pension mensuelle et annuelle estimee basee sur vos points totaux. Le calcul utilise la valeur de reference 2024 de 81,03 RON par point."
+      },
+      "complete": {
+        "title": "Visite Terminee !",
+        "description": "Vous connaissez maintenant les bases ! N'hesitez pas a explorer la section FAQ pour des informations plus detaillees sur le fonctionnement des calculs de pension."
+      }
+    },
+    "faq": {
+      "title": "Questions Frequemment Posees",
+      "questions": {
+        "howCalculated": {
+          "question": "Comment la pension est-elle calculee ?",
+          "answer": "Votre pension est calculee selon la formule : Pension Mensuelle = Total des Points x Valeur de Reference (81,03 RON). Le Total des Points comprend les points de cotisation (bases sur le rapport entre votre salaire et le salaire moyen), les points de stabilite (bases sur les annees travaillees) et les points non contributifs."
+        },
+        "contributionPoints": {
+          "question": "Que sont les points de cotisation ?",
+          "answer": "Les points de cotisation sont calcules en fonction du rapport entre votre salaire brut et le salaire moyen national pour chaque annee travaillee. Si votre salaire est egal a la moyenne, vous gagnez 1 point par an. Les salaires superieurs rapportent proportionnellement plus de points."
+        },
+        "stabilityPoints": {
+          "question": "Que sont les points de stabilite ?",
+          "answer": "Les points de stabilite recompensent l'emploi a long terme. Vous gagnez 0,5 point pour chaque annee travaillee au-dela de la periode minimale de cotisation de 15 ans, jusqu'a la periode complete de cotisation de 35 ans."
+        },
+        "nonContributive": {
+          "question": "Que sont les periodes non contributives ?",
+          "answer": "Les periodes non contributives sont des periodes qui comptent pour votre pension meme sans cotisations salariales. Elles comprennent : le Service Militaire (0,25 point/an), les Etudes Universitaires (0,25 point/an), le Conge Parental (0,25 point/an) et le Conge Maladie (0,20 point/an)."
+        },
+        "workingConditions": {
+          "question": "Comment les conditions de travail affectent-elles ma pension ?",
+          "answer": "Si vous avez travaille dans des conditions speciales, vous recevez des points bonus : Conditions Normales - pas de bonus, Grupa II (Conditions difficiles) - 25% de bonus sur les points de cotisation, Grupa I (Conditions tres difficiles) - 50% de bonus, Conditions Speciales - 50% de bonus."
+        },
+        "minimumContribution": {
+          "question": "Quelle est la periode minimale de cotisation ?",
+          "answer": "La periode minimale de cotisation en Roumanie est de 15 ans. Vous avez besoin d'au moins ce nombre d'annees de cotisations pour etre eligible a une pension. La periode complete de cotisation est de 35 ans."
+        },
+        "retirementAge": {
+          "question": "Quel est l'age standard de la retraite ?",
+          "answer": "L'age standard de la retraite en Roumanie est de 65 ans. C'est a cet age que vous devenez eligible pour recevoir l'integralite de vos prestations de retraite, a condition d'avoir rempli les conditions minimales de cotisation."
+        },
+        "referenceValue": {
+          "question": "Quelle est la valeur de reference du point de pension ?",
+          "answer": "La valeur de reference (valoarea punctului de pensie) est le montant en RON que vaut chaque point de pension. En 2024, cette valeur est de 81,03 RON. Cette valeur est periodiquement ajustee par le gouvernement."
+        }
+      }
+    },
+    "tooltips": {
+      "birthDate": "Votre date de naissance est utilisee pour calculer votre age actuel et determiner l'eligibilite a la retraite. L'age standard de la retraite est de 65 ans.",
+      "retirementYear": "L'annee a laquelle vous prevoyez de prendre votre retraite. Vous pouvez prendre votre retraite apres avoir atteint 65 ans, sous reserve de remplir les conditions minimales de cotisation.",
+      "monthlyGrossSalary": "Votre salaire mensuel brut avant impots. Il est compare a la moyenne nationale pour calculer les points de cotisation.",
+      "startDate": "La date de debut de cette periode d'emploi ou non contributive.",
+      "endDate": "La date de fin de cette periode d'emploi ou non contributive.",
+      "company": "Facultatif : Le nom de l'entreprise ou de l'organisation ou vous avez travaille.",
+      "workingCondition": "Selectionnez les conditions de travail pour cette periode. Les conditions speciales accordent des points bonus : Grupa II +25%, Grupa I +50%, Speciales +50%.",
+      "nonContributiveType": "Le type de periode non contributive. Les differents types rapportent des taux de points differents par an.",
+      "contributionPoints": "Points gagnes en fonction de votre salaire par rapport a la moyenne nationale. Salaire plus eleve = plus de points.",
+      "stabilityPoints": "Points bonus pour l'emploi a long terme. Gagnes pour les annees au-dela du minimum de 15 ans, jusqu'a 35 ans.",
+      "totalPoints": "La somme de tous vos points : cotisation + stabilite + non contributifs. Multipliee par 81,03 RON pour obtenir votre pension."
+    }
+  },
+  "legal": {
+    "title": "Mentions Legales et Politique de Confidentialite",
+    "footerLink": "Mentions Legales",
+    "copyright": "Calculateur de Pension Roumaine",
+    "acceptButton": "Je Comprends et J'Accepte",
+    "closeButton": "Fermer",
+    "version": "Version {{version}}",
+    "limitations": {
+      "title": "Limitations du Calculateur",
+      "estimateOnly": "Ce calculateur fournit uniquement des estimations et ne doit pas etre considere comme un calcul officiel de pension.",
+      "notOfficial": "Les resultats ne sont pas officiels et ne remplacent pas les consultations avec Casa Națională de Pensii Publice (CNPP).",
+      "lawChanges": "Les lois et formules de pension peuvent changer. Le calculateur est base sur la legislation roumaine de 2024.",
+      "noGuarantee": "Nous ne garantissons pas l'exactitude, l'exhaustivite ou l'actualite des calculs.",
+      "consultProfessional": "Pour des informations officielles sur les pensions, veuillez consulter le CNPP ou un conseiller en pensions qualifie."
+    },
+    "privacy": {
+      "title": "Politique de Confidentialite des Donnees",
+      "localStorage": "Toutes vos donnees sont stockees localement dans votre navigateur uniquement. Aucune donnee n'est envoyee a un serveur.",
+      "noServer": "Cette application fonctionne entierement dans votre navigateur. Nous ne collectons, ne stockons ni ne traitons vos informations personnelles.",
+      "noThirdParty": "Aucun service tiers de suivi, d'analyse ou de publicite n'est utilise.",
+      "gdprCompliant": "Conforme au GDPR et a la loi roumaine n° 190/2018 sur la protection des donnees.",
+      "deleteAnytime": "Vous pouvez supprimer toutes les donnees stockees a tout moment en effaçant le stockage local ou les donnees du site de votre navigateur."
+    },
+    "terms": {
+      "title": "Conditions d'Utilisation",
+      "freeUse": "Ce calculateur est fourni gratuitement a des fins d'information uniquement.",
+      "informationalOnly": "Les informations fournies doivent etre utilisees uniquement a des fins de planification personnelle et educatives.",
+      "noLiability": "Les developpeurs et operateurs ne sont pas responsables des decisions prises sur la base des resultats du calculateur.",
+      "userResponsibility": "Les utilisateurs sont responsables de la verification de toutes les informations aupres des sources officielles avant de prendre des decisions financieres."
+    },
+    "compliance": {
+      "title": "Conformite avec la Legislation Roumaine",
+      "description": "Cette application est conçue pour se conformer aux reglementations roumaines sur la protection des donnees. Vos donnees personnelles restent sur votre appareil et sous votre controle en permanence.",
+      "laws": "Legislation applicable : GDPR (UE 2016/679), Loi roumaine n° 190/2018, Legea 263/2010 (Loi sur le systeme de pensions)"
+    }
+  },
+  "periodTemplates": {
+    "title": "Modeles de Periodes",
+    "available": "disponibles",
+    "saveCustomTemplate": "Creer un Modele Personnalise",
+    "categories": {
+      "all": "Tous",
+      "employment": "Emploi",
+      "nonContributive": "Non contributif",
+      "custom": "Personnalise"
+    },
+    "templates": {
+      "standardEmployment": {
+        "name": "Emploi Standard",
+        "description": "Conditions normales de travail avec salaire regulier"
+      },
+      "difficultConditions": {
+        "name": "Conditions Difficiles (Grupa II)",
+        "description": "25% de bonus sur les points de cotisation"
+      },
+      "veryDifficultConditions": {
+        "name": "Tres Difficiles (Grupa I)",
+        "description": "50% de bonus sur les points de cotisation"
+      },
+      "specialConditions": {
+        "name": "Conditions Speciales",
+        "description": "50% de bonus sur les points de cotisation pour travail dangereux"
+      },
+      "university": {
+        "name": "Etudes Universitaires",
+        "description": "0,25 point par an pour les etudes superieures"
+      },
+      "military": {
+        "name": "Service Militaire",
+        "description": "0,25 point par an pour le service militaire"
+      },
+      "childCare": {
+        "name": "Conge Parental",
+        "description": "0,25 point par an pour la garde d'enfant"
+      },
+      "medicalLeave": {
+        "name": "Conge Maladie",
+        "description": "0,20 point par an pour le conge maladie"
+      }
+    },
+    "form": {
+      "name": "Nom du Modele",
+      "namePlaceholder": "ex. : Mon Modele Emploi IT",
+      "description": "Description",
+      "descriptionPlaceholder": "Description facultative pour ce modele",
+      "type": "Type de Modele"
+    },
+    "validation": {
+      "nameRequired": "Le nom du modele est obligatoire",
+      "nameTooShort": "Le nom du modele doit comporter au moins 2 caracteres",
+      "nameTooLong": "Le nom du modele doit comporter au maximum 50 caracteres"
+    },
+    "toast": {
+      "templateApplied": "Modele applique - remplissez les dates",
+      "templateSaved": "Modele personnalise enregistre avec succes",
+      "templateDeleted": "Modele supprime"
+    }
+  },
+  "autocomplete": {
+    "suggestions": "Suggestions de noms d'entreprise",
+    "source": {
+      "history": "Recent",
+      "popular": "Populaire"
+    },
+    "noResults": "Aucune entreprise correspondante trouvee",
+    "duration": {
+      "oneYear": "1 an",
+      "twoYears": "2 ans",
+      "threeYears": "3 ans",
+      "fiveYears": "5 ans",
+      "tenYears": "10 ans",
+      "fifteenYears": "15 ans",
+      "twentyYears": "20 ans",
+      "twentyFiveYears": "25 ans",
+      "thirtyYears": "30 ans",
+      "thirtyFiveYears": "35 ans"
+    }
+  },
+  "common": {
+    "add": "Ajouter",
+    "remove": "Supprimer",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "close": "Fermer",
+    "years": "ans",
+    "remaining": "restants",
+    "points": "points",
+    "none": "Aucun",
+    "optional": "facultatif",
+    "selectDate": "Selectionner la date",
+    "today": "Aujourd'hui",
+    "clear": "Effacer",
+    "previousMonth": "Mois precedent",
+    "nextMonth": "Mois suivant",
+    "swipeToNavigate": "Balayez a gauche/droite pour changer de mois",
+    "swipeToDelete": "Balayez vers la gauche sur une periode pour la supprimer",
+    "loading": "Chargement..."
+  },
+  "nav": {
+    "quickActions": "Actions rapides"
+  },
+  "accessibility": {
+    "skipToMain": "Aller au contenu principal",
+    "liveRegionUpdate": "Contenu mis a jour",
+    "formSection": "Section formulaire",
+    "resultsSection": "Section resultats",
+    "chartDescription": "Graphique montrant {{type}} : {{description}}",
+    "progressBar": "Progression : {{value}}% termine",
+    "expandSection": "Developper {{section}}",
+    "collapseSection": "Reduire {{section}}",
+    "requiredField": "Champ obligatoire",
+    "errorCount": "{{count}} erreurs trouvees",
+    "validationError": "Erreur de validation : {{message}}",
+    "calculationResult": "Resultat du calcul : {{value}}",
+    "dateFormat": "Format de date : AAAA-MM-JJ",
+    "currencyFormat": "Montant en Lei roumains (RON)",
+    "percentageFormat": "Valeur en pourcentage",
+    "periodStatus": "Periode {{index}} : {{status}}",
+    "pensionEstimateUpdate": "Estimation de pension mise a jour : {{monthly}} par mois",
+    "contributionPointsUpdate": "Total des points de cotisation : {{points}}"
+  },
+  "error": {
+    "title": "Une erreur est survenue",
+    "description": "Une erreur inattendue s'est produite. Veuillez reessayer ou recharger la page.",
+    "tryAgain": "Reessayer",
+    "reloadPage": "Recharger la Page",
+    "details": "Details de l'Erreur",
+    "chartError": "Impossible d'afficher le graphique",
+    "chartErrorDescription": "Un probleme est survenu lors de l'affichage du graphique. Veuillez reessayer.",
+    "calculationError": "Erreur de Calcul",
+    "calculationErrorDescription": "Un probleme est survenu lors du calcul de votre pension. Veuillez verifier vos donnees et reessayer."
+  },
+  "validation": {
+    "birthDateRequired": "La date de naissance est obligatoire",
+    "birthDateInFuture": "La date de naissance ne peut pas etre dans le futur",
+    "birthDateTooOld": "La date de naissance ne peut pas remonter a plus de 120 ans",
+    "retirementYearRequired": "L'annee de retraite est obligatoire",
+    "retirementYearInPast": "L'annee de retraite ne peut pas etre dans le passe",
+    "retirementYearTooFar": "L'annee de retraite est trop eloignee dans le futur",
+    "retirementAgeTooYoung": "L'age de la retraite ne peut pas etre inferieur a 50 ans",
+    "retirementAgeTooOld": "L'age de la retraite ne peut pas etre superieur a 90 ans"
+  },
+  "importExport": {
+    "title": "Gestion des Donnees",
+    "export": {
+      "button": "Exporter les Donnees",
+      "title": "Exporter Vos Donnees",
+      "description": "Telechargez vos donnees de calcul sous forme de fichier JSON pour sauvegarde ou transfert.",
+      "success": "Donnees exportees avec succes",
+      "filename": "donnees-pension"
+    },
+    "pdf": {
+      "button": "Telecharger le Rapport PDF",
+      "title": "Rapport PDF",
+      "description": "Generez un rapport PDF professionnel avec le resume de votre calcul de pension, la repartition des points et la liste des periodes de cotisation.",
+      "success": "Rapport PDF genere avec succes",
+      "filename": "rapport-pension"
+    },
+    "import": {
+      "button": "Importer des Donnees",
+      "title": "Importer des Donnees",
+      "description": "Chargez des donnees precedemment exportees depuis un fichier JSON.",
+      "selectFile": "Selectionner un Fichier",
+      "dragDrop": "ou glissez-deposez un fichier JSON ici",
+      "success": "Donnees importees avec succes",
+      "confirm": "Importer",
+      "cancel": "Annuler"
+    },
+    "error": {
+      "invalidFormat": "Format de fichier invalide. Veuillez utiliser un fichier d'export valide.",
+      "newerVersion": "Ce fichier a ete cree avec une version plus recente de l'application.",
+      "parseError": "Impossible d'analyser le fichier. Veuillez verifier s'il s'agit d'un fichier JSON valide.",
+      "invalidFileType": "Veuillez selectionner un fichier JSON.",
+      "fileTooLarge": "Le fichier est trop volumineux. La taille maximale est de 1 Mo.",
+      "readError": "Impossible de lire le fichier. Veuillez reessayer."
+    },
+    "warning": {
+      "title": "Remplacer les Donnees Actuelles ?",
+      "message": "L'importation remplacera toutes vos donnees de calcul actuelles. Cette action est irreversible."
+    }
+  },
+  "csvImport": {
+    "title": "Importer depuis CSV",
+    "button": "Importer des Periodes depuis CSV",
+    "description": "Importez des periodes de cotisation depuis un fichier CSV exporte depuis des systemes de paie ou des documents d'historique professionnel.",
+    "success": "Periodes de cotisation importees avec succes",
+    "selectFile": "Selectionner un Fichier CSV",
+    "dragDrop": "ou glissez-deposez un fichier CSV ici",
+    "back": "Retour",
+    "next": "Continuer",
+    "import": "Importer {{count}} Periodes",
+    "steps": {
+      "upload": "Selectionnez un fichier CSV a importer",
+      "mapping": "Associez les colonnes CSV aux champs de periode",
+      "preview": "Verifiez et confirmez l'importation",
+      "result": "Importation terminee"
+    },
+    "info": {
+      "description": "Telechargez un fichier CSV avec votre historique professionnel. Le fichier doit contenir des colonnes pour les dates, le salaire et eventuellement le nom de l'entreprise et les conditions de travail."
+    },
+    "format": {
+      "title": "Format CSV Accepte",
+      "headers": "La premiere ligne doit contenir les en-tetes de colonnes",
+      "dates": "Les dates peuvent etre au format AAAA-MM-JJ, JJ/MM/AAAA ou JJ-MM-AAAA",
+      "salary": "Le salaire doit etre un nombre (les symboles monetaires seront supprimes)"
+    },
+    "mapping": {
+      "instructions": "Associez vos colonnes CSV aux champs correspondants. Les champs obligatoires sont marques d'un *.",
+      "selectColumn": "-- Selectionner la colonne --",
+      "mapped": "Associe",
+      "sampleData": "Donnees d'exemple ({{count}} lignes au total)"
+    },
+    "fields": {
+      "fromDate": "Date de Debut",
+      "toDate": "Date de Fin",
+      "company": "Entreprise",
+      "salary": "Salaire Mensuel Brut",
+      "workingCondition": "Condition de Travail",
+      "nonContributiveType": "Type Non Contributif"
+    },
+    "preview": {
+      "allValid": "Toutes les lignes sont valides et pretes a etre importees",
+      "hasErrors": "Certaines lignes contiennent des erreurs de validation",
+      "totalRows": "Total des lignes",
+      "validRows": "Lignes valides",
+      "errors": "{{count}} erreurs de validation",
+      "errorRow": "Ligne {{row}}",
+      "moreErrors": "...et {{count}} erreurs supplementaires",
+      "periodsToImport": "{{count}} periodes a importer",
+      "noCompany": "Periode sans nom",
+      "morePeriods": "...et {{count}} periodes supplementaires"
+    },
+    "error": {
+      "emptyFile": "Le fichier CSV est vide.",
+      "noHeaders": "Impossible de trouver les en-tetes de colonnes dans le fichier CSV.",
+      "noDataRows": "Le fichier CSV ne contient aucune ligne de donnees.",
+      "parseError": "Impossible d'analyser le fichier CSV. Veuillez verifier le format du fichier.",
+      "invalidFileType": "Veuillez selectionner un fichier CSV.",
+      "fileTooLarge": "Le fichier est trop volumineux. La taille maximale est de 5 Mo.",
+      "readError": "Impossible de lire le fichier. Veuillez reessayer.",
+      "missingRequiredFields": "Veuillez associer tous les champs obligatoires : {{fields}}",
+      "requiredFieldsNotMapped": "Veuillez associer les champs obligatoires (Date de Debut et Date de Fin).",
+      "invalidDate": "Ligne {{row}} : Date invalide dans {{field}} (\"{{value}}\")",
+      "endDateBeforeStartDate": "Ligne {{row}} : La date de fin doit etre posterieure a la date de debut",
+      "salaryRequired": "Ligne {{row}} : Le salaire est obligatoire pour les periodes d'emploi"
+    }
+  },
+  "vprAdmin": {
+    "title": "Configuration VPR",
+    "currentValue": "Valeur VPR Actuelle",
+    "edit": "Modifier",
+    "year": "Annee",
+    "value": "Valeur",
+    "effectiveDate": "Date d'Effet",
+    "description": "Description",
+    "optional": "facultatif",
+    "descriptionPlaceholder": "ex. : Mise a jour annuelle du gouvernement",
+    "saving": "Enregistrement...",
+    "historicalValues": "Valeurs Historiques",
+    "addHistorical": "Ajouter une Valeur Historique",
+    "current": "Actuel",
+    "actions": "Actions",
+    "export": "Exporter la Config",
+    "import": "Importer la Config",
+    "reset": "Reinitialiser aux Valeurs par Defaut",
+    "confirmReset": "Cliquez a nouveau pour confirmer la reinitialisation",
+    "lastUpdated": "Derniere mise a jour",
+    "info": "Le VPR (Valeur du Point de Reference de Pension) est mis a jour annuellement par le gouvernement roumain. Les modifications ici affecteront immediatement tous les calculs de pension.",
+    "updateSuccess": "Valeur VPR mise a jour avec succes",
+    "addSuccess": "Valeur historique ajoutee avec succes",
+    "removeSuccess": "Valeur historique supprimee avec succes",
+    "exportSuccess": "Configuration exportee avec succes",
+    "importSuccess": "Configuration importee avec succes",
+    "resetSuccess": "Configuration reinitialisee aux valeurs par defaut",
+    "importError": "Echec de l'importation de la configuration",
+    "readError": "Echec de la lecture du fichier",
+    "openAdmin": "Parametres VPR"
+  },
+  "toast": {
+    "actions": {
+      "dataSaved": "Vos donnees ont ete enregistrees automatiquement",
+      "periodAdded": "Nouvelle periode de cotisation ajoutee",
+      "periodRemoved": "Periode de cotisation supprimee",
+      "formReset": "Le formulaire a ete reinitialise aux valeurs par defaut",
+      "languageChanged": "Langue changee en Français"
+    },
+    "validation": {
+      "hasErrors": "Veuillez corriger les erreurs de validation",
+      "periodsOverlap": "Certaines periodes de cotisation se chevauchent",
+      "invalidDates": "Veuillez verifier les champs de date",
+      "invalidSalary": "Veuillez entrer un montant de salaire valide"
+    },
+    "calculation": {
+      "complete": "Calcul de pension mis a jour",
+      "eligibilityMet": "Felicitations ! Vous remplissez toutes les conditions d'eligibilite a la pension",
+      "minimumReached": "Vous avez atteint la periode minimale de cotisation"
+    }
+  },
+  "pension": {
+    "title": "Calculateur de Pension Roumaine",
+    "description": "Calculez votre pension selon le systeme de pension roumain 2024",
+    "personalInfo": {
+      "title": "Informations Personnelles",
+      "birthDate": "Date de Naissance",
+      "plannedRetirementYear": "Annee de Retraite Prevue",
+      "use2061": "Utiliser 2061"
+    },
+    "contributionPeriods": {
+      "title": "Periodes de Cotisation",
+      "addPeriod": "Ajouter une Periode",
+      "removePeriod": "Supprimer la Periode",
+      "expand": "Developper la periode",
+      "collapse": "Reduire la periode",
+      "expandAll": "Developper toutes les periodes",
+      "collapseAll": "Reduire toutes les periodes",
+      "monthlyGrossSalary": "Salaire Mensuel Brut",
+      "startDate": "Date de Debut",
+      "endDate": "Date de Fin",
+      "company": "Entreprise",
+      "employmentPeriod": "Periode d'Emploi",
+      "validation": {
+        "monthlyGrossSalaryRequired": "Le salaire mensuel brut est obligatoire",
+        "startDateRequired": "La date de debut est obligatoire",
+        "endDateRequired": "La date de fin est obligatoire",
+        "invalidDate": "Veuillez entrer une date valide",
+        "startDateInFuture": "La date de debut ne peut pas etre dans le futur",
+        "endDateInFuture": "La date de fin ne peut pas etre dans le futur",
+        "endDateBeforeStartDate": "La date de fin doit etre posterieure a la date de debut",
+        "dateTooOld": "La date ne peut pas remonter a plus de 100 ans",
+        "salaryOutOfRange": "Le salaire doit etre compris entre {{min}} et {{max}} RON",
+        "periodsOverlap": "Cette periode chevauche la Periode {{period1}} et {{period2}}",
+        "overlapWarningTitle": "Periodes Chevauchantes Detectees",
+        "overlapWarningDescription": "Certaines periodes de cotisation se chevauchent. Veuillez corriger les dates pour permettre le calcul de la pension.",
+        "overlapSummary": "La Periode {{period1}} et la Periode {{period2}} ont des dates qui se chevauchent",
+        "calculationBlockedByOverlap": "Le calcul de la pension est desactive tant que les periodes chevauchantes ne sont pas resolues"
+      },
+      "workingCondition": {
+        "label": "Conditions de Travail",
+        "normal": "Conditions Normales",
+        "groupII": "Grupa II - Difficiles (25% de bonus)",
+        "groupI": "Grupa I - Tres Difficiles (50% de bonus)",
+        "specialConditions": "Conditions Speciales (50% de bonus)",
+        "bonusApplied": "Un bonus de {{bonus}} sera applique aux points de cotisation",
+        "normalShort": "Normal",
+        "groupIIShort": "Groupe II",
+        "groupIShort": "Groupe I",
+        "specialConditionsShort": "Spécial"
+      },
+      "nonContributivePeriod": {
+        "label": "Periode Non Contributive",
+        "military": "Service Militaire",
+        "university": "Universite",
+        "childCare": "Garde d'Enfant",
+        "medical": "Conge Maladie"
+      },
+      "dateSection": "Quand",
+      "periodType": "Type de Période",
+      "typeEmployment": "Emploi",
+      "employmentDetails": "Détails",
+      "durationYear": "an",
+      "durationYears": "ans",
+      "durationMonth": "mois",
+      "durationMonths": "mois",
+      "lessThanMonth": "Moins d'un mois",
+      "progressLabel": "Progrès de Contribution",
+      "minimumLabel": "minimum",
+      "emptyTitle": "Pas encore de périodes de contribution",
+      "emptyDescription": "Ajoutez votre historique d'emploi et les périodes non contributives pour calculer votre pension.",
+      "addEmployment": "Ajouter une Période d'Emploi",
+      "addNonContributive": "Ajouter une Période Non Contributive",
+      "quickFill": "Remplissage rapide",
+      "vsNationalAvg": "vs moyenne nationale",
+      "completionLabel": "{{percent}}% terminé"
+    },
+    "contributionAnalysis": {
+      "title": "Analyse des Cotisations",
+      "totalPoints": "Total des Points",
+      "monthlyPension": "Pension Mensuelle",
+      "yearlyPension": "Pension Annuelle",
+      "retirementAge": "Age de la Retraite",
+      "contributionYears": "Annees de Cotisation",
+      "minimumRequired": "Minimum Requis",
+      "completeContribution": "Cotisation Complete",
+      "stabilityPoints": "Points de Stabilite",
+      "nonContributivePoints": "Points Non Contributifs"
+    },
+    "stats": {
+      "validation": {
+        "noContributionPeriods": "Ajoutez vos periodes de cotisation pour calculer votre pension",
+        "minimumContributionYears": "Vous avez besoin de {{years}} annees supplementaires pour atteindre la periode minimale de cotisation de {{minimum}} ans",
+        "completeContributionYears": "Vous avez besoin de {{years}} annees supplementaires pour atteindre la periode complete de cotisation de {{complete}} ans",
+        "allConditionsMet": "Toutes les conditions de pension sont remplies"
+      },
+      "retirementStatus": {
+        "title": "Statut de Retraite",
+        "eligible": "Eligible a la retraite",
+        "yearsRemaining": "{{years}} annees restantes"
+      },
+      "timeline": {
+        "title": "Chronologie",
+        "currentAge": "Age Actuel",
+        "retirementAge": "Age de la Retraite",
+        "years": "ans"
+      },
+      "contributionProgress": {
+        "title": "Progression des Cotisations",
+        "years": "ANS"
+      },
+      "pointsBreakdown": {
+        "title": "Repartition des Points",
+        "contribution": "Cotisation",
+        "stability": "Stabilite",
+        "nonContributive": "Non contributif",
+        "totalPoints": "Total des Points"
+      },
+      "periodBreakdown": {
+        "title": "Detail des Periodes",
+        "noPeriodsYet": "Aucune periode de cotisation ajoutee pour le moment",
+        "monthlyGrossSalary": "Salaire Mensuel Brut",
+        "workingCondition": "Condition de Travail",
+        "nonContributiveType": "Type Non Contributif",
+        "percentageOfTotal": "du total des points"
+      },
+      "pensionEstimate": {
+        "title": "Estimation de Pension",
+        "monthlyPension": "Pension Mensuelle",
+        "yearlyPension": "Pension Annuelle",
+        "basedOn": "Base sur {{points}} points au total",
+        "formula": "Base sur la formule de calcul de pension roumaine 2024",
+        "completeMinimum": "Completez la periode minimale de cotisation pour voir votre pension estimee"
+      }
+    },
+    "gapAnalysis": {
+      "title": "Analyse des Lacunes de Cotisation",
+      "noGapsFound": "Aucune lacune significative detectee dans votre chronologie de cotisation. Felicitations pour le maintien d'un emploi continu !",
+      "gap": "lacune",
+      "gaps": "lacunes",
+      "months": "mois",
+      "totalDuration": "Duree Totale des Lacunes",
+      "pointsLost": "Points Perdus Estimes",
+      "pensionImpact": "Impact sur la Pension",
+      "identifiedGaps": "Lacunes Identifiees",
+      "gapLabel": "Lacune",
+      "viewStrategies": "Voir les Strategies pour Combler les Lacunes",
+      "suggestedStrategies": "Strategies Suggerees",
+      "estimatedGain": "Gain Est. en Points",
+      "pensionIncrease": "Augmentation de Pension",
+      "feasibility": {
+        "high": "Elevee",
+        "medium": "Moyenne",
+        "low": "Faible"
+      },
+      "strategies": {
+        "voluntaryContributions": {
+          "title": "Cotisations Volontaires",
+          "description": "Effectuez des cotisations volontaires retroactives pour couvrir les periodes de lacune. Contactez le CNPP pour l'eligibilite."
+        },
+        "extendPreviousEmployment": {
+          "title": "Prolonger l'Emploi Precedent",
+          "description": "Si possible, negociez pour que les periodes d'emploi precedentes soient prolongees ou corrigees dans les registres."
+        },
+        "partTimeWork": {
+          "title": "Travail a Temps Partiel",
+          "description": "Envisagez un emploi a temps partiel pour commencer a accumuler des points de cotisation pour les lacunes actuelles/recentes."
+        },
+        "childCareCredit": {
+          "title": "Credit pour Garde d'Enfant",
+          "description": "Si vous avez des enfants, vous pouvez etre eligible a des credits de garde d'enfant pour couvrir certaines periodes de lacune."
+        },
+        "universityCredit": {
+          "title": "Credit pour Universite/Education",
+          "description": "Les periodes d'etudes universitaires peuvent etre qualifiees comme periodes non contributives valant 0,25 point par an."
+        }
+      }
+    },
+    "pdfExport": {
+      "generatedOn": "Genere le",
+      "yearsUntilRetirement": "Annees jusqu'a la retraite",
+      "calculationBasis": "Base de calcul",
+      "period": "Periode",
+      "dates": "Dates",
+      "condition": "Condition",
+      "salaryOrType": "Salaire/Type",
+      "years": "Annees",
+      "nonContributive": "Non contrib.",
+      "disclaimer": "Ceci est une estimation uniquement. Pour des informations officielles, consultez le CNPP.",
+      "charts": {
+        "sectionTitle": "Graphiques et Visualisations",
+        "sectionDescription": "Representation visuelle de vos donnees de calcul de retraite",
+        "normalEmployment": "Emploi Normal",
+        "specialConditions": "Conditions Speciales",
+        "nonContributive": "Non Contributif",
+        "contributionTypeTitle": "Repartition par Type de Contribution",
+        "periodTypeTitle": "Repartition par Type de Periode"
+      }
+    },
+    "earlyRetirement": {
+      "title": "Scenarios de Retraite Anticipee",
+      "scenariosAvailable": "{{count}} scenarios disponibles",
+      "notEligible": "Non eligible",
+      "infoTitle": "Penalites de Retraite Anticipee",
+      "infoDescription": "Prendre sa retraite avant 65 ans entraine une reduction de {{penalty}}% de la pension par an. L'age minimum de retraite anticipee est de {{minAge}} ans.",
+      "eligibilityRequired": "Conditions d'Eligibilite",
+      "completeContributionRequired": "La retraite anticipee necessite {{required}} ans de cotisations. Vous avez actuellement {{current}} ans.",
+      "standardRetirement": "Retraite Standard (Pension Complete)",
+      "atAge": "A l'age de {{age}} ans",
+      "perMonth": "par mois",
+      "retireAt": "Retraite a",
+      "yearsEarly": "Annees d'Avance",
+      "penalty": "Penalite",
+      "monthlyPension": "Mensuel",
+      "monthlyLoss": "Perte",
+      "earliestOption": "Option la plus anticipee",
+      "earliestOptionDetails": "Retraite a {{age}} ans avec {{pension}}/mois (penalite de {{penalty}}%)",
+      "disclaimer": "Ces calculs sont des estimations basees sur la legislation actuelle. Les conditions reelles de retraite anticipee peuvent varier. Consultez le CNPP pour des informations officielles.",
+      "reasons": {
+        "needsCompleteContribution": "Necessite 35 ans",
+        "alreadyPastAge": "Age depasse",
+        "belowMinimumAge": "En dessous du minimum"
+      }
+    },
+    "periodSummary": {
+      "title": "Chronologie de Carriere",
+      "noPeriods": "Ajoutez des periodes de cotisation pour voir votre chronologie de carriere",
+      "period": "periode",
+      "periods": "periodes",
+      "employment": "Emploi",
+      "nonContributive": "Non contributif",
+      "totalYears": "Total des Annees",
+      "legend": "Legende",
+      "legendGroupII": "Grupa II",
+      "legendGroupI": "Grupa I",
+      "legendSpecial": "Speciales"
+    },
+    "countdown": {
+      "title": "Compte a Rebours de la Retraite",
+      "years": "Annees",
+      "months": "Mois",
+      "days": "Jours",
+      "totalDays": "{{days}} jours restants au total",
+      "progressToRetirement": "Progression vers la Retraite",
+      "careerStart": "Debut de Carriere",
+      "retirement": "Retraite",
+      "alreadyEligible": "Vous avez atteint l'age de la retraite !",
+      "congratulations": "Felicitations pour avoir atteint cette etape. Vous etes desormais eligible aux prestations de retraite.",
+      "milestonesTitle": "Etapes Importantes",
+      "milestones": {
+        "twentyYears": "20 ans restants",
+        "tenYears": "10 ans restants",
+        "fiveYears": "5 ans restants",
+        "oneYear": "Derniere annee"
+      },
+      "messages": {
+        "longWay": "Vous avez largement le temps de construire votre pension. Continuez a cotiser !",
+        "goodProgress": "Excellente progression ! Votre retraite se profile a l'horizon.",
+        "halfwayThere": "Vous etes dans la derniere ligne droite ! Continuez comme ça !",
+        "almostThere": "Presque la ! Votre retraite est au coin de la rue.",
+        "finalStretch": "Le compte a rebours final ! La retraite est presque la."
+      }
+    },
+    "salaryHistory": {
+      "title": "Evolution du Salaire dans le Temps",
+      "description": "Comparez votre historique salarial avec la moyenne nationale",
+      "noData": "Ajoutez des periodes d'emploi avec des donnees salariales pour voir le graphique d'evolution de votre salaire",
+      "yourSalary": "Votre Salaire",
+      "nationalAverage": "Moyenne Nationale",
+      "year": "Annee",
+      "salaryRON": "Salaire (RON)",
+      "vsAverage": "vs moyenne",
+      "avgRatio": "Moy. vs Nationale",
+      "yearsAbove": "Annees Au-dessus de la Moy.",
+      "yearsBelow": "Annees En-dessous de la Moy.",
+      "aboveAverage": "Au-dessus de la moyenne",
+      "belowAverage": "En-dessous de la moyenne",
+      "nationalAverageLine": "Moyenne nationale"
+    },
+    "pointsAccumulation": {
+      "title": "Accumulation des Points de Pension",
+      "description": "Suivez l'evolution de vos points de pension tout au long de votre carriere",
+      "noData": "Ajoutez des periodes de cotisation pour voir le graphique d'accumulation des points",
+      "year": "Annee",
+      "points": "Points",
+      "totalPoints": "Total des Points",
+      "contributionPoints": "Points de Cotisation",
+      "stabilityPoints": "Points de Stabilite",
+      "nonContributivePoints": "Points Non Contributifs",
+      "totalPointsLabel": "Total des Points",
+      "contributionLabel": "Cotisation",
+      "stabilityLabel": "Stabilite",
+      "nonContributiveLabel": "Non contrib.",
+      "legendTotal": "Total cumule des points",
+      "legendContribution": "Points issus des cotisations salariales",
+      "legendStability": "Points bonus pour la stabilite d'emploi",
+      "legendNonContributive": "Points issus des periodes hors emploi"
+    },
+    "specialRetirement": {
+      "title": "Retraite pour Conditions de Travail Speciales",
+      "earliestAge": "Le plus tot : {{age}} ans",
+      "standardAge": "Standard : 65 ans",
+      "infoTitle": "Age de Retraite Reduit pour Conditions Speciales",
+      "infoDescription": "Les travailleurs ayant exerce dans des conditions Grupa I (tres difficiles), Grupa II (difficiles) ou des conditions speciales de travail peuvent etre eligibles a une retraite anticipee par rapport a l'age standard de 65 ans.",
+      "standardRetirement": "Age Standard de la Retraite",
+      "withoutSpecialConditions": "Sans conditions de travail speciales",
+      "yourCategories": "Vos Conditions de Travail Speciales",
+      "retirementAge": "Age de la Retraite",
+      "yearsWorked": "Annees Travaillees",
+      "yearsRequired": "Annees Requises",
+      "currentlyEligible": "Vous etes actuellement eligible a cet age de retraite reduit !",
+      "yearsUntilEligible": "{{years}} ans avant d'atteindre cet age de retraite",
+      "needsMinimumContribution": "Vous devez remplir la condition minimale de 15 ans de cotisation",
+      "needsMoreYearsInCondition": "{{needed}} annees supplementaires dans cette condition sont necessaires pour la reduction complete",
+      "progressToMinimum": "Progression vers la condition minimale",
+      "bestOption": "Meilleure Option de Retraite Anticipee",
+      "bestOptionDetails": "Sur la base de votre historique professionnel, vous pouvez prendre votre retraite a {{age}} ans ({{reduction}} ans plus tot que le standard)",
+      "disclaimer": "Ces calculs sont des estimations basees sur la legislation roumaine des pensions (Legea 263/2010). L'eligibilite reelle peut dependre de facteurs supplementaires. Veuillez consulter Casa Națională de Pensii Publice (CNPP) pour des informations officielles.",
+      "categories": {
+        "groupI": {
+          "name": "Grupa I - Conditions Tres Difficiles",
+          "description": "Mines souterraines, industries nucleaire et chimique, et autres travaux dangereux avec 50% de bonus et retraite jusqu'a 10 ans plus tot"
+        },
+        "groupII": {
+          "name": "Grupa II - Conditions Difficiles",
+          "description": "Industrie lourde, construction, metallurgie avec 25% de bonus et retraite jusqu'a 5 ans plus tot"
+        },
+        "specialConditions": {
+          "name": "Conditions Speciales",
+          "description": "Autres environnements de travail dangereux avec 50% de bonus et retraite jusqu'a 10 ans plus tot"
+        }
+      }
+    },
+    "stabilityTracker": {
+      "title": "Progression du Bonus de Stabilite",
+      "tier1": "Palier 1 (26-30 ans)",
+      "tier2": "Palier 2 (31-35 ans)",
+      "tier3": "Palier 3 (36-40 ans)",
+      "overallProgress": "Progression Generale de Stabilite",
+      "minimumRequired": "Cotisation Minimale Requise",
+      "needMoreYears": "Vous avez besoin de {{years}} annees de cotisations supplementaires pour commencer a gagner des points de stabilite.",
+      "current": "Actuel",
+      "pointsPerYear": "pts/an",
+      "yearsRange": "Annees {{start}}-{{end}}",
+      "nextTier": "Palier Suivant",
+      "yearsToNextTier": "{{years}} ans pour atteindre le palier suivant",
+      "maxTierReached": "Palier Maximum Atteint !",
+      "congratulations": "Vous avez atteint le palier maximum du bonus de stabilite. Excellent travail !",
+      "totalStabilityPoints": "Total des Points de Stabilite",
+      "contributionYears": "Annees de Cotisation"
+    },
+    "comparison": {
+      "title": "Comparaison Nationale des Pensions",
+      "percentileRanking": "Classement en Percentile",
+      "percentileDescription": "des retraites roumains gagnent moins",
+      "visualComparison": "Comparaison Visuelle",
+      "yourPension": "Votre Pension",
+      "nationalAverage": "Moyenne Nationale",
+      "minimumPension": "Pension Minimale",
+      "aboveAverage": "au-dessus de la moyenne",
+      "belowAverage": "en-dessous de la moyenne",
+      "aboveMinimum": "au-dessus du minimum",
+      "atMinimum": "Au niveau ou proche de la pension minimale",
+      "vsAverageLabel": "vs. Moyenne",
+      "vsMinimumLabel": "vs. Minimum",
+      "sourceNote": "Base sur les statistiques CNPP des pensions nationales de {{year}}",
+      "category": {
+        "excellent": "Excellent",
+        "good": "Bon",
+        "above_average": "Au-dessus de la Moyenne",
+        "average": "Moyen",
+        "below_average": "En-dessous de la Moyenne",
+        "low": "Faible"
+      },
+      "percentileContext": {
+        "excellent": "Votre pension est dans le top 10% au niveau national. Excellent revenu de retraite !",
+        "good": "Votre pension est superieure a celle de 75% des retraites roumains. Tres bien !",
+        "above_average": "Votre pension est superieure a la moyenne nationale. Vous vous en sortez bien !",
+        "average": "Votre pension est proche de la moyenne nationale.",
+        "below_average": "Votre pension est inferieure a la moyenne nationale. Envisagez une epargne supplementaire.",
+        "low": "Votre pension se situe dans la tranche inferieure. Une planification supplementaire de la retraite pourrait etre benefique."
+      }
+    },
+    "inflationAdjustment": {
+      "title": "Analyse de l'Impact de l'Inflation",
+      "description": "Decouvrez comment l'inflation pourrait affecter le pouvoir d'achat de votre pension au fil du temps",
+      "inflationRate": "Taux d'Inflation Annuel",
+      "projectionYears": "Periode de Projection",
+      "yearsLabel": "ans",
+      "currentPension": "Valeur Actuelle de la Pension",
+      "futureValue": "Pouvoir d'Achat Futur",
+      "purchasingPowerLoss": "Perte de Pouvoir d'Achat",
+      "afterYears": "Apres {{years}} ans",
+      "perMonth": "/mois",
+      "realValue": "Valeur Reelle",
+      "nominalValue": "Valeur Nominale",
+      "cumulativeInflation": "Inflation Cumulee",
+      "yearByYear": "Projection Annee par Annee",
+      "year": "Annee",
+      "realPurchasingPower": "Valeur Reelle",
+      "loss": "Perte",
+      "lossPercent": "Perte %",
+      "summary": "Apres {{years}} ans a un taux d'inflation annuel de {{rate}}%, votre pension de {{pension}} aurait un pouvoir d'achat de {{realValue}} en monnaie d'aujourd'hui - une perte de {{lossPercent}}%.",
+      "averageAnnualLoss": "Perte Annuelle Moyenne",
+      "presets": {
+        "optimistic": "Optimiste (2,5%)",
+        "moderate": "Modere (4%)",
+        "pessimistic": "Pessimiste (6%)",
+        "high": "Eleve (10%)",
+        "custom": "Personnalise"
+      },
+      "severity": {
+        "low": "Impact Faible",
+        "moderate": "Impact Modere",
+        "high": "Impact Eleve",
+        "severe": "Impact Severe"
+      },
+      "note": "Cette projection suppose l'absence d'indexation des pensions. En pratique, les pensions roumaines sont periodiquement ajustees par le gouvernement, ce qui peut partiellement compenser l'inflation.",
+      "disclaimer": "Ces projections sont des estimations a des fins de planification uniquement. Les taux d'inflation reels varieront. Consultez un conseiller financier pour une planification de retraite personnalisee."
+    },
+    "recommendations": {
+      "title": "Recommandations Personnalisees",
+      "highPriorityCount": "importantes",
+      "recommendationCount": "{{count}} conseils",
+      "potentialGain": "Augmentation Potentielle de la Pension",
+      "perMonth": "/mois",
+      "showMore": "Afficher {{count}} conseils supplementaires",
+      "showLess": "Afficher moins",
+      "disclaimer": "Ces recommandations sont des estimations basees sur la legislation actuelle. Les resultats reels peuvent varier. Consultez le CNPP pour des informations officielles.",
+      "priority": {
+        "high": "Important",
+        "medium": "Suggere",
+        "low": "Conseil"
+      },
+      "milestones": {
+        "minimumTitle": "Atteindre la Periode Minimale de Cotisation",
+        "minimumDescription": "Vous avez besoin de {{years}} annees de cotisations supplementaires pour atteindre la condition minimale de {{minimum}} ans et devenir eligible a une pension.",
+        "completeTitle": "Atteindre la Periode Complete de Cotisation",
+        "completeDescription": "Cotiser pendant {{years}} annees supplementaires pour atteindre {{complete}} ans debloquerait l'eligibilite a la retraite anticipee et ajouterait environ {{additionalPension}} RON/mois."
+      },
+      "stability": {
+        "nextTierTitle": "Debloquer le Palier de Stabilite {{tier}}",
+        "nextTierDescription": "Dans {{years}} annees de cotisations supplementaires, vous atteindrez le Palier de stabilite {{tier}} gagnant {{pointsPerYear}} points bonus/an, soit jusqu'a {{potentialPension}} RON/mois en plus.",
+        "currentTierTitle": "Completer le Palier de Stabilite {{tier}}",
+        "currentTierDescription": "Vous etes actuellement au Palier {{tier}}. {{years}} annees supplementaires completeront ce palier, rapportant {{remainingPoints}} points de stabilite supplementaires (+{{remainingPension}} RON/mois).",
+        "maxReachedTitle": "Stabilite Maximale Atteinte !",
+        "maxReachedDescription": "Felicitations ! Vous avez atteint le palier maximum du bonus de stabilite. Votre longue carriere est pleinement recompensee avec les points de stabilite les plus eleves."
+      },
+      "salary": {
+        "belowAverageTitle": "Votre Salaire est Inferieur a la Moyenne Nationale",
+        "belowAverageDescription": "Votre salaire actuel ({{currentSalary}} RON) est inferieur a la moyenne nationale ({{nationalAverage}} RON). Atteindre la moyenne ajouterait {{additionalPointsPerYear}} points par an (+{{additionalPensionPerYear}} RON/mois).",
+        "increaseImpactTitle": "Impact d'une Augmentation de Salaire de 20%",
+        "increaseImpactDescription": "Une augmentation de salaire de {{increaseAmount}} RON ajouterait {{additionalPointsPerYear}} points de cotisation supplementaires par an, augmentant votre pension d'environ {{additionalPensionPerYear}} RON/mois."
+      },
+      "conditions": {
+        "awarenessTitle": "Verifiez Vos Conditions de Travail",
+        "awarenessDescription": "Toutes vos periodes sont configurees en conditions normales. Si vous travaillez dans des conditions difficiles, dangereuses ou speciales, la mise a jour pourrait ajouter 25 a 50% de points bonus et permettre une retraite anticipee."
+      },
+      "retirement": {
+        "canReachCompleteTitle": "Cotisation Complete a Portee de Main",
+        "canReachCompleteDescription": "Avec {{yearsToRetirement}} ans jusqu'a la retraite et {{currentYears}} ans de cotisations, vous pouvez atteindre la periode complete de {{target}} ans. Continuez a travailler pour maximiser votre pension.",
+        "maximizeRemainingTitle": "Maximisez Vos Annees Restantes",
+        "maximizeRemainingDescription": "Avec {{yearsToRetirement}} ans jusqu'a la retraite, concentrez-vous sur la maximisation des cotisations. Vous pouvez accumuler jusqu'a {{maxYears}} annees au total (objectif : {{complete}} ans).",
+        "earlyStartTitle": "Excellent Depart Precoce !",
+        "earlyStartDescription": "Commencer les cotisations tot vous donne un avantage considerable. Avec {{yearsToRetirement}} ans jusqu'a la retraite, vous pourriez accumuler jusqu'a {{projectedYears}} annees de cotisation."
+      }
+    }
+  },
+  "print": {
+    "button": "Imprimer les résultats",
+    "buttonLabel": "Imprimer les résultats du calcul",
+    "generatedOn": "Imprimé le {{date}} à {{time}}",
+    "disclaimer": "Ceci n'est qu'une estimation. Pour des informations officielles sur les pensions, consultez la Casa Nationala de Pensii Publice (CNPP).",
+    "summaryTitle": "Résumé du Calcul de Pension",
+    "monthlyPension": "Pension Mensuelle (estimée)",
+    "yearlyPension": "Pension Annuelle (estimée)",
+    "totalPoints": "Points Totaux",
+    "contributionPoints": "Points de Contribution",
+    "stabilityPoints": "Points de Stabilité",
+    "nonContributivePoints": "Points Non-contributifs",
+    "contributiveYears": "Années Contributives",
+    "currentAge": "Âge Actuel / Âge de la Retraite",
+    "totalPeriods": "Périodes de Contribution",
+    "nonContributive": "non-contributives",
+    "birthDate": "Date de Naissance"
+  },
+  "theme": {
+    "light": "Clair",
+    "dark": "Sombre",
+    "system": "Systeme",
+    "selectTheme": "Selectionner le theme",
+    "themeOptions": "Options de theme",
+    "switchToLight": "Passer au mode clair",
+    "switchToDark": "Passer au mode sombre"
+  },
+  "history": {
+    "title": "Historique des Calculs",
+    "saveCurrentCalculation": "Enregistrer le Calcul Actuel",
+    "snapshotName": "Nom de la Version",
+    "namePlaceholder": "ex. : Avant l'augmentation de salaire",
+    "notes": "Notes",
+    "notesPlaceholder": "Ajoutez des notes concernant ce calcul...",
+    "unnamedSnapshot": "Version Sans Nom",
+    "month": "mois",
+    "noChange": "Aucun changement",
+    "totalPoints": "Total des Points",
+    "periods": "Periodes",
+    "viewDetails": "Voir les Details",
+    "restore": "Restaurer",
+    "restoreSnapshot": "Restaurer la Version",
+    "restoreWarningTitle": "Remplacer les Donnees Actuelles ?",
+    "restoreWarningMessage": "La restauration de cette version remplacera toutes vos donnees de calcul actuelles. Cette action est irreversible.",
+    "monthlyPension": "Pension Mensuelle",
+    "employmentPeriods": "emploi",
+    "nonContributive": "non contributif",
+    "noSnapshots": "Aucun calcul enregistre pour le moment",
+    "noSnapshotsHint": "Enregistrez votre calcul actuel pour le comparer avec des versions futures",
+    "capacityWarning": "L'historique est a capacite maximale. Les entrees les plus anciennes seront supprimees lors de l'enregistrement de nouvelles.",
+    "clearAll": "Effacer Tout l'Historique",
+    "clearConfirm": "Etes-vous sur de vouloir supprimer tous les calculs enregistres ?",
+    "clearAllConfirm": "Oui, Tout Effacer",
+    "saveSuccess": "Calcul enregistre dans l'historique",
+    "deleteSuccess": "Version supprimee",
+    "restoreSuccess": "Calcul restaure avec succes",
+    "clearSuccess": "Historique efface",
+    "openHistory": "Historique"
+  },
+  "lawVersions": {
+    "title": "Version de la Loi des Pensions",
+    "tooltip": "La loi sur les pensions roumaines a change au fil des ans. Selectionnez une version pour calculer votre pension selon ce cadre legislatif.",
+    "expand": "Afficher les options de version",
+    "current": "Actuelle",
+    "selected": "Selectionnee",
+    "effectiveFrom": "En vigueur depuis",
+    "until": "jusqu'a",
+    "historicalWarning": "Vous calculez avec une version historique de la loi. Les resultats refletent la legislation passee.",
+    "switchToCurrent": "Passer a la loi actuelle",
+    "availableVersions": "Versions Disponibles",
+    "selectVersion": "Selectionnez une version de la loi",
+    "keyChanges": "Changements Cles",
+    "showComparison": "Comparer avec la loi actuelle",
+    "hideComparison": "Masquer la comparaison",
+    "noChanges": "Pas de changements significatifs entre ces versions.",
+    "parameters": "Parametres de Calcul",
+    "paramLabels": {
+      "retirementAge": "Age de Retraite",
+      "vpr": "VPR",
+      "minContribution": "Contribution Min.",
+      "completeContribution": "Contribution Complete",
+      "earlyPenalty": "Penalite Retraite Anticipee",
+      "minEarlyAge": "Age Min. Retraite Anticipee"
+    },
+    "descriptions": {
+      "legea_360_2023": "Reforme des pensions de septembre 2024 avec nouvelle formule VPR",
+      "oug_163_2022": "Ordonnance d'urgence ajustant l'indexation des pensions",
+      "legea_127_2019": "Modifications de la valeur du point de pension",
+      "legea_263_2010": "Systeme unifie de pensions publiques",
+      "legea_19_2000": "Premiere loi moderne des pensions"
+    },
+    "changes": {
+      "360_vpr": "Introduction du VPR = 81.03 RON",
+      "360_formula": "Nouvelle formule: Pension Mensuelle = Total Points x VPR",
+      "360_stabilityPoints": "Systeme ameliore de points de stabilite",
+      "360_recalculation": "Recalcul obligatoire de toutes les pensions",
+      "163_indexation": "Formule d'indexation mise a jour",
+      "163_pensionPoint": "Point de pension fixe a 75.00 RON",
+      "163_minimumPension": "Augmentation de la pension minimum garantie",
+      "127_pensionPoint": "Augmentation significative du point de pension",
+      "127_indexation": "Nouveau mecanisme d'indexation",
+      "127_specialConditions": "Criteres mis a jour pour conditions speciales",
+      "263_unifiedSystem": "Unification des regimes de pension publique",
+      "263_retirementAge": "Age de retraite fixe a 65 ans",
+      "263_contributionYears": "Contribution minimum: 15 ans, Complete: 35 ans",
+      "263_pointSystem": "Methodologie de calcul des points amelioree",
+      "19_firstModernLaw": "Premiere loi moderne etablissant un systeme de points",
+      "19_pointSystem": "Introduction des points de contribution",
+      "19_retirementAge": "Age de retraite initial fixe a 63 ans",
+      "19_workingConditions": "Definition des categories de conditions de travail"
+    },
+    "comparison": {
+      "retirementAge": "Age de Retraite",
+      "minimumContributionYears": "Annees Minimum de Contribution",
+      "completeContributionYears": "Annees de Contribution Complete",
+      "vprValue": "Valeur du Point de Reference",
+      "earlyRetirementPenalty": "Penalite de Retraite Anticipee",
+      "minimumEarlyRetirementAge": "Age Minimum de Retraite Anticipee"
+    },
+    "timeline": {
+      "title": "Chronologie Legislative"
+    },
+    "toast": {
+      "versionChanged": "Version de la loi changee a {{name}}"
+    }
+  },
+  "pwa": {
+    "install": {
+      "title": "Installer le Calculateur de Pension",
+      "description": "Installez l'application pour un acces rapide et une utilisation hors ligne.",
+      "installButton": "Installer",
+      "notNow": "Pas maintenant"
+    },
+    "update": {
+      "title": "Mise a jour disponible",
+      "description": "Une nouvelle version de l'application est disponible avec des ameliorations.",
+      "updateButton": "Mettre a jour",
+      "later": "Plus tard"
+    },
+    "offline": {
+      "youAreOffline": "Vous etes hors ligne. L'application continuera de fonctionner avec les donnees en cache.",
+      "backOnline": "Vous etes de nouveau en ligne!",
+      "dataSaved": "Vos donnees sont sauvegardees localement et disponibles hors ligne."
+    }
+  },
+  "sharing": {
+    "title": "Résultats du Calcul de Pension",
+    "shareText": "Consultez les résultats de mon calcul de pension du Calculateur de Pension Roumain",
+    "shareResults": "Partager les Résultats",
+    "buttonLabel": "Partager vos résultats de calcul de pension",
+    "sharedResults": "Résultats de Pension Partagés",
+    "pensionEstimate": "Estimation de Pension",
+    "copied": "Lien Copié !",
+    "linkCopied": "Lien partageable copié dans le presse-papiers",
+    "sharedSuccessfully": "Résultats partagés avec succès",
+    "privacyNotice": "Ce résultat partagé contient uniquement des données de calcul anonymisées. Aucune information personnelle (date de naissance, noms d'entreprises ou dates d'emploi spécifiques) n'est incluse.",
+    "contributionYears": "Années de Contribution",
+    "yearsToRetirement": "Années Jusqu'à la Retraite",
+    "calculatedWith": "Calculé avec",
+    "calculateYourOwn": "Vous voulez calculer votre propre pension ?",
+    "startCalculating": "Commencer le Calcul",
+    "timestamp": {
+      "justNow": "Partagé à l'instant",
+      "minutesAgo": "Partagé il y a {{minutes}} minutes",
+      "hoursAgo": "Partagé il y a {{hours}} heures",
+      "daysAgo": "Partagé il y a {{days}} jours"
+    },
+    "error": {
+      "invalidFormat": "Format de lien partagé invalide",
+      "newerVersion": "Ce lien a été créé avec une version plus récente du calculateur",
+      "decodeError": "Impossible de décoder les données partagées",
+      "urlError": "URL de partage invalide",
+      "copyFailed": "Impossible de copier le lien dans le presse-papiers",
+      "shareFailed": "Impossible de partager les résultats"
+    }
+  }
+}

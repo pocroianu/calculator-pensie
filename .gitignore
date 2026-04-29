@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.windsurfrules
+
+*storybook.log
+storybook-static
+
+.playwright-mcp/

@@ -1,6 +1,13 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import InputForm from '../InputForm';
 import { PensionInputs, WorkingCondition } from '../../types/pensionTypes';
+import { ToastProvider } from '../../contexts/ToastContext';
+
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (key: string) => key,
+  }),
+}));
 
 describe('InputForm', () => {
   const mockOnChange = jest.fn();
@@ -15,28 +22,27 @@ describe('InputForm', () => {
     jest.clearAllMocks();
   });
 
-  it('renders all required fields', () => {
-    render(
+  const renderInputForm = (inputs: PensionInputs = defaultInputs) => render(
+    <ToastProvider>
       <InputForm
-        inputs={defaultInputs}
+        inputs={inputs}
         onChange={mockOnChange}
       />
-    );
+    </ToastProvider>
+  );
 
-    expect(screen.getByText('Birth Date')).toBeInTheDocument();
-    expect(screen.getByText('Planned Retirement Year')).toBeInTheDocument();
-    expect(screen.getByText('Contribution Periods')).toBeInTheDocument();
+  it('renders all required fields', () => {
+    renderInputForm();
+
+    expect(screen.getByText('pension.personalInfo.birthDate')).toBeInTheDocument();
+    expect(screen.getByText('pension.personalInfo.plannedRetirementYear')).toBeInTheDocument();
+    expect(screen.getByText('pension.contributionPeriods.title')).toBeInTheDocument();
   });
 
   it('allows adding a new contribution period', () => {
-    render(
-      <InputForm
-        inputs={defaultInputs}
-        onChange={mockOnChange}
-      />
-    );
+    renderInputForm();
 
-    const addButton = screen.getByText('Add Period');
+    const addButton = screen.getByTestId('add-period-button');
     fireEvent.click(addButton);
 
     expect(mockOnChange).toHaveBeenCalledWith('contributionPeriods', [{
@@ -49,14 +55,9 @@ describe('InputForm', () => {
   });
 
   it('allows updating birth date', () => {
-    render(
-      <InputForm
-        inputs={defaultInputs}
-        onChange={mockOnChange}
-      />
-    );
+    renderInputForm();
 
-    const birthDateInput = screen.getByTitle('birthday');
+    const birthDateInput = screen.getByTestId('birth-date-input');
     fireEvent.change(birthDateInput, { target: { value: '1995-01-01' } });
 
     expect(mockOnChange).toHaveBeenCalledWith('birthDate', '1995-01-01');
@@ -74,26 +75,16 @@ describe('InputForm', () => {
       }]
     };
 
-    render(
-      <InputForm
-        inputs={inputsWithPeriod}
-        onChange={mockOnChange}
-      />
-    );
+    renderInputForm(inputsWithPeriod);
 
-    const removeButton = screen.getByLabelText('Remove period');
+    const removeButton = screen.getByLabelText('pension.contributionPeriods.removePeriod');
     fireEvent.click(removeButton);
 
     expect(mockOnChange).toHaveBeenCalledWith('contributionPeriods', []);
   });
 
   it('allows updating retirement year', () => {
-    render(
-      <InputForm
-        inputs={defaultInputs}
-        onChange={mockOnChange}
-      />
-    );
+    renderInputForm();
 
     const retirementYearInput = screen.getByRole('spinbutton');
     fireEvent.change(retirementYearInput, { target: { value: '2060' } });
